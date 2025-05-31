@@ -7,6 +7,8 @@
 #include <ctime>
 #include <iomanip>
 #include <sstream>
+#include <vector>
+
 
 #ifdef _WIN32
 #include <windows.h>
@@ -23,6 +25,7 @@ void printHeader() {
     std::cout << "*   %&$####%7  \\%######7   %&######7/  ##         /#########  \\%######7    /##      *" << std::endl;
     std::cout << "*___________________________________________________________________________________*" << std::endl;
     std::cout << "*************************************************************************************" << std::endl;
+    std::cout << "" << std::endl;
 }
 
 void clearScreen(bool shouldPrintHeader = true) {
@@ -128,13 +131,117 @@ static void handleScreenCommand(const std::string& command) {
     }
 }
 
+static std::string getTimestamp() {
+    time_t now = time(0);
+    tm localtime;
+
+    std::stringstream ss;
+
+    localtime_s(&localtime, &now);
+
+    // Numeric month value should be mapped to their corresponding day of the week
+    const char* months[] = { "Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul",
+                             "Aug", "Sept", "Oct", "Nov", "Dec" };
+
+    const char* daysofweek[] = { "Sun", "Mon", "Tues", "Wed", "Thurs",
+                                "Fri", "Sat" };
+
+    // Print the date and time
+    ss << daysofweek[localtime.tm_wday] << " "             // Day of the week
+        << months[localtime.tm_mon] << " "                 // Month
+        << localtime.tm_mday << " "                        // Day of the month
+        << (localtime.tm_year + 1900) << " "               // Year
+        << localtime.tm_hour << ":"                        // Hour
+        << localtime.tm_min << ":"                         // Minute
+        << localtime.tm_sec;                               // Second                                      
+
+    return ss.str();
+}
+
+struct GPUProcessInfo {
+    int gpu;           // GPU index         (e.g., 0)
+    std::string gi;    // GPU Instance ID   (e.g., "N/A")
+    std::string ci;    // GPU Compute ID    (e.g., "N/A")
+    int pid;           // process ID        (e.g., 1368)
+    std::string type;  // process type      (e.g., "C+G")
+    std::string name;  // full path+exe name
+    std::string mem;   // GPU Memory usage  (e.g., "N/A")
+};
+
+static void nvidiaSMIView() {
+
+    std::stringstream ss;
+    std::string name;
+    int maxlen = 38;
+    
+    ss << "" << std::endl;
+    ss << getTimestamp() << std::endl;
+    ss << "+-----------------------------------------------------------------------------------------+" << std::endl;
+    ss << "| NVIDIA-SMI 551.86                 Driver Version: 551.86         CUDA Version: 12.4     |" << std::endl;
+    ss << "+-----------------------------------------+------------------------+----------------------+" << std::endl;
+    ss << "| GPU  Name                      TCC/WDDM | Bus-Id          Disp.A | Volatile Uncorr. ECC |" << std::endl;
+    ss << "| Fan  Temp  Perf           Pwr:Usage/Cap |           Memory-Usage | GPU-Util  Compute M. |" << std::endl;
+    ss << "|                                         |                        |               MIG M. |" << std::endl;
+    ss << "|=========================================+========================+======================|" << std::endl;
+    ss << "|   0  NVIDIA GeForce GTX 1080      WDDM  |   00000000:26:00.0  On |                  N/A |" << std::endl;
+    ss << "| 28%   37C    P8             11W /  180W |     701MiB /   8192MiB |      0%      Default |" << std::endl;
+    ss << "|                                         |                        |                  N/A |" << std::endl;
+    ss << "+-----------------------------------------+------------------------+----------------------+" << std::endl;
+    ss << "" << std::endl;
+    ss << "+-----------------------------------------------------------------------------------------+" << std::endl;
+    ss << "| Processes:                                                                              |" << std::endl;
+    ss << "|  GPU   GI   CI        PID   Type   Process name                              GPU Memory |" << std::endl;
+    ss << "|        ID   ID                                                               Usage      |" << std::endl;
+    ss << "|=========================================================================================|" << std::endl;
+    
+    std::vector<GPUProcessInfo> processes = {
+        { 0, "N/A", "N/A", 1368, "C+G", R"(C:\Users\user\Videos\Oppenheimer (2023).mp4)", "N/A" },
+        { 0, "N/A", "N/A", 5001, "C+G", R"(C:\Users\Nitro 5\Documents\web)", "N/A" },
+        { 0, "N/A", "N/A", 8243, "C+G", R"(C:\Users\user\Downloads\MarvelRivals.exe)",  "N/A" },
+        { 0, "N/A", "N/A", 7241, "C+G", R"(C:\Users\user\Downloads\password.txt)", "N/A" },
+        { 0, "N/A", "N/A", 8043, "C+G", R"(C:\Users\Nitro 5\Downloads\CSOPESY 2024\reallylongfilename.txt.)", "N/A" }
+    };
+
+    for (const auto& p : processes) {
+        name = (p.name.length() > maxlen) ? "..." + p.name.substr(p.name.length() - (maxlen - 3)) : p.name;
+
+        ss  << "|"
+            << "  "
+            << std::setw(3) << p.gpu
+            << std::string(3, ' ')
+            << std::setw(3) << p.gi
+            << std::string(3, ' ')
+            << std::setw(3) << p.ci
+            << std::string(5, ' ')
+            << std::setw(4) << p.pid
+            << std::string(4, ' ')
+            << std::setw(3) << p.type
+            << std::string(3, ' ')
+            << std::left << std::setw(49) << name
+            << std::right << std::setw(3) << p.mem
+            << " "
+            << "|"
+            << std::endl;
+    }
+
+    ss << "|                                                                                         |" << std::endl;
+    ss << "+-----------------------------------------------------------------------------------------+" << std::endl;
+
+    std::cout << ss.str() << std::endl;
+}
+
 int main() {
     std::string command;
     printHeader();
 
     while (true) {
         std::cout << "Main Menu - Enter command: ";
-        std::getline(std::cin, command);
+
+        if (!std::getline(std::cin, command)) {
+            std::cout << "\nInput error or EOF detected. Exiting program." << std::endl;
+            break;
+        }
+
         if (command == "exit") {
             std::cout << "Exiting program." << std::endl;
             break;
@@ -144,6 +251,8 @@ int main() {
             showCommands();
         } else if (command == "clear") {
             clearScreen();
+        } else if (command == "nvidia-smi") {
+            nvidiaSMIView();
         } else {
             std::cout << "Unrecognized command." << std::endl;
         }

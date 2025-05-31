@@ -129,6 +129,12 @@
   <ItemGroup>
     <ClCompile Include="TheManhattanProject.cpp" />
   </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="ProcessDict.h" />
+    <ClInclude Include="ProcessList.h" />
+    <ClInclude Include="Tracker.h" />
+    <ClInclude Include="ProcessInfo.h" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
