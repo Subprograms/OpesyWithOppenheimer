@@ -1,0 +1,3 @@
+﻿  Commands.cpp
+C:\Users\Bien Rafael\OneDrive\Documents\De Lasalle University\4th year - TERM 1\CSOPESY\CSOPESY-Group5\CSOPESY_Group5_Project\Commands.cpp(45,17): warning C4244: '=': conversion from '__int64' to 'int', possible loss of data
+  CSOPESY_Group5_Project.vcxproj -> C:\Users\Bien Rafael\OneDrive\Documents\De Lasalle University\4th year - TERM 1\CSOPESY\CSOPESY-Group5\CSOPESY_Group5_Project\x64\Debug\CSOPESY_Group5_Project.exe
