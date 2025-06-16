@@ -1,0 +1,15 @@
+Waiting Queue:
+
+Running Queue:
+
+Finished processes:
+process2	(06/14/2025, 07:42:41.440 PM)	Finished	Core: 1	100 / 100
+process1	(06/14/2025, 07:42:41.422 PM)	Finished	Core: 4	100 / 100
+process3	(06/14/2025, 07:42:41.456 PM)	Finished	Core: 3	100 / 100
+process4	(06/14/2025, 07:42:41.471 PM)	Finished	Core: 2	100 / 100
+process6	(06/14/2025, 07:42:41.502 PM)	Finished	Core: 4	100 / 100
+process5	(06/14/2025, 07:42:41.487 PM)	Finished	Core: 1	100 / 100
+process7	(06/14/2025, 07:42:41.518 PM)	Finished	Core: 3	100 / 100
+process8	(06/14/2025, 07:42:41.533 PM)	Finished	Core: 2	100 / 100
+process9	(06/14/2025, 07:42:41.549 PM)	Finished	Core: 4	100 / 100
+process10	(06/14/2025, 07:42:41.565 PM)	Finished	Core: 1	100 / 100
