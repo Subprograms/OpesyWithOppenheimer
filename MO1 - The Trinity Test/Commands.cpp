@@ -9,9 +9,114 @@
 #include <iomanip>
 #include <chrono>
 #include <random>
+#include <atomic>
+std::atomic<int> g_attachedPid{-1};
 
-static Instruction randomInstr(const Config& cfg);
-static std::vector<Instruction> buildRandomProgram(int lines, const Config& cfg);
+static Instruction randomInstr(const Config& cfg, std::vector<std::string>& vars);
+
+static std::vector<Instruction>
+buildRandomProgram(int lines, const Config& cfg, std::vector<std::string>& vars, int depth = 3);
+
+static std::string randVar()
+{
+    static std::mt19937 rng{ std::random_device{}() };
+    std::uniform_int_distribution<int> pick('a', 'z');
+    return std::string(1, static_cast<char>(pick(rng)));
+}
+
+static Instruction randomInstr(const Config& cfg,
+                               std::vector<std::string>& vars)
+{
+    static std::mt19937 rng{ std::random_device{}() };
+    std::uniform_int_distribution<int> pick(0, 5);
+    int code = pick(rng);
+
+    switch (code)
+    {
+    /* ---------- PRINT ------------------------------------ */
+    case 0:
+        if (vars.empty()) { // no var yet? force DECLARE one
+            std::string v = randVar();
+            vars.push_back(v);
+            std::string val = std::to_string(Commands::getRandomInt(0, 65535));
+            return Instruction{OpCode::DECLARE, v, val, "", false, true };
+        } else {
+            std::string v = vars[rng() % vars.size()];
+            return Instruction{OpCode::PRINT, "", v, "", false, true };
+        }
+
+    /* ---------- DECLARE ---------------------------------- */
+    case 1: {
+        std::string v = randVar();
+        vars.push_back(v);
+        std::string val = std::to_string(Commands::getRandomInt(0, 65535));
+        return Instruction{OpCode::DECLARE, v, val, "", false, true };
+    }
+
+    /* ---------- ADD / SUBTRACT --------------------------- */
+    case 2:
+    case 3: {
+        if (vars.empty()) return randomInstr(cfg, vars);   // ensure a var exists
+
+        bool rhs2Var = (rng() & 1);
+        bool rhs3Var = (rng() & 1);
+
+        std::string var1 = vars[rng() % vars.size()];      // target is a var
+        std::string arg2 = rhs2Var ? vars[rng() % vars.size()]
+                                   : std::to_string(Commands::getRandomInt(0,500));
+        std::string arg3 = rhs3Var ? vars[rng() % vars.size()]
+                                   : std::to_string(Commands::getRandomInt(0,500));
+
+        return Instruction{ code == 2 ? OpCode::ADD : OpCode::SUBTRACT,
+                            var1, arg2, arg3, rhs2Var, rhs3Var };
+    }
+
+    /* ---------- SLEEP ------------------------------------ */
+    case 4: {
+        std::string ticks = std::to_string(Commands::getRandomInt(1, 5));
+        return Instruction{ OpCode::SLEEP, "", ticks, "", false, true };
+    }
+
+    /* ---------- FOR_BEGIN -------------------------------- */
+    default: {
+        std::string reps = std::to_string(Commands::getRandomInt(2, 5));
+        return Instruction{ OpCode::FOR_BEGIN, "", reps, "", false, true };
+    }
+    }
+}
+
+static std::vector<Instruction>
+buildRandomProgram(int lines, const Config& cfg,
+                   std::vector<std::string>& vars, int depth)
+{
+    std::vector<Instruction> prog;
+    static std::mt19937 rng{ std::random_device{}() };
+
+    int i = 0;
+    while (i < lines)
+    {
+        bool insertLoop = (depth > 0 && (rng() % 5 == 0));  // 20% chance
+
+        if (insertLoop && i + 3 < lines) {
+            int bodyLen = Commands::getRandomInt(2, 3);
+            int repeats = Commands::getRandomInt(2, 5);
+
+            prog.emplace_back(OpCode::FOR_BEGIN, "", std::to_string(repeats),
+                              "", false, true);
+
+            auto inner = buildRandomProgram(bodyLen, cfg, vars, depth - 1);
+            prog.insert(prog.end(), inner.begin(), inner.end());
+
+            prog.emplace_back(OpCode::FOR_END);
+            i += bodyLen + 2;
+        }
+        else {
+            prog.emplace_back(randomInstr(cfg, vars));
+            ++i;
+        }
+    }
+    return prog;
+}
 
 static int nextProcessID = 1; // For unique process IDs
 
@@ -173,47 +278,47 @@ void Commands::rSubCommand(const std::string& name) {
 
 void Commands::sSubCommand(const std::string& name)
 {
-    try { // if it exists, just reattach
+    try {
         ProcessInfo& existing = scheduler->getProcess(name);
         std::cout << "Reattaching to existing process: " << name << '\n';
         enterProcessScreen(existing);
         return;
     }
-    catch (const std::runtime_error&) { } // falls through to create new
+    catch (const std::runtime_error&) { }
 
     int lines = Commands::getRandomInt(config.minIns, config.maxIns);
 
-    ProcessInfo proc(nextProcessID++, name, lines,
-                     getCurrentTimestamp(), false);
-    proc.prog = buildRandomProgram(lines, config);
+    ProcessInfo proc(nextProcessID++, name, lines, getCurrentTimestamp(), false);
 
-    scheduler->addProcess(proc);
+    std::vector<std::string> vars;
+    proc.prog = buildRandomProgram(lines, config, vars);
+
+    scheduler->addProcess(std::move(proc));
     std::cout << "Created process \"" << name << "\" (" << lines << " lines)\n";
 
-    enterProcessScreen(proc);
+    enterProcessScreen(scheduler->getProcess(name));
 }
 
 void Commands::enterProcessScreen(ProcessInfo& dummyRef)
 {
     clearScreen();
-
     const std::string procName = dummyRef.processName;
-    bool runningScreen = true;
 
-    auto showHeader = [&]() {
+    g_attachedPid = dummyRef.processID;
+
+    auto showHeader = [&](){
         ProcessInfo& p = scheduler->getProcess(procName);
         std::cout << "\nProcess: "     << p.processName
                   << "\nID: "          << p.processID
-                  << "\nTotal Lines: " << p.totalLine
-                  << "\n";
+                  << "\nTotal Lines: " << p.totalLine << "\n";
     };
 
     showHeader();
     displayProcessSmi(scheduler->getProcess(procName));
 
+    bool runningScreen = true;
     while (runningScreen) {
         ProcessInfo& live = scheduler->getProcess(procName);
-
         if (live.isFinished) {
             std::cout << "\nProcess has finished.\n";
             break;
@@ -223,18 +328,13 @@ void Commands::enterProcessScreen(ProcessInfo& dummyRef)
         std::string cmd;
         std::getline(std::cin, cmd);
 
-        if (cmd == "process-smi") {
-            displayProcessSmi(live);
-        }
-        else if (cmd == "exit") {
-            std::cout << "Exiting process screen…\n";
-            runningScreen = false;
-        }
-        else if (!cmd.empty()) {
+        if (cmd == "process-smi")      displayProcessSmi(live);
+        else if (cmd == "exit")        runningScreen = false;
+        else if (!cmd.empty())
             std::cout << "Invalid command. Available: process-smi | exit\n";
-        }
     }
 
+    g_attachedPid = -1;
     clearScreen();
     menuView();
 }
@@ -340,77 +440,18 @@ void Commands::batchLoop()
         std::this_thread::sleep_for(
             std::chrono::milliseconds(config.batchProcessFreq * tickMs));
 
-        // create unique "process<index>" name
         std::string pname = "process" + std::to_string(nextProcessID);
 
-        // skip if already exists
         try { scheduler->getProcess(pname); ++nextProcessID; continue; }
-        catch (...) {}
+        catch (...) {} // name is unique
 
         int lines = Commands::getRandomInt(config.minIns, config.maxIns);
+
         ProcessInfo p(nextProcessID++, pname, lines, getCurrentTimestamp(), false);
-        p.prog = buildRandomProgram(lines, config);
-        scheduler->addProcess(p);
 
+        std::vector<std::string> vars;
+        p.prog = buildRandomProgram(lines, config, vars);
+
+        scheduler->addProcess(std::move(p));
     }
-}
-
-static Instruction randomInstr(const Config& cfg)
-{
-    static std::mt19937 rng{ std::random_device{}() };
-    std::uniform_int_distribution<int> pick(0,5);
-
-    Instruction ins;
-    switch (pick(rng))
-    {
-    case 0:         // PRINT
-        ins.op   = OpCode::PRINT;
-        ins.arg1 = "Hello";
-        break;
-
-    case 1:         // DECLARE
-        ins.op   = OpCode::DECLARE;
-        ins.arg1 = "x";
-        ins.arg2 = Commands::getRandomInt(0, 1000);
-        break;
-
-    case 2:         // ADD
-        ins.op   = OpCode::ADD;
-        ins.arg1 = "x";
-        ins.arg2 = Commands::getRandomInt(1, 100);
-        break;
-
-    case 3:         // SUBTRACT
-        ins.op   = OpCode::SUBTRACT;
-        ins.arg1 = "x";
-        ins.arg2 = Commands::getRandomInt(1, 100);
-        break;
-
-    case 4:         // SLEEP
-        ins.op   = OpCode::SLEEP;
-        ins.arg2 = Commands::getRandomInt(1, 5);
-        break;
-
-    default:        // FOR-loop begin (2 iterations)
-        ins.op   = OpCode::FOR_BEGIN;
-        ins.arg2 = 2;
-        break;
-    }
-    return ins;
-}
-
-static std::vector<Instruction>
-buildRandomProgram(int lines, const Config& cfg)
-{
-    std::vector<Instruction> prog;
-    prog.reserve(lines * 2);
-
-    for (int i = 0; i < lines; ++i) {
-        Instruction ins = randomInstr(cfg);
-        prog.push_back(ins);
-
-        if (ins.op == OpCode::FOR_BEGIN)
-            prog.push_back({ OpCode::FOR_END, "", 0 });
-    }
-    return prog;
 }
