@@ -9,6 +9,9 @@
 #include <vector>
 #include <memory>
 #include <mutex>
+#include <atomic>
+
+extern std::atomic<int> g_attachedPid;
 
 class Commands : protected Screen, public Data {
 private:
@@ -20,10 +23,13 @@ private:
     void displayProcessSmi(ProcessInfo& process);
     Config parseConfigFile(const std::string& filename);
     std::mutex queueMutex;
+    std::atomic<bool> batchRunning{false};
+    std::thread       batchThread;
+    void batchLoop();
 
 public:
     Commands();
-
+    static int getRandomInt(int floor, int ceiling);
     static std::string getCurrentTimestamp();
     void initialize();
     void initialScreen();
@@ -32,7 +38,7 @@ public:
     void rSubCommand(const std::string& name);
     void sSubCommand(const std::string& name);
     void lsSubCommand();
-    void schedulerTestCommand();
+    void schedulerStartCommand();
     void schedulerStopCommand();
     void reportUtilCommand();
     void displayProcess(const ProcessInfo& process);
