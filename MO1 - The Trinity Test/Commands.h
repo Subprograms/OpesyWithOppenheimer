@@ -9,6 +9,9 @@
 #include <vector>
 #include <memory>
 #include <mutex>
+#include <atomic>
+
+extern std::atomic<int> g_attachedPid;
 
 class Commands : protected Screen, public Data {
 private:
