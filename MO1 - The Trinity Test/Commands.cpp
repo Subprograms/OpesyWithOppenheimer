@@ -12,11 +12,6 @@
 #include <atomic>
 std::atomic<int> g_attachedPid{-1};
 
-static Instruction randomInstr(const Config& cfg, std::vector<std::string>& vars);
-
-static std::vector<Instruction>
-buildRandomProgram(int lines, const Config& cfg, std::vector<std::string>& vars, int depth = 3);
-
 static std::string randVar()
 {
     static std::mt19937 rng{ std::random_device{}() };
@@ -80,39 +75,61 @@ static Instruction randomInstr(const Config& cfg,
     /* ---------- FOR_BEGIN -------------------------------- */
     default: {
         std::string reps = std::to_string(Commands::getRandomInt(2, 5));
-        return Instruction{ OpCode::FOR_BEGIN, "", reps, "", false, true };
     }
     }
 }
 
-static std::vector<Instruction>
-buildRandomProgram(int lines, const Config& cfg,
-                   std::vector<std::string>& vars, int depth)
+static Instruction makeLeaf(const Config&,std::vector<std::string>&);
+
+static Instruction makeLeaf(const Config& cfg,std::vector<std::string>& vars)
 {
-    std::vector<Instruction> prog;
     static std::mt19937 rng{ std::random_device{}() };
+    int code = rng()%5;
 
-    int i = 0;
-    while (i < lines)
-    {
-        bool insertLoop = (depth > 0 && (rng() % 5 == 0));  // 20% chance
+    if (code==0){                                // PRINT
+        if(vars.empty()) return makeLeaf(cfg,vars);
+        std::string v = vars[rng()%vars.size()];
+        return Instruction{
+                OpCode::PRINT,                // opcode
+                "\"Value from: \"",           // arg1 – literal prefix
+                v,                            // arg2 – variable name
+                "",                           // arg3
+                false,
+                true
+        };
 
-        if (insertLoop && i + 3 < lines) {
+    }
+    if(code==1){                                 // DECLARE
+        std::string v = std::string(1,char('a'+rng()%26));
+        vars.push_back(v);
+        return { OpCode::DECLARE,v,
+                 std::to_string(Commands::getRandomInt(0,65535)) };
+    }
+    if(code==2||code==3){                        // ADD/SUB
+        if(vars.empty()) return makeLeaf(cfg,vars);
+        std::string v1 = vars[rng()%vars.size()];
+        std::string a2 = std::to_string(Commands::getRandomInt(1,500));
+        std::string a3 = std::to_string(Commands::getRandomInt(1,500));
+        return { code==2?OpCode::ADD:OpCode::SUBTRACT,v1,a2,a3 };
+    }
+    return { OpCode::SLEEP,"",std::to_string(Commands::getRandomInt(1,5)) };
+}
+
+static std::vector<Instruction>
+buildRandomProgram(int len, const Config& cfg, std::vector<std::string>& vars, int depth = 3)
+{
+    static std::mt19937 rng{ std::random_device{}() };
+    std::vector<Instruction> prog;
+
+    while (int(prog.size()) < len) {
+        bool mkLoop = depth > 0 && rng() % 4 == 0;
+        if (mkLoop) {
             int bodyLen = Commands::getRandomInt(2, 3);
-            int repeats = Commands::getRandomInt(2, 5);
-
-            prog.emplace_back(OpCode::FOR_BEGIN, "", std::to_string(repeats),
-                              "", false, true);
-
-            auto inner = buildRandomProgram(bodyLen, cfg, vars, depth - 1);
-            prog.insert(prog.end(), inner.begin(), inner.end());
-
-            prog.emplace_back(OpCode::FOR_END);
-            i += bodyLen + 2;
-        }
-        else {
-            prog.emplace_back(randomInstr(cfg, vars));
-            ++i;
+            int reps    = Commands::getRandomInt(2, 5);
+            auto body   = buildRandomProgram(bodyLen, cfg, vars, depth - 1);
+            prog.emplace_back(OpCode::FOR, std::move(body), "", std::to_string(reps));
+        } else {
+            prog.push_back(makeLeaf(cfg, vars));
         }
     }
     return prog;
@@ -328,7 +345,10 @@ void Commands::enterProcessScreen(ProcessInfo& dummyRef)
         std::string cmd;
         std::getline(std::cin, cmd);
 
-        if (cmd == "process-smi")      displayProcessSmi(live);
+        if (cmd == "process-smi") {
+            auto snap = scheduler->snapshotProcess(procName);
+            displayProcessSmi(snap);
+        }
         else if (cmd == "exit")        runningScreen = false;
         else if (!cmd.empty())
             std::cout << "Invalid command. Available: process-smi | exit\n";
@@ -412,23 +432,17 @@ void Commands::displayProcess(const ProcessInfo& process) {
 
 void Commands::displayProcessSmi(ProcessInfo& p)
 {
-    // top & bottom border strings
     constexpr const char* border =
         "====================  PROCESS SMI  ====================\n";
 
     std::cout << '\n' << border
-              << std::left << std::setw(15) << "Name"
-              << " : " << p.processName   << '\n'
-              << std::setw(15) << "PID"
-              << " : " << p.processID     << '\n'
-              << std::setw(15) << "Assigned Core"
-              << " : " << (p.assignedCore == -1 ? "N/A"
-                                               : std::to_string(p.assignedCore)) << '\n'
-              << std::setw(15) << "Progress"
-              << " : " << p.currentLine << " / " << p.totalLine << '\n'
-              << std::setw(15) << "Status"
-              << " : " << (p.isFinished ? "Finished"
-                                        : "Running") << '\n'
+              << std::left << std::setw(15) << "Name"          << " : " << p.processName   << '\n'
+              << std::setw(15) << "PID"                        << " : " << p.processID     << '\n'
+              << std::setw(15) << "Assigned Core"             << " : " << (p.assignedCore == -1 ? "N/A"
+                                                                                               : std::to_string(p.assignedCore)) << '\n'
+              << std::setw(15) << "Progress"                  << " : " << p.executedLines << " / " << p.totalLine << '\n'
+              << std::setw(15) << "Status"                    << " : "
+              << (p.isFinished ? "Finished" : (p.assignedCore == -1 ? "Waiting" : "Running")) << '\n'
               << border << std::endl;
 }
 
