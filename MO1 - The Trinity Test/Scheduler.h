@@ -32,6 +32,7 @@ public:
     ProcessInfo& getProcess(const std::string& name);
     void start();
     void stop();
+    ProcessInfo snapshotProcess(const std::string& name);
     void addProcess(ProcessInfo&& proc);
     void addProcess(const ProcessInfo& proc);
     std::vector<std::pair<ProcessInfo, int>> getFinishedProcesses();
