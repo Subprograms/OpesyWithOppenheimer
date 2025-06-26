@@ -1,13 +1,130 @@
 #include "Commands.h"
 #include "ProcessInfo.h"
+#include "Instruction.h"
+#include "Scheduler.h"
 #include <iostream>
 #include <fstream>
 #include <sstream>
 #include <stdexcept>
 #include <iomanip>
 #include <chrono>
+#include <random>
+#include <atomic>
+std::atomic<int> g_attachedPid{-1};
+
+static Instruction randomInstr(const Config& cfg, std::vector<std::string>& vars);
+
+static std::vector<Instruction>
+buildRandomProgram(int lines, const Config& cfg, std::vector<std::string>& vars, int depth = 3);
+
+static std::string randVar()
+{
+    static std::mt19937 rng{ std::random_device{}() };
+    std::uniform_int_distribution<int> pick('a', 'z');
+    return std::string(1, static_cast<char>(pick(rng)));
+}
+
+static Instruction randomInstr(const Config& cfg,
+                               std::vector<std::string>& vars)
+{
+    static std::mt19937 rng{ std::random_device{}() };
+    std::uniform_int_distribution<int> pick(0, 5);
+    int code = pick(rng);
+
+    switch (code)
+    {
+    /* ---------- PRINT ------------------------------------ */
+    case 0:
+        if (vars.empty()) { // no var yet? force DECLARE one
+            std::string v = randVar();
+            vars.push_back(v);
+            std::string val = std::to_string(Commands::getRandomInt(0, 65535));
+            return Instruction{OpCode::DECLARE, v, val, "", false, true };
+        } else {
+            std::string v = vars[rng() % vars.size()];
+            return Instruction{OpCode::PRINT, "", v, "", false, true };
+        }
+
+    /* ---------- DECLARE ---------------------------------- */
+    case 1: {
+        std::string v = randVar();
+        vars.push_back(v);
+        std::string val = std::to_string(Commands::getRandomInt(0, 65535));
+        return Instruction{OpCode::DECLARE, v, val, "", false, true };
+    }
+
+    /* ---------- ADD / SUBTRACT --------------------------- */
+    case 2:
+    case 3: {
+        if (vars.empty()) return randomInstr(cfg, vars);   // ensure a var exists
+
+        bool rhs2Var = (rng() & 1);
+        bool rhs3Var = (rng() & 1);
+
+        std::string var1 = vars[rng() % vars.size()];      // target is a var
+        std::string arg2 = rhs2Var ? vars[rng() % vars.size()]
+                                   : std::to_string(Commands::getRandomInt(0,500));
+        std::string arg3 = rhs3Var ? vars[rng() % vars.size()]
+                                   : std::to_string(Commands::getRandomInt(0,500));
+
+        return Instruction{ code == 2 ? OpCode::ADD : OpCode::SUBTRACT,
+                            var1, arg2, arg3, rhs2Var, rhs3Var };
+    }
+
+    /* ---------- SLEEP ------------------------------------ */
+    case 4: {
+        std::string ticks = std::to_string(Commands::getRandomInt(1, 5));
+        return Instruction{ OpCode::SLEEP, "", ticks, "", false, true };
+    }
+
+    /* ---------- FOR_BEGIN -------------------------------- */
+    default: {
+        std::string reps = std::to_string(Commands::getRandomInt(2, 5));
+        return Instruction{ OpCode::FOR_BEGIN, "", reps, "", false, true };
+    }
+    }
+}
+
+static std::vector<Instruction>
+buildRandomProgram(int lines, const Config& cfg,
+                   std::vector<std::string>& vars, int depth)
+{
+    std::vector<Instruction> prog;
+    static std::mt19937 rng{ std::random_device{}() };
+
+    int i = 0;
+    while (i < lines)
+    {
+        bool insertLoop = (depth > 0 && (rng() % 5 == 0));  // 20% chance
+
+        if (insertLoop && i + 3 < lines) {
+            int bodyLen = Commands::getRandomInt(2, 3);
+            int repeats = Commands::getRandomInt(2, 5);
+
+            prog.emplace_back(OpCode::FOR_BEGIN, "", std::to_string(repeats),
+                              "", false, true);
+
+            auto inner = buildRandomProgram(bodyLen, cfg, vars, depth - 1);
+            prog.insert(prog.end(), inner.begin(), inner.end());
+
+            prog.emplace_back(OpCode::FOR_END);
+            i += bodyLen + 2;
+        }
+        else {
+            prog.emplace_back(randomInstr(cfg, vars));
+            ++i;
+        }
+    }
+    return prog;
+}
 
 static int nextProcessID = 1; // For unique process IDs
+
+int Commands::getRandomInt(int floor, int ceiling) {
+    static std::mt19937 rng{ std::random_device{}() };
+    std::uniform_int_distribution<int> dist(floor, ceiling);
+    return dist(rng);
+}
 
 std::string Commands::getCurrentTimestamp() {
     auto now = std::chrono::system_clock::now();
@@ -98,8 +215,8 @@ void Commands::processCommand(const std::string& command) {
     if (command.find("screen") != std::string::npos) {
         screenCommand(command);
     }
-    else if (command == "scheduler-test") {
-        schedulerTestCommand();
+    else if (command == "scheduler-start") {
+        schedulerStartCommand();
     }
     else if (command == "scheduler-stop") {
         schedulerStopCommand();
@@ -121,27 +238,29 @@ void Commands::processCommand(const std::string& command) {
 }
 
 // Screen-related commands
-void Commands::screenCommand(const std::string& command) {
-    std::string subCommand, name;
-    std::vector<std::string> subCommands = { "-r", "-s", "-ls" };
+void Commands::screenCommand(const std::string& cmdLine)
+{
+    std::istringstream iss(cmdLine);
+    std::string token, subCmd, procName;
 
-    std::istringstream iss(command);
-    iss >> subCommand >> subCommand >> name;
+    iss >> token; // first token is "screen"  (skip it)
+    iss >> subCmd; // "-r", "-s", or "-ls"
+    if (subCmd != "-ls") // only need a name for -r or -s
+        iss >> procName;
 
-    if (subCommand != "-ls" && name.empty()) {
-        std::cout << "ERROR: Process Not Specified" << std::endl;
+    if (subCmd.empty()) {
+        std::cout << "ERROR: Missing subcommand. Use -r | -s | -ls\n";
+        return;
+    }
+    if (subCmd != "-ls" && procName.empty()) {
+        std::cout << "ERROR: Process name required for " << subCmd << "\n";
         return;
     }
 
-    auto it = std::find(subCommands.begin(), subCommands.end(), subCommand);
-    int found = (it != subCommands.end()) ? std::distance(subCommands.begin(), it) : -1;
-
-    switch (found) {
-    case 0: rSubCommand(name); break; // Reattach
-    case 1: sSubCommand(name); break; // Start a new process
-    case 2: lsSubCommand(); break; // List processes
-    default: std::cout << "ERROR: Invalid Subcommand" << std::endl; break;
-    }
+    if      (subCmd == "-r")  rSubCommand(procName);
+    else if (subCmd == "-s")  sSubCommand(procName);
+    else if (subCmd == "-ls") lsSubCommand();
+    else   std::cout << "ERROR: Invalid subcommand. Use -r | -s | -ls\n";
 }
 
 void Commands::rSubCommand(const std::string& name) {
@@ -157,82 +276,92 @@ void Commands::rSubCommand(const std::string& name) {
     }
 }
 
-
-void Commands::sSubCommand(const std::string& name) {
+void Commands::sSubCommand(const std::string& name)
+{
     try {
-        ProcessInfo& existingProcess = scheduler->getProcess(name);
-        std::cout << "Reattaching to existing process: " << name << std::endl;
-        enterProcessScreen(existingProcess);
+        ProcessInfo& existing = scheduler->getProcess(name);
+        std::cout << "Reattaching to existing process: " << name << '\n';
+        enterProcessScreen(existing);
+        return;
     }
-    catch (const std::runtime_error& e) {
-        std::cout << "Creating new process \"" << name << "\".\n";
+    catch (const std::runtime_error&) { }
 
-        ProcessInfo newProcess(nextProcessID++, name, 100, getCurrentTimestamp(), false);
-        scheduler->addProcess(newProcess);
+    int lines = Commands::getRandomInt(config.minIns, config.maxIns);
 
-        enterProcessScreen(newProcess);
-    }
+    ProcessInfo proc(nextProcessID++, name, lines, getCurrentTimestamp(), false);
+
+    std::vector<std::string> vars;
+    proc.prog = buildRandomProgram(lines, config, vars);
+
+    scheduler->addProcess(std::move(proc));
+    std::cout << "Created process \"" << name << "\" (" << lines << " lines)\n";
+
+    enterProcessScreen(scheduler->getProcess(name));
 }
 
-void Commands::enterProcessScreen(ProcessInfo& process) {
+void Commands::enterProcessScreen(ProcessInfo& dummyRef)
+{
     clearScreen();
-    bool isRunning = true;
+    const std::string procName = dummyRef.processName;
 
-    std::cout << "Process: " << process.processName << "\nID: " << process.processID
-        << "\nTotal Lines: " << process.totalLine << std::endl;
+    g_attachedPid = dummyRef.processID;
 
-    while (isRunning) {
-        if (process.isFinished) {
-            std::cout << "Process has finished.\n";
-            isRunning = false;
-            continue;
+    auto showHeader = [&](){
+        ProcessInfo& p = scheduler->getProcess(procName);
+        std::cout << "\nProcess: "     << p.processName
+                  << "\nID: "          << p.processID
+                  << "\nTotal Lines: " << p.totalLine << "\n";
+    };
+
+    showHeader();
+    displayProcessSmi(scheduler->getProcess(procName));
+
+    bool runningScreen = true;
+    while (runningScreen) {
+        ProcessInfo& live = scheduler->getProcess(procName);
+        if (live.isFinished) {
+            std::cout << "\nProcess has finished.\n";
+            break;
         }
 
-        std::string command;
         std::cout << "> ";
-        std::getline(std::cin, command);
+        std::string cmd;
+        std::getline(std::cin, cmd);
 
-        if (command == "process-smi") {
-            displayProcessSmi(process);
-        }
-        else if (command == "exit") {
-            std::cout << "Exiting process screen...\n";
-            isRunning = false;
-        }
-        else {
-            std::cout << "Invalid command. Available commands: 'process-smi', 'exit'.\n";
-        }
+        if (cmd == "process-smi")      displayProcessSmi(live);
+        else if (cmd == "exit")        runningScreen = false;
+        else if (!cmd.empty())
+            std::cout << "Invalid command. Available: process-smi | exit\n";
     }
-}
 
-void Commands::displayProcessSmi(ProcessInfo& process) {
-    std::cout << "Process: " << process.processName << "\nID: " << process.processID
-        << "\nCurrent instruction line: " << process.currentLine
-        << "\nLines of code: " << process.totalLine << "\n\n";
+    g_attachedPid = -1;
+    clearScreen();
+    menuView();
 }
 
 // Scheduler-related commands
-void Commands::schedulerTestCommand() {
-    if (!scheduler) {
-        std::cout << "Scheduler is not initialized. Please run 'initialize' first." << std::endl;
-        return;
-    }
+void Commands::schedulerStartCommand()
+{
+    if (!scheduler) { std::cout << "Run 'initialize' first.\n"; return; }
+    if (batchRunning) { std::cout << "scheduler-start already active.\n"; return; }
 
-    std::cout << "Scheduling 10 Processes on " << config.numCpu << " CPU Cores (Check via screen -ls)" << std::endl;
-
-    for (int i = 1; i <= 10; ++i) {
-        ProcessInfo process(nextProcessID++, "process" + std::to_string(i), 100, getCurrentTimestamp(), false);
-        scheduler->addProcess(process); // Only add to scheduler
-        std::this_thread::sleep_for(std::chrono::milliseconds(1));  // Add 1 ms delay for different timestamps
-    }
+    batchRunning = true;
+    batchThread  = std::thread(&Commands::batchLoop, this);
+    std::cout << "Continuous dummy-process generation...\n";
 }
 
-void Commands::schedulerStopCommand() {
-    scheduler->stop();
+void Commands::schedulerStopCommand()
+{
+    if (!batchRunning) { std::cout << "scheduler-start not active.\n"; return; }
+
+    batchRunning = false;
+    if (batchThread.joinable()) batchThread.join();
+    std::cout << "Stopped dummy-process generation...\n";
 }
 
 // Process reporting and display
 void Commands::writeProcessReport(std::ostream& os) {
+    os << scheduler->utilisationString();
     os << "Waiting Queue:\n";
     for (const auto& process : scheduler->getWaitingProcesses()) {
         os << process.processName << "\t(" << process.timeStamp
@@ -279,4 +408,50 @@ void Commands::displayProcess(const ProcessInfo& process) {
     std::cout << "Total Lines: " << process.totalLine << std::endl;
     std::cout << "Timestamp: " << process.timeStamp << std::endl;
     std::cout << "Status: " << (process.isFinished ? "Finished" : "Running") << std::endl;
+}
+
+void Commands::displayProcessSmi(ProcessInfo& p)
+{
+    // top & bottom border strings
+    constexpr const char* border =
+        "====================  PROCESS SMI  ====================\n";
+
+    std::cout << '\n' << border
+              << std::left << std::setw(15) << "Name"
+              << " : " << p.processName   << '\n'
+              << std::setw(15) << "PID"
+              << " : " << p.processID     << '\n'
+              << std::setw(15) << "Assigned Core"
+              << " : " << (p.assignedCore == -1 ? "N/A"
+                                               : std::to_string(p.assignedCore)) << '\n'
+              << std::setw(15) << "Progress"
+              << " : " << p.currentLine << " / " << p.totalLine << '\n'
+              << std::setw(15) << "Status"
+              << " : " << (p.isFinished ? "Finished"
+                                        : "Running") << '\n'
+              << border << std::endl;
+}
+
+void Commands::batchLoop()
+{
+    const int tickMs = config.delaysPerExec;
+
+    while (batchRunning.load()) {
+        std::this_thread::sleep_for(
+            std::chrono::milliseconds(config.batchProcessFreq * tickMs));
+
+        std::string pname = "process" + std::to_string(nextProcessID);
+
+        try { scheduler->getProcess(pname); ++nextProcessID; continue; }
+        catch (...) {} // name is unique
+
+        int lines = Commands::getRandomInt(config.minIns, config.maxIns);
+
+        ProcessInfo p(nextProcessID++, pname, lines, getCurrentTimestamp(), false);
+
+        std::vector<std::string> vars;
+        p.prog = buildRandomProgram(lines, config, vars);
+
+        scheduler->addProcess(std::move(p));
+    }
 }
