@@ -12,6 +12,9 @@ public:
     std::vector<std::function<void()>> screen;
     std::string currentScreen;
     std::string previousScreen;
+
+    void initialScreen();
+
     void menuView();
     void lsScreenView(const ProcessInfo& process);
     void clearScreen() const;

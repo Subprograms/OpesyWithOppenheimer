@@ -127,9 +127,11 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Marquee.cpp" />
     <ClCompile Include="TheManhattanProject.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Marquee.h" />
     <ClInclude Include="ProcessDict.h" />
     <ClInclude Include="ProcessList.h" />
     <ClInclude Include="Tracker.h" />

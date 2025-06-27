@@ -2,6 +2,7 @@
 #include "ProcessInfo.h"
 #include "Instruction.h"
 #include "Scheduler.h"
+
 #include <iostream>
 #include <fstream>
 #include <sstream>
@@ -10,6 +11,7 @@
 #include <chrono>
 #include <random>
 #include <atomic>
+
 std::atomic<int> g_attachedPid{-1};
 
 static std::string randVar()
@@ -19,8 +21,7 @@ static std::string randVar()
     return std::string(1, static_cast<char>(pick(rng)));
 }
 
-static Instruction randomInstr(const Config& cfg,
-                               std::vector<std::string>& vars)
+static Instruction randomInstr(const Config& cfg, std::vector<std::string>& vars)
 {
     static std::mt19937 rng{ std::random_device{}() };
     std::uniform_int_distribution<int> pick(0, 5);
@@ -116,6 +117,8 @@ static Instruction makeLeaf(const Config& cfg,std::vector<std::string>& vars)
 }
 
 static std::vector<Instruction>
+
+
 buildRandomProgram(int len, const Config& cfg, std::vector<std::string>& vars, int depth = 3)
 {
     static std::mt19937 rng{ std::random_device{}() };
@@ -169,30 +172,31 @@ std::string Commands::getCurrentTimestamp() {
 // Constructor
 Commands::Commands() : scheduler(nullptr) {}
 
-void Commands::initialize() {
+void Commands::initialize(std::string filename) {
     if (scheduler == nullptr) {
-        std::string filename;
-        bool fileLoaded = false;
 
-        while (!fileLoaded) {
-            std::cout << "Please enter the path to the config file (e.g., config.txt): ";
-            std::getline(std::cin, filename);
+        while (true) {
+            // std::cout << "Please enter the path to the config file (e.g., config.txt): ";
+            // std::getline(std::cin, filename);
 
             std::ifstream file(filename);
+
             if (!file.is_open()) {
                 std::cerr << "Error: Could not open the specified file. Please enter a valid path." << std::endl;
-                continue;
+                break;
             }
+
             file.close();
 
             try {
                 config = parseConfigFile(filename);
                 scheduler = std::make_unique<Scheduler>(config);
                 std::cout << "Scheduler initialized with " << config.numCpu << " CPUs." << std::endl;
-                fileLoaded = true;
+                break;
             }
             catch (const std::exception& e) {
                 std::cerr << "Error parsing config file: " << e.what() << std::endl;
+                exit(0);
             }
         }
     }
@@ -221,11 +225,6 @@ Config Commands::parseConfigFile(const std::string& filename) {
     }
     file.close();
     return config;
-}
-
-void Commands::initialScreen() {
-    clearScreen();
-    menuView();
 }
 
 void Commands::processCommand(const std::string& command) {
@@ -280,6 +279,7 @@ void Commands::screenCommand(const std::string& cmdLine)
     else   std::cout << "ERROR: Invalid subcommand. Use -r | -s | -ls\n";
 }
 
+// Open existing process
 void Commands::rSubCommand(const std::string& name) {
     clearScreen();
     std::cout << "Attempting to reattach to process: " << name << std::endl;
@@ -293,6 +293,7 @@ void Commands::rSubCommand(const std::string& name) {
     }
 }
 
+// Create new process
 void Commands::sSubCommand(const std::string& name)
 {
     try {

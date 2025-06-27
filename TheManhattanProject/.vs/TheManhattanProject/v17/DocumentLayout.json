@@ -7,6 +7,14 @@
       "RelativeMoniker": "D:0:0:{79324501-28F4-4CF2-AAD9-CE9E4EE320D0}|TheManhattanProject.vcxproj|solutionrelative:TheManhattanProject.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
+      "AbsoluteMoniker": "D:0:0:{79324501-28F4-4CF2-AAD9-CE9E4EE320D0}|TheManhattanProject.vcxproj|C:\\Users\\Bien Rafael\\OneDrive\\Documents\\GitHub\\OpesyWithOppenheimer\\TheManhattanProject\\Marquee.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{79324501-28F4-4CF2-AAD9-CE9E4EE320D0}|TheManhattanProject.vcxproj|solutionrelative:Marquee.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{79324501-28F4-4CF2-AAD9-CE9E4EE320D0}|TheManhattanProject.vcxproj|C:\\Users\\Bien Rafael\\OneDrive\\Documents\\GitHub\\OpesyWithOppenheimer\\TheManhattanProject\\Marquee.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{79324501-28F4-4CF2-AAD9-CE9E4EE320D0}|TheManhattanProject.vcxproj|solutionrelative:Marquee.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{79324501-28F4-4CF2-AAD9-CE9E4EE320D0}|TheManhattanProject.vcxproj|C:\\Users\\Bien Rafael\\OneDrive\\Documents\\GitHub\\OpesyWithOppenheimer\\TheManhattanProject\\ProcessList.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{79324501-28F4-4CF2-AAD9-CE9E4EE320D0}|TheManhattanProject.vcxproj|solutionrelative:ProcessList.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
@@ -30,11 +38,35 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 4,
+          "SelectedChildIndex": 6,
           "Children": [
             {
               "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Marquee.cpp",
+              "DocumentMoniker": "C:\\Users\\Bien Rafael\\OneDrive\\Documents\\GitHub\\OpesyWithOppenheimer\\TheManhattanProject\\Marquee.cpp",
+              "RelativeDocumentMoniker": "Marquee.cpp",
+              "ToolTip": "C:\\Users\\Bien Rafael\\OneDrive\\Documents\\GitHub\\OpesyWithOppenheimer\\TheManhattanProject\\Marquee.cpp",
+              "RelativeToolTip": "Marquee.cpp",
+              "ViewState": "AgIAABEAAAAAAAAAAAAAACEAAAAoAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2025-06-13T11:29:59.955Z"
+            },
+            {
+              "$type": "Document",
               "DocumentIndex": 2,
+              "Title": "Marquee.h",
+              "DocumentMoniker": "C:\\Users\\Bien Rafael\\OneDrive\\Documents\\GitHub\\OpesyWithOppenheimer\\TheManhattanProject\\Marquee.h",
+              "RelativeDocumentMoniker": "Marquee.h",
+              "ToolTip": "C:\\Users\\Bien Rafael\\OneDrive\\Documents\\GitHub\\OpesyWithOppenheimer\\TheManhattanProject\\Marquee.h",
+              "RelativeToolTip": "Marquee.h",
+              "ViewState": "AgIAABUAAAAAAAAAAAAAABYAAAA7AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2025-06-13T10:54:43.575Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
               "Title": "ProcessDict.h",
               "DocumentMoniker": "C:\\Users\\Bien Rafael\\OneDrive\\Documents\\GitHub\\OpesyWithOppenheimer\\TheManhattanProject\\ProcessDict.h",
               "RelativeDocumentMoniker": "ProcessDict.h",
@@ -42,12 +74,11 @@
               "RelativeToolTip": "ProcessDict.h",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAATAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2025-05-31T11:49:28.138Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-05-31T11:49:28.138Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 3,
               "Title": "ProcessList.h",
               "DocumentMoniker": "C:\\Users\\Bien Rafael\\OneDrive\\Documents\\GitHub\\OpesyWithOppenheimer\\TheManhattanProject\\ProcessList.h",
               "RelativeDocumentMoniker": "ProcessList.h",
@@ -55,12 +86,11 @@
               "RelativeToolTip": "ProcessList.h",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAFAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2025-05-31T11:47:50.568Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-05-31T11:47:50.568Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 5,
               "Title": "Tracker.h",
               "DocumentMoniker": "C:\\Users\\Bien Rafael\\OneDrive\\Documents\\GitHub\\OpesyWithOppenheimer\\TheManhattanProject\\Tracker.h",
               "RelativeDocumentMoniker": "Tracker.h",
@@ -68,12 +98,11 @@
               "RelativeToolTip": "Tracker.h",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAACoAAAAGAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2025-05-31T09:51:43.228Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-05-31T09:51:43.228Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 6,
               "Title": "ProcessInfo.h",
               "DocumentMoniker": "C:\\Users\\Bien Rafael\\OneDrive\\Documents\\GitHub\\OpesyWithOppenheimer\\TheManhattanProject\\ProcessInfo.h",
               "RelativeDocumentMoniker": "ProcessInfo.h",
@@ -81,8 +110,7 @@
               "RelativeToolTip": "ProcessInfo.h",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABoAAAAWAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2025-05-31T09:31:52.081Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-05-31T09:31:52.081Z"
             },
             {
               "$type": "Document",
@@ -92,7 +120,7 @@
               "RelativeDocumentMoniker": "TheManhattanProject.cpp",
               "ToolTip": "C:\\Users\\Bien Rafael\\OneDrive\\Documents\\GitHub\\OpesyWithOppenheimer\\TheManhattanProject\\TheManhattanProject.cpp",
               "RelativeToolTip": "TheManhattanProject.cpp",
-              "ViewState": "AgIAALQAAAAAAAAAAAAAAMMAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAN8AAAAAAAAAAAAAAPcAAAAEAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
               "WhenOpened": "2025-05-24T04:52:44.056Z",
               "EditorCaption": ""

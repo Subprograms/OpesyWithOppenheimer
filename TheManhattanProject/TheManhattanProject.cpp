@@ -230,6 +230,34 @@ static void nvidiaSMIView() {
     std::cout << ss.str() << std::endl;
 }
 
+void Commands::marqueeCommand(const std::string& command) {
+    std::istringstream iss(command);
+    std::string text;
+    std::string marq;
+    int refresh = 0, poll = 0;
+    iss >> marq >> text >> refresh >> poll;
+
+    if (!refresh) { refresh = 50; } // Default refresh rate
+    if (!poll) { poll = 50; } // Default poll rate
+    if (text.empty()) { text = "threaded"; }
+
+    Marquee marquee(refresh, poll, true);
+
+    if (text == "threaded") {
+        marquee.startThread();
+        marqueeView();
+        menuView();
+    }
+    else if (text == "nonthreaded") {
+        marquee.startNonThread();
+        marqueeView();
+        menuView();
+    }
+    else {
+        std::cout << "ERROR: Incomplete parameters" << std::endl;
+    }
+}
+
 int main() {
     std::string command;
     printHeader();
