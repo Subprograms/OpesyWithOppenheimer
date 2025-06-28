@@ -5,6 +5,7 @@
 #include <string>
 #include <vector>
 #include <cstdint>
+#include <cstddef>
 
 enum class OpCode { PRINT, DECLARE, ADD, SUBTRACT, SLEEP, FOR, NOP };
 
@@ -32,4 +33,16 @@ struct Instruction
     Instruction(std::vector<Instruction> loopBody, uint8_t reps)
         : op(OpCode::FOR), body(std::move(loopBody)), repetitions(reps) {}
 };
+
+inline std::size_t logicalSize(const std::vector<Instruction>& prog)
+{
+    std::size_t total = 0;
+    for (const auto& ins : prog) {
+        if (ins.op == OpCode::FOR)
+            total += logicalSize(ins.body) * ins.repetitions;
+        else
+            ++total;
+    }
+    return total;
+}
 #endif
