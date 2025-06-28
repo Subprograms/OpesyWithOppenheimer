@@ -29,10 +29,10 @@ private:
 
 public:
     Commands();
-   
     static int getRandomInt(int floor, int ceiling);
     static std::string getCurrentTimestamp();
-    void initialize(std::string filename);
+    void initialize();
+    void initialScreen();
     void processCommand(const std::string& command);
     void screenCommand(const std::string& command);
     void rSubCommand(const std::string& name);
