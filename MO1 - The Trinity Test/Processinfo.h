@@ -4,7 +4,7 @@
 #include <string>
 #include <vector>
 #include <unordered_map>
-#include <cstdint>          // uint16_t
+#include <cstdint>
 #include "Instruction.h"
 
 struct ProcessInfo
@@ -19,10 +19,13 @@ struct ProcessInfo
     std::string timeStamp;
     bool isFinished{false};
     int  sleepTicks{0};
+
     std::vector<Instruction> prog;
     std::unordered_map<std::string,uint16_t> vars;
-    struct LoopFrame { int startIdx; int remaining; };
+
+    struct LoopFrame { int start; int end; uint16_t remain; int indent; };
     std::vector<LoopFrame> loopStack;
+
     std::vector<std::string> outBuf;
 
     ProcessInfo(int id,
