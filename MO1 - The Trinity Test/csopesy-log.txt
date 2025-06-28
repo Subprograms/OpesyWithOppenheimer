@@ -1,289 +1,447 @@
-CPU utilisation : 0.0%
-Cores used      : 0
-Cores available : 4
+CPU utilisation : 100.0%
+Cores used      : 4
+Cores available : 0
 
 Waiting Queue:
-process142	(06/20/2025, 03:28:11.051 AM)	Core: N/A	330 / 1966
-process190	(06/20/2025, 03:28:11.582 AM)	Core: N/A	332 / 1875
-process34	(06/20/2025, 03:28:09.484 AM)	Core: N/A	338 / 1401
-process14	(06/20/2025, 03:28:09.259 AM)	Core: N/A	357 / 1996
-process62	(06/20/2025, 03:28:09.903 AM)	Core: N/A	357 / 1150
-process132	(06/20/2025, 03:28:10.889 AM)	Core: N/A	380 / 1502
-process61	(06/20/2025, 03:28:09.898 AM)	Core: N/A	340 / 1447
-process83	(06/20/2025, 03:28:10.177 AM)	Core: N/A	368 / 1087
-process65	(06/20/2025, 03:28:09.967 AM)	Core: N/A	328 / 1215
-process133	(06/20/2025, 03:28:10.896 AM)	Core: N/A	329 / 1920
-process211	(06/20/2025, 03:28:11.864 AM)	Core: N/A	351 / 1818
-process167	(06/20/2025, 03:28:11.345 AM)	Core: N/A	361 / 1868
-process60	(06/20/2025, 03:28:09.889 AM)	Core: N/A	387 / 1970
-process174	(06/20/2025, 03:28:11.405 AM)	Core: N/A	357 / 1683
-process6	(06/20/2025, 03:28:09.127 AM)	Core: N/A	375 / 1668
-process97	(06/20/2025, 03:28:10.388 AM)	Core: N/A	346 / 1657
-process78	(06/20/2025, 03:28:10.122 AM)	Core: N/A	358 / 1661
-process64	(06/20/2025, 03:28:09.915 AM)	Core: N/A	356 / 1651
-process194	(06/20/2025, 03:28:11.623 AM)	Core: N/A	318 / 1311
-process192	(06/20/2025, 03:28:11.612 AM)	Core: N/A	323 / 1696
-process191	(06/20/2025, 03:28:11.597 AM)	Core: N/A	334 / 1677
-process49	(06/20/2025, 03:28:09.710 AM)	Core: N/A	350 / 1575
-process45	(06/20/2025, 03:28:09.664 AM)	Core: N/A	372 / 1490
-process157	(06/20/2025, 03:28:11.241 AM)	Core: N/A	366 / 1018
-process172	(06/20/2025, 03:28:11.392 AM)	Core: N/A	352 / 1404
-process175	(06/20/2025, 03:28:11.412 AM)	Core: N/A	325 / 1926
-process32	(06/20/2025, 03:28:09.459 AM)	Core: N/A	349 / 1213
-process152	(06/20/2025, 03:28:11.211 AM)	Core: N/A	338 / 1049
-process195	(06/20/2025, 03:28:11.649 AM)	Core: N/A	322 / 1108
-process246	(06/20/2025, 03:28:12.340 AM)	Core: N/A	325 / 1101
-process72	(06/20/2025, 03:28:10.055 AM)	Core: N/A	334 / 1287
-process22	(06/20/2025, 03:28:09.370 AM)	Core: N/A	362 / 1181
-process111	(06/20/2025, 03:28:10.501 AM)	Core: N/A	354 / 1942
-process210	(06/20/2025, 03:28:11.831 AM)	Core: N/A	345 / 1835
-process5	(06/20/2025, 03:28:09.117 AM)	Core: N/A	386 / 1491
-process13	(06/20/2025, 03:28:09.250 AM)	Core: N/A	353 / 1670
-process23	(06/20/2025, 03:28:09.375 AM)	Core: N/A	350 / 1428
-process86	(06/20/2025, 03:28:10.221 AM)	Core: N/A	336 / 1945
-process10	(06/20/2025, 03:28:09.214 AM)	Core: N/A	376 / 1808
-process177	(06/20/2025, 03:28:11.429 AM)	Core: N/A	348 / 1839
-process135	(06/20/2025, 03:28:10.936 AM)	Core: N/A	338 / 1862
-process270	(06/20/2025, 03:28:12.737 AM)	Core: N/A	347 / 1475
-process232	(06/20/2025, 03:28:12.121 AM)	Core: N/A	331 / 1646
-process156	(06/20/2025, 03:28:11.235 AM)	Core: N/A	337 / 1015
-process25	(06/20/2025, 03:28:09.386 AM)	Core: N/A	353 / 1974
-process266	(06/20/2025, 03:28:12.694 AM)	Core: N/A	337 / 1864
-process176	(06/20/2025, 03:28:11.419 AM)	Core: N/A	345 / 1562
-process85	(06/20/2025, 03:28:10.210 AM)	Core: N/A	338 / 1547
-process264	(06/20/2025, 03:28:12.676 AM)	Core: N/A	334 / 1983
-process173	(06/20/2025, 03:28:11.399 AM)	Core: N/A	332 / 1288
-process63	(06/20/2025, 03:28:09.907 AM)	Core: N/A	291 / 1955
-process262	(06/20/2025, 03:28:12.624 AM)	Core: N/A	340 / 1377
-process71	(06/20/2025, 03:28:10.035 AM)	Core: N/A	346 / 1483
-process251	(06/20/2025, 03:28:12.412 AM)	Core: N/A	338 / 1873
-process53	(06/20/2025, 03:28:09.819 AM)	Core: N/A	326 / 1203
-process178	(06/20/2025, 03:28:11.436 AM)	Core: N/A	353 / 1695
-process268	(06/20/2025, 03:28:12.719 AM)	Core: N/A	334 / 1214
-process100	(06/20/2025, 03:28:10.415 AM)	Core: N/A	354 / 1566
-process54	(06/20/2025, 03:28:09.840 AM)	Core: N/A	370 / 1205
-process263	(06/20/2025, 03:28:12.662 AM)	Core: N/A	319 / 1546
-process154	(06/20/2025, 03:28:11.223 AM)	Core: N/A	352 / 1127
-process155	(06/20/2025, 03:28:11.228 AM)	Core: N/A	357 / 1300
-process267	(06/20/2025, 03:28:12.708 AM)	Core: N/A	344 / 1401
-process213	(06/20/2025, 03:28:11.909 AM)	Core: N/A	330 / 1516
-process39	(06/20/2025, 03:28:09.580 AM)	Core: N/A	341 / 1489
-process212	(06/20/2025, 03:28:11.896 AM)	Core: N/A	336 / 1262
-process9	(06/20/2025, 03:28:09.205 AM)	Core: N/A	372 / 1532
-process46	(06/20/2025, 03:28:09.669 AM)	Core: N/A	365 / 1217
-process158	(06/20/2025, 03:28:11.247 AM)	Core: N/A	362 / 1890
-process265	(06/20/2025, 03:28:12.685 AM)	Core: N/A	343 / 1031
-process271	(06/20/2025, 03:28:12.744 AM)	Core: N/A	326 / 1818
-process99	(06/20/2025, 03:28:10.400 AM)	Core: N/A	337 / 1388
-process18	(06/20/2025, 03:28:09.302 AM)	Core: N/A	355 / 1878
-process159	(06/20/2025, 03:28:11.254 AM)	Core: N/A	346 / 1280
-process231	(06/20/2025, 03:28:12.105 AM)	Core: N/A	352 / 1074
-process180	(06/20/2025, 03:28:11.458 AM)	Core: N/A	351 / 1134
-process102	(06/20/2025, 03:28:10.428 AM)	Core: N/A	347 / 1876
-process66	(06/20/2025, 03:28:09.972 AM)	Core: N/A	342 / 1719
-process74	(06/20/2025, 03:28:10.066 AM)	Core: N/A	358 / 1040
-process47	(06/20/2025, 03:28:09.675 AM)	Core: N/A	354 / 1326
-process179	(06/20/2025, 03:28:11.443 AM)	Core: N/A	340 / 1236
-process73	(06/20/2025, 03:28:10.060 AM)	Core: N/A	343 / 1990
-process134	(06/20/2025, 03:28:10.905 AM)	Core: N/A	341 / 1833
-process24	(06/20/2025, 03:28:09.381 AM)	Core: N/A	337 / 1302
-process181	(06/20/2025, 03:28:11.464 AM)	Core: N/A	355 / 1426
-process7	(06/20/2025, 03:28:09.156 AM)	Core: N/A	372 / 1771
-process103	(06/20/2025, 03:28:10.433 AM)	Core: N/A	346 / 1107
-process269	(06/20/2025, 03:28:12.727 AM)	Core: N/A	342 / 1620
-process273	(06/20/2025, 03:28:12.756 AM)	Core: N/A	359 / 1917
-process116	(06/20/2025, 03:28:10.604 AM)	Core: N/A	355 / 1322
-process1	(06/20/2025, 03:28:09.091 AM)	Core: N/A	379 / 1731
-process112	(06/20/2025, 03:28:10.520 AM)	Core: N/A	344 / 1246
-process114	(06/20/2025, 03:28:10.552 AM)	Core: N/A	341 / 1018
-process101	(06/20/2025, 03:28:10.423 AM)	Core: N/A	344 / 1366
-process17	(06/20/2025, 03:28:09.290 AM)	Core: N/A	344 / 1998
-process40	(06/20/2025, 03:28:09.588 AM)	Core: N/A	351 / 1235
-process124	(06/20/2025, 03:28:10.763 AM)	Core: N/A	362 / 1100
-process29	(06/20/2025, 03:28:09.430 AM)	Core: N/A	336 / 1052
-process88	(06/20/2025, 03:28:10.234 AM)	Core: N/A	355 / 1263
-process125	(06/20/2025, 03:28:10.810 AM)	Core: N/A	328 / 1611
-process252	(06/20/2025, 03:28:12.465 AM)	Core: N/A	352 / 1165
-process233	(06/20/2025, 03:28:12.129 AM)	Core: N/A	324 / 1858
-process147	(06/20/2025, 03:28:11.132 AM)	Core: N/A	338 / 1701
-process136	(06/20/2025, 03:28:10.956 AM)	Core: N/A	352 / 1639
-process214	(06/20/2025, 03:28:11.918 AM)	Core: N/A	358 / 1510
-process118	(06/20/2025, 03:28:10.694 AM)	Core: N/A	321 / 1387
-process198	(06/20/2025, 03:28:11.674 AM)	Core: N/A	344 / 1155
-process145	(06/20/2025, 03:28:11.113 AM)	Core: N/A	320 / 1188
-process56	(06/20/2025, 03:28:09.857 AM)	Core: N/A	355 / 1388
-process87	(06/20/2025, 03:28:10.229 AM)	Core: N/A	356 / 1241
-process249	(06/20/2025, 03:28:12.383 AM)	Core: N/A	352 / 1503
-process275	(06/20/2025, 03:28:12.780 AM)	Core: N/A	325 / 1553
-process26	(06/20/2025, 03:28:09.412 AM)	Core: N/A	334 / 1759
-process234	(06/20/2025, 03:28:12.195 AM)	Core: N/A	323 / 1747
-process160	(06/20/2025, 03:28:11.260 AM)	Core: N/A	354 / 1272
-process33	(06/20/2025, 03:28:09.466 AM)	Core: N/A	340 / 1154
-process137	(06/20/2025, 03:28:10.963 AM)	Core: N/A	351 / 1717
-process2	(06/20/2025, 03:28:09.095 AM)	Core: N/A	375 / 1542
-process274	(06/20/2025, 03:28:12.771 AM)	Core: N/A	326 / 1283
-process104	(06/20/2025, 03:28:10.439 AM)	Core: N/A	369 / 1401
-process272	(06/20/2025, 03:28:12.749 AM)	Core: N/A	341 / 1650
-process254	(06/20/2025, 03:28:12.477 AM)	Core: N/A	340 / 1045
-process117	(06/20/2025, 03:28:10.687 AM)	Core: N/A	351 / 1211
-process196	(06/20/2025, 03:28:11.655 AM)	Core: N/A	330 / 1312
-process217	(06/20/2025, 03:28:11.950 AM)	Core: N/A	358 / 1017
-process143	(06/20/2025, 03:28:11.095 AM)	Core: N/A	339 / 1901
-process215	(06/20/2025, 03:28:11.924 AM)	Core: N/A	351 / 2000
-process197	(06/20/2025, 03:28:11.666 AM)	Core: N/A	347 / 1107
-process113	(06/20/2025, 03:28:10.544 AM)	Core: N/A	338 / 1519
-process253	(06/20/2025, 03:28:12.472 AM)	Core: N/A	347 / 1707
-process146	(06/20/2025, 03:28:11.126 AM)	Core: N/A	357 / 1924
-process106	(06/20/2025, 03:28:10.449 AM)	Core: N/A	349 / 1082
-process182	(06/20/2025, 03:28:11.499 AM)	Core: N/A	334 / 1662
-process30	(06/20/2025, 03:28:09.445 AM)	Core: N/A	352 / 1927
-process41	(06/20/2025, 03:28:09.596 AM)	Core: N/A	361 / 1577
-process216	(06/20/2025, 03:28:11.943 AM)	Core: N/A	347 / 1305
-process67	(06/20/2025, 03:28:09.980 AM)	Core: N/A	333 / 1217
-process35	(06/20/2025, 03:28:09.500 AM)	Core: N/A	349 / 1013
-process161	(06/20/2025, 03:28:11.298 AM)	Core: N/A	340 / 1351
-process138	(06/20/2025, 03:28:10.978 AM)	Core: N/A	350 / 1837
-process148	(06/20/2025, 03:28:11.141 AM)	Core: N/A	320 / 1212
-process108	(06/20/2025, 03:28:10.464 AM)	Core: N/A	315 / 1093
-process144	(06/20/2025, 03:28:11.107 AM)	Core: N/A	354 / 1991
-process68	(06/20/2025, 03:28:10.000 AM)	Core: N/A	350 / 1533
-process92	(06/20/2025, 03:28:10.316 AM)	Core: N/A	334 / 1544
-process75	(06/20/2025, 03:28:10.071 AM)	Core: N/A	345 / 1661
-process235	(06/20/2025, 03:28:12.207 AM)	Core: N/A	348 / 1317
-process55	(06/20/2025, 03:28:09.847 AM)	Core: N/A	358 / 1136
-process80	(06/20/2025, 03:28:10.152 AM)	Core: N/A	368 / 1157
-process93	(06/20/2025, 03:28:10.341 AM)	Core: N/A	335 / 1344
-process221	(06/20/2025, 03:28:11.996 AM)	Core: N/A	341 / 1819
-process219	(06/20/2025, 03:28:11.975 AM)	Core: N/A	328 / 1723
-process79	(06/20/2025, 03:28:10.129 AM)	Core: N/A	334 / 1014
-process201	(06/20/2025, 03:28:11.737 AM)	Core: N/A	342 / 1319
-process57	(06/20/2025, 03:28:09.863 AM)	Core: N/A	361 / 1513
-process11	(06/20/2025, 03:28:09.237 AM)	Core: N/A	364 / 1781
-process199	(06/20/2025, 03:28:11.679 AM)	Core: N/A	346 / 1546
-process256	(06/20/2025, 03:28:12.549 AM)	Core: N/A	325 / 1570
-process150	(06/20/2025, 03:28:11.149 AM)	Core: N/A	335 / 1714
-process126	(06/20/2025, 03:28:10.818 AM)	Core: N/A	334 / 1877
-process183	(06/20/2025, 03:28:11.508 AM)	Core: N/A	344 / 1931
-process237	(06/20/2025, 03:28:12.239 AM)	Core: N/A	372 / 1689
-process12	(06/20/2025, 03:28:09.245 AM)	Core: N/A	343 / 1940
-process127	(06/20/2025, 03:28:10.846 AM)	Core: N/A	335 / 1684
-process163	(06/20/2025, 03:28:11.311 AM)	Core: N/A	360 / 1105
-process278	(06/20/2025, 03:28:12.868 AM)	Core: N/A	324 / 1978
-process77	(06/20/2025, 03:28:10.090 AM)	Core: N/A	324 / 1597
-process238	(06/20/2025, 03:28:12.251 AM)	Core: N/A	347 / 1104
-process164	(06/20/2025, 03:28:11.323 AM)	Core: N/A	353 / 1679
-process94	(06/20/2025, 03:28:10.347 AM)	Core: N/A	345 / 1734
-process19	(06/20/2025, 03:28:09.310 AM)	Core: N/A	348 / 1711
-process81	(06/20/2025, 03:28:10.157 AM)	Core: N/A	342 / 1312
-process21	(06/20/2025, 03:28:09.323 AM)	Core: N/A	340 / 1861
-process165	(06/20/2025, 03:28:11.329 AM)	Core: N/A	347 / 1169
-process105	(06/20/2025, 03:28:10.444 AM)	Core: N/A	357 / 1124
-process69	(06/20/2025, 03:28:10.006 AM)	Core: N/A	348 / 1727
-process220	(06/20/2025, 03:28:11.986 AM)	Core: N/A	344 / 1517
-process240	(06/20/2025, 03:28:12.277 AM)	Core: N/A	313 / 1003
-process236	(06/20/2025, 03:28:12.214 AM)	Core: N/A	335 / 1570
-process277	(06/20/2025, 03:28:12.845 AM)	Core: N/A	330 / 1665
-process255	(06/20/2025, 03:28:12.484 AM)	Core: N/A	337 / 1938
-process3	(06/20/2025, 03:28:09.101 AM)	Core: N/A	367 / 1486
-process149	(06/20/2025, 03:28:11.145 AM)	Core: N/A	334 / 1730
-process42	(06/20/2025, 03:28:09.604 AM)	Core: N/A	328 / 1038
-process37	(06/20/2025, 03:28:09.529 AM)	Core: N/A	365 / 1932
-process218	(06/20/2025, 03:28:11.958 AM)	Core: N/A	340 / 1104
-process48	(06/20/2025, 03:28:09.700 AM)	Core: N/A	335 / 1053
-process76	(06/20/2025, 03:28:10.081 AM)	Core: N/A	338 / 1393
-process222	(06/20/2025, 03:28:12.004 AM)	Core: N/A	338 / 1580
-process8	(06/20/2025, 03:28:09.185 AM)	Core: N/A	380 / 1775
-process109	(06/20/2025, 03:28:10.470 AM)	Core: N/A	353 / 1809
-process166	(06/20/2025, 03:28:11.339 AM)	Core: N/A	328 / 1930
-process241	(06/20/2025, 03:28:12.291 AM)	Core: N/A	336 / 1349
-process119	(06/20/2025, 03:28:10.702 AM)	Core: N/A	331 / 1310
-process107	(06/20/2025, 03:28:10.455 AM)	Core: N/A	351 / 1287
-process200	(06/20/2025, 03:28:11.730 AM)	Core: N/A	349 / 1605
-process89	(06/20/2025, 03:28:10.262 AM)	Core: N/A	350 / 1802
-process36	(06/20/2025, 03:28:09.517 AM)	Core: N/A	339 / 1381
-process162	(06/20/2025, 03:28:11.303 AM)	Core: N/A	342 / 1877
-process239	(06/20/2025, 03:28:12.256 AM)	Core: N/A	334 / 1246
-process257	(06/20/2025, 03:28:12.570 AM)	Core: N/A	358 / 1254
-process208	(06/20/2025, 03:28:11.797 AM)	Core: N/A	322 / 1302
-process276	(06/20/2025, 03:28:12.787 AM)	Core: N/A	338 / 1255
-process51	(06/20/2025, 03:28:09.784 AM)	Core: N/A	348 / 1979
-process202	(06/20/2025, 03:28:11.746 AM)	Core: N/A	342 / 1130
-process82	(06/20/2025, 03:28:10.171 AM)	Core: N/A	377 / 1769
-process31	(06/20/2025, 03:28:09.452 AM)	Core: N/A	347 / 1291
-process226	(06/20/2025, 03:28:12.035 AM)	Core: N/A	320 / 1310
-process223	(06/20/2025, 03:28:12.010 AM)	Core: N/A	343 / 1267
-process203	(06/20/2025, 03:28:11.754 AM)	Core: N/A	365 / 1836
-process225	(06/20/2025, 03:28:12.025 AM)	Core: N/A	358 / 1619
-process169	(06/20/2025, 03:28:11.369 AM)	Core: N/A	321 / 1548
-process90	(06/20/2025, 03:28:10.276 AM)	Core: N/A	352 / 1760
-process224	(06/20/2025, 03:28:12.016 AM)	Core: N/A	321 / 1531
-process129	(06/20/2025, 03:28:10.871 AM)	Core: N/A	340 / 1252
-process184	(06/20/2025, 03:28:11.536 AM)	Core: N/A	333 / 1710
-process139	(06/20/2025, 03:28:11.007 AM)	Core: N/A	352 / 1578
-process120	(06/20/2025, 03:28:10.715 AM)	Core: N/A	339 / 1161
-process15	(06/20/2025, 03:28:09.270 AM)	Core: N/A	359 / 1217
-process52	(06/20/2025, 03:28:09.812 AM)	Core: N/A	346 / 1871
-process204	(06/20/2025, 03:28:11.766 AM)	Core: N/A	336 / 1363
-process280	(06/20/2025, 03:28:12.881 AM)	Core: N/A	327 / 1142
-process279	(06/20/2025, 03:28:12.875 AM)	Core: N/A	340 / 1763
-process27	(06/20/2025, 03:28:09.418 AM)	Core: N/A	347 / 1851
-process187	(06/20/2025, 03:28:11.558 AM)	Core: N/A	318 / 1522
-process242	(06/20/2025, 03:28:12.298 AM)	Core: N/A	346 / 1335
-process151	(06/20/2025, 03:28:11.168 AM)	Core: N/A	349 / 1842
-process115	(06/20/2025, 03:28:10.595 AM)	Core: N/A	374 / 1509
-process205	(06/20/2025, 03:28:11.774 AM)	Core: N/A	335 / 1603
-process128	(06/20/2025, 03:28:10.862 AM)	Core: N/A	337 / 1607
-process185	(06/20/2025, 03:28:11.547 AM)	Core: N/A	356 / 1396
-process130	(06/20/2025, 03:28:10.876 AM)	Core: N/A	336 / 1196
-process206	(06/20/2025, 03:28:11.780 AM)	Core: N/A	355 / 1584
-process43	(06/20/2025, 03:28:09.611 AM)	Core: N/A	338 / 1966
-process121	(06/20/2025, 03:28:10.728 AM)	Core: N/A	340 / 1299
-process110	(06/20/2025, 03:28:10.487 AM)	Core: N/A	341 / 1467
-process259	(06/20/2025, 03:28:12.600 AM)	Core: N/A	345 / 1381
-process50	(06/20/2025, 03:28:09.717 AM)	Core: N/A	347 / 1490
-process207	(06/20/2025, 03:28:11.787 AM)	Core: N/A	330 / 1692
-process189	(06/20/2025, 03:28:11.574 AM)	Core: N/A	319 / 1197
-process44	(06/20/2025, 03:28:09.658 AM)	Core: N/A	345 / 1011
-process95	(06/20/2025, 03:28:10.353 AM)	Core: N/A	349 / 1200
-process243	(06/20/2025, 03:28:12.317 AM)	Core: N/A	348 / 1332
-process186	(06/20/2025, 03:28:11.552 AM)	Core: N/A	337 / 1597
-process229	(06/20/2025, 03:28:12.057 AM)	Core: N/A	331 / 1475
-process98	(06/20/2025, 03:28:10.394 AM)	Core: N/A	332 / 1641
-process228	(06/20/2025, 03:28:12.051 AM)	Core: N/A	323 / 1646
-process258	(06/20/2025, 03:28:12.581 AM)	Core: N/A	336 / 1161
-process59	(06/20/2025, 03:28:09.880 AM)	Core: N/A	364 / 1820
-process131	(06/20/2025, 03:28:10.882 AM)	Core: N/A	346 / 1596
-process28	(06/20/2025, 03:28:09.424 AM)	Core: N/A	363 / 1857
-process230	(06/20/2025, 03:28:12.077 AM)	Core: N/A	337 / 1734
-process96	(06/20/2025, 03:28:10.379 AM)	Core: N/A	365 / 1545
-process193	(06/20/2025, 03:28:11.618 AM)	Core: N/A	329 / 1034
-process91	(06/20/2025, 03:28:10.285 AM)	Core: N/A	337 / 1332
-process244	(06/20/2025, 03:28:12.324 AM)	Core: N/A	332 / 1690
-process140	(06/20/2025, 03:28:11.031 AM)	Core: N/A	341 / 1347
-process227	(06/20/2025, 03:28:12.042 AM)	Core: N/A	349 / 1943
-process122	(06/20/2025, 03:28:10.744 AM)	Core: N/A	347 / 1926
-process16	(06/20/2025, 03:28:09.277 AM)	Core: N/A	355 / 1173
-process209	(06/20/2025, 03:28:11.803 AM)	Core: N/A	311 / 1890
-process247	(06/20/2025, 03:28:12.372 AM)	Core: N/A	354 / 1166
-process70	(06/20/2025, 03:28:10.014 AM)	Core: N/A	344 / 1685
-process20	(06/20/2025, 03:28:09.316 AM)	Core: N/A	367 / 1469
-process123	(06/20/2025, 03:28:10.750 AM)	Core: N/A	371 / 1773
-process261	(06/20/2025, 03:28:12.616 AM)	Core: N/A	321 / 1651
-process153	(06/20/2025, 03:28:11.216 AM)	Core: N/A	321 / 1761
-process84	(06/20/2025, 03:28:10.200 AM)	Core: N/A	342 / 1647
-process168	(06/20/2025, 03:28:11.364 AM)	Core: N/A	347 / 1633
-process248	(06/20/2025, 03:28:12.379 AM)	Core: N/A	318 / 1401
-process260	(06/20/2025, 03:28:12.605 AM)	Core: N/A	350 / 1054
-process170	(06/20/2025, 03:28:11.375 AM)	Core: N/A	367 / 1813
-process38	(06/20/2025, 03:28:09.570 AM)	Core: N/A	346 / 1353
-process58	(06/20/2025, 03:28:09.874 AM)	Core: N/A	372 / 1119
-process141	(06/20/2025, 03:28:11.036 AM)	Core: N/A	336 / 1852
-process188	(06/20/2025, 03:28:11.566 AM)	Core: N/A	343 / 1820
-process4	(06/20/2025, 03:28:09.111 AM)	Core: N/A	405 / 1259
-process171	(06/20/2025, 03:28:11.381 AM)	Core: N/A	336 / 1415
-process250	(06/20/2025, 03:28:12.405 AM)	Core: N/A	343 / 1912
-process245	(06/20/2025, 03:28:12.334 AM)	Core: N/A	336 / 1140
+process435	(06/28/2025, 06:13:08.596 PM)	Core: N/A	124 / 225
+process246	(06/28/2025, 06:13:05.691 PM)	Core: N/A	125 / 248
+process437	(06/28/2025, 06:13:08.628 PM)	Core: N/A	89 / 213
+process213	(06/28/2025, 06:13:05.182 PM)	Core: N/A	103 / 187
+process214	(06/28/2025, 06:13:05.196 PM)	Core: N/A	114 / 186
+process192	(06/28/2025, 06:13:04.859 PM)	Core: N/A	99 / 165
+process169	(06/28/2025, 06:13:04.506 PM)	Core: N/A	75 / 216
+process381	(06/28/2025, 06:13:07.769 PM)	Core: N/A	66 / 151
+process386	(06/28/2025, 06:13:07.846 PM)	Core: N/A	98 / 184
+process285	(06/28/2025, 06:13:06.294 PM)	Core: N/A	96 / 194
+process222	(06/28/2025, 06:13:05.321 PM)	Core: N/A	82 / 165
+process363	(06/28/2025, 06:13:07.492 PM)	Core: N/A	94 / 242
 
 Running Queue:
+process154	(06/28/2025, 06:13:04.278 PM)	Core: 3	138 / 259
+process277	(06/28/2025, 06:13:06.169 PM)	Core: 2	114 / 217
+process301	(06/28/2025, 06:13:06.541 PM)	Core: 4	121 / 194
+process171	(06/28/2025, 06:13:04.538 PM)	Core: 1	84 / 175
 
 Finished processes:
+process6	(06/28/2025, 06:11:05.392 PM)	Finished	Core: 2	55 / 55
+process32	(06/28/2025, 06:11:05.794 PM)	Finished	Core: 2	58 / 58
+process65	(06/28/2025, 06:11:06.301 PM)	Finished	Core: 3	57 / 57
+process100	(06/28/2025, 06:11:06.835 PM)	Finished	Core: 3	50 / 50
+process36	(06/28/2025, 06:11:05.855 PM)	Finished	Core: 4	50 / 50
+process4	(06/28/2025, 06:11:05.362 PM)	Finished	Core: 1	74 / 74
+process83	(06/28/2025, 06:11:06.576 PM)	Finished	Core: 4	62 / 62
+process89	(06/28/2025, 06:11:06.667 PM)	Finished	Core: 3	63 / 63
+process53	(06/28/2025, 06:11:06.120 PM)	Finished	Core: 4	82 / 82
+process68	(06/28/2025, 06:11:06.348 PM)	Finished	Core: 1	50 / 50
+process5	(06/28/2025, 06:11:05.378 PM)	Finished	Core: 4	82 / 82
+process25	(06/28/2025, 06:11:05.683 PM)	Finished	Core: 3	83 / 83
+process2	(06/28/2025, 06:11:05.329 PM)	Finished	Core: 3	80 / 80
+process73	(06/28/2025, 06:11:06.424 PM)	Finished	Core: 1	64 / 64
+process42	(06/28/2025, 06:11:05.949 PM)	Finished	Core: 3	84 / 84
+process103	(06/28/2025, 06:11:06.882 PM)	Finished	Core: 3	85 / 85
+process48	(06/28/2025, 06:11:06.040 PM)	Finished	Core: 1	78 / 78
+process64	(06/28/2025, 06:11:06.286 PM)	Finished	Core: 3	81 / 81
+process98	(06/28/2025, 06:11:06.804 PM)	Finished	Core: 1	75 / 75
+process99	(06/28/2025, 06:11:06.820 PM)	Finished	Core: 3	68 / 68
+process55	(06/28/2025, 06:11:06.149 PM)	Finished	Core: 2	71 / 71
+process1	(06/28/2025, 06:11:05.320 PM)	Finished	Core: 4	109 / 109
+process19	(06/28/2025, 06:11:05.591 PM)	Finished	Core: 1	62 / 62
+process69	(06/28/2025, 06:11:06.362 PM)	Finished	Core: 1	80 / 80
+process34	(06/28/2025, 06:11:05.825 PM)	Finished	Core: 4	67 / 67
+process79	(06/28/2025, 06:11:06.516 PM)	Finished	Core: 1	103 / 103
+process75	(06/28/2025, 06:11:06.453 PM)	Finished	Core: 2	75 / 75
+process97	(06/28/2025, 06:11:06.789 PM)	Finished	Core: 3	66 / 66
+process43	(06/28/2025, 06:11:05.964 PM)	Finished	Core: 3	96 / 96
+process40	(06/28/2025, 06:11:05.916 PM)	Finished	Core: 2	72 / 72
+process9	(06/28/2025, 06:11:05.439 PM)	Finished	Core: 2	113 / 113
+process106	(06/28/2025, 06:11:06.928 PM)	Finished	Core: 2	100 / 100
+process8	(06/28/2025, 06:11:05.423 PM)	Finished	Core: 3	109 / 109
+process30	(06/28/2025, 06:11:05.764 PM)	Finished	Core: 3	106 / 106
+process56	(06/28/2025, 06:11:06.162 PM)	Finished	Core: 2	103 / 103
+process11	(06/28/2025, 06:11:05.468 PM)	Finished	Core: 2	121 / 121
+process15	(06/28/2025, 06:11:05.532 PM)	Finished	Core: 1	113 / 113
+process33	(06/28/2025, 06:11:05.810 PM)	Finished	Core: 1	114 / 114
+process104	(06/28/2025, 06:11:06.898 PM)	Finished	Core: 3	112 / 112
+process108	(06/28/2025, 06:11:06.959 PM)	Finished	Core: 4	127 / 127
+process26	(06/28/2025, 06:11:05.699 PM)	Finished	Core: 3	86 / 86
+process47	(06/28/2025, 06:11:06.025 PM)	Finished	Core: 1	114 / 114
+process92	(06/28/2025, 06:11:06.713 PM)	Finished	Core: 3	128 / 128
+process94	(06/28/2025, 06:11:06.743 PM)	Finished	Core: 3	93 / 93
+process62	(06/28/2025, 06:11:06.255 PM)	Finished	Core: 3	145 / 145
+process93	(06/28/2025, 06:11:06.727 PM)	Finished	Core: 1	112 / 112
+process101	(06/28/2025, 06:11:06.849 PM)	Finished	Core: 2	112 / 112
+process28	(06/28/2025, 06:11:05.730 PM)	Finished	Core: 3	115 / 115
+process87	(06/28/2025, 06:11:06.638 PM)	Finished	Core: 1	150 / 150
+process39	(06/28/2025, 06:11:05.901 PM)	Finished	Core: 4	145 / 145
+process50	(06/28/2025, 06:11:06.071 PM)	Finished	Core: 1	145 / 145
+process13	(06/28/2025, 06:11:05.500 PM)	Finished	Core: 3	149 / 149
+process38	(06/28/2025, 06:11:05.885 PM)	Finished	Core: 4	138 / 138
+process45	(06/28/2025, 06:11:05.995 PM)	Finished	Core: 4	100 / 100
+process16	(06/28/2025, 06:11:05.545 PM)	Finished	Core: 1	143 / 143
+process71	(06/28/2025, 06:11:06.393 PM)	Finished	Core: 1	116 / 116
+process23	(06/28/2025, 06:11:05.653 PM)	Finished	Core: 3	125 / 125
+process107	(06/28/2025, 06:11:06.944 PM)	Finished	Core: 4	124 / 124
+process78	(06/28/2025, 06:11:06.501 PM)	Finished	Core: 1	138 / 138
+process59	(06/28/2025, 06:11:06.209 PM)	Finished	Core: 4	141 / 141
+process31	(06/28/2025, 06:11:05.777 PM)	Finished	Core: 4	174 / 174
+process7	(06/28/2025, 06:11:05.407 PM)	Finished	Core: 3	159 / 159
+process57	(06/28/2025, 06:11:06.178 PM)	Finished	Core: 3	150 / 150
+process96	(06/28/2025, 06:11:06.774 PM)	Finished	Core: 4	136 / 136
+process86	(06/28/2025, 06:11:06.623 PM)	Finished	Core: 3	159 / 159
+process3	(06/28/2025, 06:11:05.345 PM)	Finished	Core: 4	163 / 163
+process60	(06/28/2025, 06:11:06.222 PM)	Finished	Core: 1	179 / 179
+process24	(06/28/2025, 06:11:05.668 PM)	Finished	Core: 2	169 / 169
+process22	(06/28/2025, 06:11:05.638 PM)	Finished	Core: 2	185 / 185
+process90	(06/28/2025, 06:11:06.682 PM)	Finished	Core: 3	173 / 173
+process46	(06/28/2025, 06:11:06.011 PM)	Finished	Core: 3	141 / 141
+process17	(06/28/2025, 06:11:05.559 PM)	Finished	Core: 2	137 / 137
+process37	(06/28/2025, 06:11:05.871 PM)	Finished	Core: 2	195 / 195
+process58	(06/28/2025, 06:11:06.194 PM)	Finished	Core: 4	169 / 169
+process85	(06/28/2025, 06:11:06.607 PM)	Finished	Core: 4	141 / 141
+process21	(06/28/2025, 06:11:05.623 PM)	Finished	Core: 1	171 / 171
+process12	(06/28/2025, 06:11:05.484 PM)	Finished	Core: 4	224 / 224
+process52	(06/28/2025, 06:11:06.102 PM)	Finished	Core: 4	186 / 186
+process41	(06/28/2025, 06:11:05.933 PM)	Finished	Core: 2	167 / 167
+process88	(06/28/2025, 06:11:06.651 PM)	Finished	Core: 3	199 / 199
+process18	(06/28/2025, 06:11:05.575 PM)	Finished	Core: 2	189 / 189
+process95	(06/28/2025, 06:11:06.759 PM)	Finished	Core: 4	111 / 111
+process74	(06/28/2025, 06:11:06.437 PM)	Finished	Core: 4	155 / 155
+process35	(06/28/2025, 06:11:05.840 PM)	Finished	Core: 3	173 / 173
+process76	(06/28/2025, 06:11:06.468 PM)	Finished	Core: 1	186 / 186
+process27	(06/28/2025, 06:11:05.714 PM)	Finished	Core: 2	209 / 209
+process67	(06/28/2025, 06:11:06.331 PM)	Finished	Core: 1	171 / 171
+process80	(06/28/2025, 06:11:06.530 PM)	Finished	Core: 4	185 / 185
+process10	(06/28/2025, 06:11:05.453 PM)	Finished	Core: 4	204 / 204
+process49	(06/28/2025, 06:11:06.056 PM)	Finished	Core: 3	162 / 162
+process91	(06/28/2025, 06:11:06.698 PM)	Finished	Core: 4	179 / 179
+process84	(06/28/2025, 06:11:06.590 PM)	Finished	Core: 4	195 / 195
+process82	(06/28/2025, 06:11:06.561 PM)	Finished	Core: 4	182 / 182
+process14	(06/28/2025, 06:11:05.516 PM)	Finished	Core: 2	210 / 210
+process20	(06/28/2025, 06:11:05.606 PM)	Finished	Core: 2	166 / 166
+process54	(06/28/2025, 06:11:06.134 PM)	Finished	Core: 3	223 / 223
+process63	(06/28/2025, 06:11:06.270 PM)	Finished	Core: 2	219 / 219
+process70	(06/28/2025, 06:11:06.378 PM)	Finished	Core: 1	219 / 219
+process81	(06/28/2025, 06:11:06.546 PM)	Finished	Core: 2	283 / 283
+process51	(06/28/2025, 06:11:06.085 PM)	Finished	Core: 2	209 / 209
+process44	(06/28/2025, 06:11:05.979 PM)	Finished	Core: 4	229 / 229
+process29	(06/28/2025, 06:11:05.747 PM)	Finished	Core: 1	209 / 209
+process102	(06/28/2025, 06:11:06.865 PM)	Finished	Core: 4	205 / 205
+process66	(06/28/2025, 06:11:06.318 PM)	Finished	Core: 4	222 / 222
+process105	(06/28/2025, 06:11:06.915 PM)	Finished	Core: 2	205 / 205
+process72	(06/28/2025, 06:11:06.407 PM)	Finished	Core: 4	257 / 257
+process109	(06/28/2025, 06:11:06.976 PM)	Finished	Core: 2	239 / 239
+process61	(06/28/2025, 06:11:06.239 PM)	Finished	Core: 1	251 / 251
+process77	(06/28/2025, 06:11:06.485 PM)	Finished	Core: 4	328 / 328
+process110	(06/28/2025, 06:13:03.600 PM)	Finished	Core: 3	58 / 58
+process117	(06/28/2025, 06:13:03.708 PM)	Finished	Core: 3	62 / 62
+process147	(06/28/2025, 06:13:04.171 PM)	Finished	Core: 3	59 / 59
+process163	(06/28/2025, 06:13:04.416 PM)	Finished	Core: 3	55 / 55
+process249	(06/28/2025, 06:13:05.735 PM)	Finished	Core: 1	52 / 52
+process298	(06/28/2025, 06:13:06.494 PM)	Finished	Core: 3	57 / 57
+process170	(06/28/2025, 06:13:04.522 PM)	Finished	Core: 1	62 / 62
+process245	(06/28/2025, 06:13:05.675 PM)	Finished	Core: 2	56 / 56
+process211	(06/28/2025, 06:13:05.150 PM)	Finished	Core: 1	56 / 56
+process348	(06/28/2025, 06:13:07.260 PM)	Finished	Core: 4	55 / 55
+process358	(06/28/2025, 06:13:07.415 PM)	Finished	Core: 3	53 / 53
+process175	(06/28/2025, 06:13:04.600 PM)	Finished	Core: 1	53 / 53
+process122	(06/28/2025, 06:13:03.785 PM)	Finished	Core: 1	83 / 83
+process226	(06/28/2025, 06:13:05.385 PM)	Finished	Core: 1	71 / 71
+process229	(06/28/2025, 06:13:05.428 PM)	Finished	Core: 3	60 / 60
+process131	(06/28/2025, 06:13:03.925 PM)	Finished	Core: 3	76 / 76
+process331	(06/28/2025, 06:13:07.001 PM)	Finished	Core: 1	61 / 61
+process346	(06/28/2025, 06:13:07.229 PM)	Finished	Core: 1	56 / 56
+process276	(06/28/2025, 06:13:06.152 PM)	Finished	Core: 1	74 / 74
+process190	(06/28/2025, 06:13:04.830 PM)	Finished	Core: 3	76 / 76
+process231	(06/28/2025, 06:13:05.458 PM)	Finished	Core: 3	74 / 74
+process155	(06/28/2025, 06:13:04.293 PM)	Finished	Core: 2	56 / 56
+process128	(06/28/2025, 06:13:03.877 PM)	Finished	Core: 3	72 / 72
+process116	(06/28/2025, 06:13:03.695 PM)	Finished	Core: 3	96 / 96
+process195	(06/28/2025, 06:13:04.904 PM)	Finished	Core: 3	70 / 70
+process364	(06/28/2025, 06:13:07.508 PM)	Finished	Core: 4	70 / 70
+process115	(06/28/2025, 06:13:03.678 PM)	Finished	Core: 1	126 / 126
+process279	(06/28/2025, 06:13:06.202 PM)	Finished	Core: 4	61 / 61
+process230	(06/28/2025, 06:13:05.442 PM)	Finished	Core: 2	73 / 73
+process366	(06/28/2025, 06:13:07.538 PM)	Finished	Core: 1	77 / 77
+process292	(06/28/2025, 06:13:06.401 PM)	Finished	Core: 2	52 / 52
+process294	(06/28/2025, 06:13:06.430 PM)	Finished	Core: 2	63 / 63
+process309	(06/28/2025, 06:13:06.663 PM)	Finished	Core: 4	78 / 78
+process311	(06/28/2025, 06:13:06.693 PM)	Finished	Core: 1	68 / 68
+process398	(06/28/2025, 06:13:08.028 PM)	Finished	Core: 3	61 / 61
+process415	(06/28/2025, 06:13:08.289 PM)	Finished	Core: 4	64 / 64
+process333	(06/28/2025, 06:13:07.029 PM)	Finished	Core: 3	77 / 77
+process219	(06/28/2025, 06:13:05.276 PM)	Finished	Core: 2	70 / 70
+process297	(06/28/2025, 06:13:06.478 PM)	Finished	Core: 1	65 / 65
+process207	(06/28/2025, 06:13:05.091 PM)	Finished	Core: 1	54 / 54
+process135	(06/28/2025, 06:13:03.986 PM)	Finished	Core: 2	87 / 87
+process336	(06/28/2025, 06:13:07.075 PM)	Finished	Core: 1	72 / 72
+process237	(06/28/2025, 06:13:05.552 PM)	Finished	Core: 4	85 / 85
+process239	(06/28/2025, 06:13:05.581 PM)	Finished	Core: 4	73 / 73
+process143	(06/28/2025, 06:13:04.110 PM)	Finished	Core: 4	86 / 86
+process142	(06/28/2025, 06:13:04.093 PM)	Finished	Core: 3	79 / 79
+process403	(06/28/2025, 06:13:08.106 PM)	Finished	Core: 4	75 / 75
+process257	(06/28/2025, 06:13:05.861 PM)	Finished	Core: 1	74 / 74
+process416	(06/28/2025, 06:13:08.302 PM)	Finished	Core: 2	78 / 78
+process342	(06/28/2025, 06:13:07.166 PM)	Finished	Core: 1	79 / 79
+process218	(06/28/2025, 06:13:05.259 PM)	Finished	Core: 1	85 / 85
+process164	(06/28/2025, 06:13:04.429 PM)	Finished	Core: 4	79 / 79
+process280	(06/28/2025, 06:13:06.214 PM)	Finished	Core: 4	69 / 69
+process216	(06/28/2025, 06:13:05.228 PM)	Finished	Core: 4	63 / 63
+process146	(06/28/2025, 06:13:04.156 PM)	Finished	Core: 2	69 / 69
+process193	(06/28/2025, 06:13:04.874 PM)	Finished	Core: 2	77 / 77
+process300	(06/28/2025, 06:13:06.524 PM)	Finished	Core: 1	74 / 74
+process312	(06/28/2025, 06:13:06.708 PM)	Finished	Core: 1	92 / 92
+process329	(06/28/2025, 06:13:06.968 PM)	Finished	Core: 3	92 / 92
+process310	(06/28/2025, 06:13:06.678 PM)	Finished	Core: 3	82 / 82
+process394	(06/28/2025, 06:13:07.968 PM)	Finished	Core: 1	81 / 81
+process256	(06/28/2025, 06:13:05.848 PM)	Finished	Core: 2	77 / 77
+process330	(06/28/2025, 06:13:06.982 PM)	Finished	Core: 4	77 / 77
+process325	(06/28/2025, 06:13:06.905 PM)	Finished	Core: 1	61 / 61
+process431	(06/28/2025, 06:13:08.533 PM)	Finished	Core: 4	85 / 85
+process344	(06/28/2025, 06:13:07.198 PM)	Finished	Core: 2	78 / 78
+process353	(06/28/2025, 06:13:07.339 PM)	Finished	Core: 1	86 / 86
+process360	(06/28/2025, 06:13:07.446 PM)	Finished	Core: 2	93 / 93
+process412	(06/28/2025, 06:13:08.243 PM)	Finished	Core: 3	85 / 85
+process327	(06/28/2025, 06:13:06.936 PM)	Finished	Core: 3	69 / 69
+process334	(06/28/2025, 06:13:07.047 PM)	Finished	Core: 2	86 / 86
+process433	(06/28/2025, 06:13:08.565 PM)	Finished	Core: 2	66 / 66
+process355	(06/28/2025, 06:13:07.371 PM)	Finished	Core: 2	95 / 95
+process367	(06/28/2025, 06:13:07.553 PM)	Finished	Core: 4	90 / 90
+process112	(06/28/2025, 06:13:03.631 PM)	Finished	Core: 2	116 / 116
+process111	(06/28/2025, 06:13:03.617 PM)	Finished	Core: 1	105 / 105
+process174	(06/28/2025, 06:13:04.585 PM)	Finished	Core: 1	95 / 95
+process308	(06/28/2025, 06:13:06.648 PM)	Finished	Core: 2	98 / 98
+process315	(06/28/2025, 06:13:06.754 PM)	Finished	Core: 1	73 / 73
+process248	(06/28/2025, 06:13:05.720 PM)	Finished	Core: 3	83 / 83
+process420	(06/28/2025, 06:13:08.365 PM)	Finished	Core: 4	107 / 107
+process183	(06/28/2025, 06:13:04.722 PM)	Finished	Core: 1	78 / 78
+process260	(06/28/2025, 06:13:05.906 PM)	Finished	Core: 1	85 / 85
+process166	(06/28/2025, 06:13:04.460 PM)	Finished	Core: 2	98 / 98
+process233	(06/28/2025, 06:13:05.488 PM)	Finished	Core: 1	72 / 72
+process172	(06/28/2025, 06:13:04.552 PM)	Finished	Core: 2	92 / 92
+process258	(06/28/2025, 06:13:05.876 PM)	Finished	Core: 4	83 / 83
+process393	(06/28/2025, 06:13:07.955 PM)	Finished	Core: 2	78 / 78
+process158	(06/28/2025, 06:13:04.339 PM)	Finished	Core: 1	127 / 127
+process417	(06/28/2025, 06:13:08.319 PM)	Finished	Core: 4	88 / 88
+process168	(06/28/2025, 06:13:04.490 PM)	Finished	Core: 4	96 / 96
+process201	(06/28/2025, 06:13:04.999 PM)	Finished	Core: 1	116 / 116
+process209	(06/28/2025, 06:13:05.121 PM)	Finished	Core: 2	120 / 120
+process426	(06/28/2025, 06:13:08.459 PM)	Finished	Core: 3	88 / 88
+process339	(06/28/2025, 06:13:07.123 PM)	Finished	Core: 2	89 / 89
+process114	(06/28/2025, 06:13:03.662 PM)	Finished	Core: 1	125 / 125
+process176	(06/28/2025, 06:13:04.615 PM)	Finished	Core: 3	102 / 102
+process221	(06/28/2025, 06:13:05.307 PM)	Finished	Core: 2	82 / 82
+process350	(06/28/2025, 06:13:07.292 PM)	Finished	Core: 3	80 / 80
+process242	(06/28/2025, 06:13:05.628 PM)	Finished	Core: 3	102 / 102
+process123	(06/28/2025, 06:13:03.800 PM)	Finished	Core: 4	116 / 116
+process262	(06/28/2025, 06:13:05.939 PM)	Finished	Core: 4	125 / 125
+process273	(06/28/2025, 06:13:06.107 PM)	Finished	Core: 3	99 / 99
+process129	(06/28/2025, 06:13:03.894 PM)	Finished	Core: 3	125 / 125
+process194	(06/28/2025, 06:13:04.889 PM)	Finished	Core: 4	121 / 121
+process118	(06/28/2025, 06:13:03.725 PM)	Finished	Core: 4	141 / 141
+process384	(06/28/2025, 06:13:07.816 PM)	Finished	Core: 3	98 / 98
+process145	(06/28/2025, 06:13:04.139 PM)	Finished	Core: 3	116 / 116
+process340	(06/28/2025, 06:13:07.136 PM)	Finished	Core: 1	131 / 131
+process240	(06/28/2025, 06:13:05.595 PM)	Finished	Core: 3	137 / 137
+process299	(06/28/2025, 06:13:06.510 PM)	Finished	Core: 4	96 / 96
+process250	(06/28/2025, 06:13:05.753 PM)	Finished	Core: 1	116 / 116
+process152	(06/28/2025, 06:13:04.245 PM)	Finished	Core: 4	133 / 133
+process167	(06/28/2025, 06:13:04.475 PM)	Finished	Core: 1	123 / 123
+process374	(06/28/2025, 06:13:07.661 PM)	Finished	Core: 1	109 / 109
+process407	(06/28/2025, 06:13:08.166 PM)	Finished	Core: 1	113 / 113
+process130	(06/28/2025, 06:13:03.909 PM)	Finished	Core: 4	140 / 140
+process251	(06/28/2025, 06:13:05.768 PM)	Finished	Core: 2	99 / 99
+process215	(06/28/2025, 06:13:05.212 PM)	Finished	Core: 4	119 / 119
+process270	(06/28/2025, 06:13:06.061 PM)	Finished	Core: 3	142 / 142
+process141	(06/28/2025, 06:13:04.076 PM)	Finished	Core: 2	153 / 153
+process323	(06/28/2025, 06:13:06.876 PM)	Finished	Core: 1	107 / 107
+process150	(06/28/2025, 06:13:04.216 PM)	Finished	Core: 4	153 / 153
+process148	(06/28/2025, 06:13:04.185 PM)	Finished	Core: 1	127 / 127
+process268	(06/28/2025, 06:13:06.030 PM)	Finished	Core: 4	80 / 80
+process370	(06/28/2025, 06:13:07.600 PM)	Finished	Core: 1	126 / 126
+process205	(06/28/2025, 06:13:05.057 PM)	Finished	Core: 3	100 / 100
+process177	(06/28/2025, 06:13:04.631 PM)	Finished	Core: 2	144 / 144
+process397	(06/28/2025, 06:13:08.013 PM)	Finished	Core: 4	86 / 86
+process405	(06/28/2025, 06:13:08.135 PM)	Finished	Core: 3	107 / 107
+process410	(06/28/2025, 06:13:08.212 PM)	Finished	Core: 3	125 / 125
+process318	(06/28/2025, 06:13:06.799 PM)	Finished	Core: 3	144 / 144
+process422	(06/28/2025, 06:13:08.395 PM)	Finished	Core: 1	98 / 98
+process365	(06/28/2025, 06:13:07.524 PM)	Finished	Core: 3	116 / 116
+process387	(06/28/2025, 06:13:07.861 PM)	Finished	Core: 1	111 / 111
+process119	(06/28/2025, 06:13:03.739 PM)	Finished	Core: 4	124 / 124
+process162	(06/28/2025, 06:13:04.399 PM)	Finished	Core: 1	169 / 169
+process266	(06/28/2025, 06:13:06.001 PM)	Finished	Core: 2	119 / 119
+process133	(06/28/2025, 06:13:03.953 PM)	Finished	Core: 1	114 / 114
+process161	(06/28/2025, 06:13:04.383 PM)	Finished	Core: 2	102 / 102
+process379	(06/28/2025, 06:13:07.738 PM)	Finished	Core: 2	126 / 126
+process144	(06/28/2025, 06:13:04.124 PM)	Finished	Core: 4	150 / 150
+process314	(06/28/2025, 06:13:06.739 PM)	Finished	Core: 3	105 / 105
+process136	(06/28/2025, 06:13:03.999 PM)	Finished	Core: 2	132 / 132
+process295	(06/28/2025, 06:13:06.448 PM)	Finished	Core: 4	150 / 150
+process234	(06/28/2025, 06:13:05.504 PM)	Finished	Core: 4	159 / 159
+process200	(06/28/2025, 06:13:04.981 PM)	Finished	Core: 4	125 / 125
+process385	(06/28/2025, 06:13:07.833 PM)	Finished	Core: 4	124 / 124
+process400	(06/28/2025, 06:13:08.059 PM)	Finished	Core: 2	145 / 145
+process341	(06/28/2025, 06:13:07.152 PM)	Finished	Core: 1	131 / 131
+process186	(06/28/2025, 06:13:04.766 PM)	Finished	Core: 2	122 / 122
+process188	(06/28/2025, 06:13:04.798 PM)	Finished	Core: 1	146 / 146
+process281	(06/28/2025, 06:13:06.230 PM)	Finished	Core: 3	127 / 127
+process351	(06/28/2025, 06:13:07.307 PM)	Finished	Core: 3	106 / 106
+process210	(06/28/2025, 06:13:05.137 PM)	Finished	Core: 3	161 / 161
+process317	(06/28/2025, 06:13:06.782 PM)	Finished	Core: 1	120 / 120
+process278	(06/28/2025, 06:13:06.183 PM)	Finished	Core: 2	138 / 138
+process149	(06/28/2025, 06:13:04.201 PM)	Finished	Core: 4	155 / 155
+process220	(06/28/2025, 06:13:05.291 PM)	Finished	Core: 4	131 / 131
+process120	(06/28/2025, 06:13:03.754 PM)	Finished	Core: 1	125 / 125
+process335	(06/28/2025, 06:13:07.060 PM)	Finished	Core: 4	153 / 153
+process296	(06/28/2025, 06:13:06.461 PM)	Finished	Core: 1	115 / 115
+process303	(06/28/2025, 06:13:06.570 PM)	Finished	Core: 4	167 / 167
+process264	(06/28/2025, 06:13:05.968 PM)	Finished	Core: 1	152 / 152
+process402	(06/28/2025, 06:13:08.089 PM)	Finished	Core: 1	112 / 112
+process185	(06/28/2025, 06:13:04.752 PM)	Finished	Core: 1	127 / 127
+process134	(06/28/2025, 06:13:03.970 PM)	Finished	Core: 4	142 / 142
+process153	(06/28/2025, 06:13:04.262 PM)	Finished	Core: 4	133 / 133
+process293	(06/28/2025, 06:13:06.416 PM)	Finished	Core: 1	145 / 145
+process204	(06/28/2025, 06:13:05.042 PM)	Finished	Core: 1	132 / 132
+process178	(06/28/2025, 06:13:04.644 PM)	Finished	Core: 1	155 / 155
+process430	(06/28/2025, 06:13:08.520 PM)	Finished	Core: 1	135 / 135
+process362	(06/28/2025, 06:13:07.477 PM)	Finished	Core: 3	160 / 160
+process361	(06/28/2025, 06:13:07.460 PM)	Finished	Core: 1	135 / 135
+process290	(06/28/2025, 06:13:06.371 PM)	Finished	Core: 4	146 / 146
+process223	(06/28/2025, 06:13:05.337 PM)	Finished	Core: 4	154 / 154
+process378	(06/28/2025, 06:13:07.722 PM)	Finished	Core: 3	114 / 114
+process408	(06/28/2025, 06:13:08.180 PM)	Finished	Core: 4	141 / 141
+process392	(06/28/2025, 06:13:07.938 PM)	Finished	Core: 4	122 / 122
+process337	(06/28/2025, 06:13:07.090 PM)	Finished	Core: 2	158 / 158
+process199	(06/28/2025, 06:13:04.966 PM)	Finished	Core: 2	164 / 164
+process313	(06/28/2025, 06:13:06.724 PM)	Finished	Core: 2	153 / 153
+process413	(06/28/2025, 06:13:08.258 PM)	Finished	Core: 4	174 / 174
+process434	(06/28/2025, 06:13:08.582 PM)	Finished	Core: 3	147 / 147
+process322	(06/28/2025, 06:13:06.861 PM)	Finished	Core: 4	146 / 146
+process419	(06/28/2025, 06:13:08.349 PM)	Finished	Core: 2	145 / 145
+process343	(06/28/2025, 06:13:07.182 PM)	Finished	Core: 3	132 / 132
+process302	(06/28/2025, 06:13:06.555 PM)	Finished	Core: 4	178 / 178
+process399	(06/28/2025, 06:13:08.044 PM)	Finished	Core: 1	174 / 174
+process395	(06/28/2025, 06:13:07.983 PM)	Finished	Core: 1	155 / 155
+process127	(06/28/2025, 06:13:03.864 PM)	Finished	Core: 3	141 / 141
+process429	(06/28/2025, 06:13:08.503 PM)	Finished	Core: 1	172 / 172
+process261	(06/28/2025, 06:13:05.924 PM)	Finished	Core: 2	153 / 153
+process432	(06/28/2025, 06:13:08.550 PM)	Finished	Core: 1	154 / 154
+process165	(06/28/2025, 06:13:04.444 PM)	Finished	Core: 3	173 / 173
+process368	(06/28/2025, 06:13:07.570 PM)	Finished	Core: 1	156 / 156
+process383	(06/28/2025, 06:13:07.800 PM)	Finished	Core: 1	184 / 184
+process382	(06/28/2025, 06:13:07.786 PM)	Finished	Core: 4	153 / 153
+process253	(06/28/2025, 06:13:05.799 PM)	Finished	Core: 2	157 / 157
+process404	(06/28/2025, 06:13:08.119 PM)	Finished	Core: 1	127 / 127
+process151	(06/28/2025, 06:13:04.231 PM)	Finished	Core: 2	184 / 184
+process375	(06/28/2025, 06:13:07.677 PM)	Finished	Core: 3	165 / 165
+process396	(06/28/2025, 06:13:07.999 PM)	Finished	Core: 3	134 / 134
+process224	(06/28/2025, 06:13:05.352 PM)	Finished	Core: 2	165 / 165
+process267	(06/28/2025, 06:13:06.015 PM)	Finished	Core: 1	159 / 159
+process356	(06/28/2025, 06:13:07.385 PM)	Finished	Core: 3	134 / 134
+process228	(06/28/2025, 06:13:05.413 PM)	Finished	Core: 1	186 / 186
+process388	(06/28/2025, 06:13:07.878 PM)	Finished	Core: 1	143 / 143
+process132	(06/28/2025, 06:13:03.939 PM)	Finished	Core: 3	189 / 189
+process179	(06/28/2025, 06:13:04.661 PM)	Finished	Core: 4	197 / 197
+process418	(06/28/2025, 06:13:08.335 PM)	Finished	Core: 2	112 / 112
+process326	(06/28/2025, 06:13:06.925 PM)	Finished	Core: 3	170 / 170
+process332	(06/28/2025, 06:13:07.015 PM)	Finished	Core: 4	109 / 109
+process282	(06/28/2025, 06:13:06.245 PM)	Finished	Core: 1	177 / 177
+process354	(06/28/2025, 06:13:07.354 PM)	Finished	Core: 1	141 / 141
+process286	(06/28/2025, 06:13:06.310 PM)	Finished	Core: 3	184 / 184
+process140	(06/28/2025, 06:13:04.061 PM)	Finished	Core: 1	162 / 162
+process389	(06/28/2025, 06:13:07.892 PM)	Finished	Core: 1	154 / 154
+process252	(06/28/2025, 06:13:05.783 PM)	Finished	Core: 1	142 / 142
+process345	(06/28/2025, 06:13:07.215 PM)	Finished	Core: 3	194 / 194
+process423	(06/28/2025, 06:13:08.412 PM)	Finished	Core: 2	154 / 154
+process390	(06/28/2025, 06:13:07.909 PM)	Finished	Core: 4	158 / 158
+process159	(06/28/2025, 06:13:04.353 PM)	Finished	Core: 2	189 / 189
+process319	(06/28/2025, 06:13:06.814 PM)	Finished	Core: 3	167 / 167
+process263	(06/28/2025, 06:13:05.954 PM)	Finished	Core: 4	185 / 185
+process255	(06/28/2025, 06:13:05.830 PM)	Finished	Core: 2	160 / 160
+process187	(06/28/2025, 06:13:04.782 PM)	Finished	Core: 2	147 / 147
+process372	(06/28/2025, 06:13:07.631 PM)	Finished	Core: 4	179 / 179
+process247	(06/28/2025, 06:13:05.706 PM)	Finished	Core: 1	181 / 181
+process305	(06/28/2025, 06:13:06.600 PM)	Finished	Core: 2	158 / 158
+process347	(06/28/2025, 06:13:07.245 PM)	Finished	Core: 1	192 / 192
+process271	(06/28/2025, 06:13:06.076 PM)	Finished	Core: 2	166 / 166
+process235	(06/28/2025, 06:13:05.521 PM)	Finished	Core: 2	191 / 191
+process243	(06/28/2025, 06:13:05.642 PM)	Finished	Core: 4	189 / 189
+process377	(06/28/2025, 06:13:07.706 PM)	Finished	Core: 4	186 / 186
+process180	(06/28/2025, 06:13:04.676 PM)	Finished	Core: 3	204 / 204
+process316	(06/28/2025, 06:13:06.769 PM)	Finished	Core: 1	197 / 197
+process425	(06/28/2025, 06:13:08.444 PM)	Finished	Core: 2	164 / 164
+process272	(06/28/2025, 06:13:06.091 PM)	Finished	Core: 3	180 / 180
+process126	(06/28/2025, 06:13:03.849 PM)	Finished	Core: 4	205 / 205
+process424	(06/28/2025, 06:13:08.428 PM)	Finished	Core: 3	177 / 177
+process421	(06/28/2025, 06:13:08.381 PM)	Finished	Core: 2	141 / 141
+process160	(06/28/2025, 06:13:04.369 PM)	Finished	Core: 4	170 / 170
+process138	(06/28/2025, 06:13:04.031 PM)	Finished	Core: 2	195 / 195
+process288	(06/28/2025, 06:13:06.341 PM)	Finished	Core: 1	139 / 139
+process113	(06/28/2025, 06:13:03.645 PM)	Finished	Core: 3	255 / 255
+process225	(06/28/2025, 06:13:05.368 PM)	Finished	Core: 4	202 / 202
+process352	(06/28/2025, 06:13:07.323 PM)	Finished	Core: 2	210 / 210
+process124	(06/28/2025, 06:13:03.816 PM)	Finished	Core: 4	191 / 191
+process217	(06/28/2025, 06:13:05.243 PM)	Finished	Core: 1	148 / 148
+process380	(06/28/2025, 06:13:07.754 PM)	Finished	Core: 4	176 / 176
+process241	(06/28/2025, 06:13:05.611 PM)	Finished	Core: 4	175 / 175
+process406	(06/28/2025, 06:13:08.151 PM)	Finished	Core: 4	187 / 187
+process369	(06/28/2025, 06:13:07.585 PM)	Finished	Core: 1	168 / 168
+process359	(06/28/2025, 06:13:07.430 PM)	Finished	Core: 1	160 / 160
+process373	(06/28/2025, 06:13:07.645 PM)	Finished	Core: 4	173 / 173
+process173	(06/28/2025, 06:13:04.567 PM)	Finished	Core: 4	189 / 189
+process244	(06/28/2025, 06:13:05.659 PM)	Finished	Core: 3	187 / 187
+process206	(06/28/2025, 06:13:05.074 PM)	Finished	Core: 1	148 / 148
+process232	(06/28/2025, 06:13:05.472 PM)	Finished	Core: 2	179 / 179
+process414	(06/28/2025, 06:13:08.275 PM)	Finished	Core: 1	180 / 180
+process197	(06/28/2025, 06:13:04.935 PM)	Finished	Core: 1	210 / 210
+process428	(06/28/2025, 06:13:08.488 PM)	Finished	Core: 1	164 / 164
+process349	(06/28/2025, 06:13:07.276 PM)	Finished	Core: 3	163 / 163
+process196	(06/28/2025, 06:13:04.919 PM)	Finished	Core: 3	167 / 167
+process202	(06/28/2025, 06:13:05.014 PM)	Finished	Core: 4	169 / 169
+process184	(06/28/2025, 06:13:04.738 PM)	Finished	Core: 4	200 / 200
+process287	(06/28/2025, 06:13:06.326 PM)	Finished	Core: 2	173 / 173
+process191	(06/28/2025, 06:13:04.844 PM)	Finished	Core: 2	209 / 209
+process274	(06/28/2025, 06:13:06.122 PM)	Finished	Core: 4	141 / 141
+process321	(06/28/2025, 06:13:06.845 PM)	Finished	Core: 1	198 / 198
+process259	(06/28/2025, 06:13:05.890 PM)	Finished	Core: 1	200 / 200
+process376	(06/28/2025, 06:13:07.691 PM)	Finished	Core: 3	217 / 217
+process139	(06/28/2025, 06:13:04.046 PM)	Finished	Core: 3	182 / 182
+process181	(06/28/2025, 06:13:04.690 PM)	Finished	Core: 3	222 / 222
+process157	(06/28/2025, 06:13:04.324 PM)	Finished	Core: 1	199 / 199
+process411	(06/28/2025, 06:13:08.228 PM)	Finished	Core: 4	184 / 184
+process283	(06/28/2025, 06:13:06.262 PM)	Finished	Core: 4	215 / 215
+process291	(06/28/2025, 06:13:06.386 PM)	Finished	Core: 2	173 / 173
+process208	(06/28/2025, 06:13:05.106 PM)	Finished	Core: 4	207 / 207
+process357	(06/28/2025, 06:13:07.401 PM)	Finished	Core: 2	135 / 135
+process125	(06/28/2025, 06:13:03.831 PM)	Finished	Core: 4	219 / 219
+process401	(06/28/2025, 06:13:08.074 PM)	Finished	Core: 2	186 / 186
+process269	(06/28/2025, 06:13:06.046 PM)	Finished	Core: 4	195 / 195
+process328	(06/28/2025, 06:13:06.952 PM)	Finished	Core: 2	213 / 213
+process438	(06/28/2025, 06:13:08.643 PM)	Finished	Core: 3	190 / 190
+process265	(06/28/2025, 06:13:05.983 PM)	Finished	Core: 1	213 / 213
+process182	(06/28/2025, 06:13:04.706 PM)	Finished	Core: 1	230 / 230
+process436	(06/28/2025, 06:13:08.612 PM)	Finished	Core: 1	209 / 209
+process306	(06/28/2025, 06:13:06.616 PM)	Finished	Core: 4	221 / 221
+process238	(06/28/2025, 06:13:05.566 PM)	Finished	Core: 1	198 / 198
+process320	(06/28/2025, 06:13:06.829 PM)	Finished	Core: 4	181 / 181
+process289	(06/28/2025, 06:13:06.356 PM)	Finished	Core: 4	209 / 209
+process212	(06/28/2025, 06:13:05.168 PM)	Finished	Core: 4	205 / 205
+process121	(06/28/2025, 06:13:03.771 PM)	Finished	Core: 4	247 / 247
+process198	(06/28/2025, 06:13:04.952 PM)	Finished	Core: 4	204 / 204
+process427	(06/28/2025, 06:13:08.474 PM)	Finished	Core: 1	191 / 191
+process189	(06/28/2025, 06:13:04.814 PM)	Finished	Core: 2	233 / 233
+process338	(06/28/2025, 06:13:07.105 PM)	Finished	Core: 1	218 / 218
+process304	(06/28/2025, 06:13:06.585 PM)	Finished	Core: 3	216 / 216
+process156	(06/28/2025, 06:13:04.309 PM)	Finished	Core: 2	218 / 218
+process227	(06/28/2025, 06:13:05.399 PM)	Finished	Core: 1	170 / 170
+process203	(06/28/2025, 06:13:05.028 PM)	Finished	Core: 2	165 / 165
+process324	(06/28/2025, 06:13:06.891 PM)	Finished	Core: 4	246 / 246
+process284	(06/28/2025, 06:13:06.276 PM)	Finished	Core: 3	157 / 157
+process236	(06/28/2025, 06:13:05.535 PM)	Finished	Core: 1	257 / 257
+process137	(06/28/2025, 06:13:04.015 PM)	Finished	Core: 2	234 / 234
+process307	(06/28/2025, 06:13:06.632 PM)	Finished	Core: 2	176 / 176
+process254	(06/28/2025, 06:13:05.815 PM)	Finished	Core: 3	190 / 190
+process409	(06/28/2025, 06:13:08.196 PM)	Finished	Core: 1	247 / 247
+process275	(06/28/2025, 06:13:06.137 PM)	Finished	Core: 2	210 / 210
+process391	(06/28/2025, 06:13:07.922 PM)	Finished	Core: 3	187 / 187
+process371	(06/28/2025, 06:13:07.615 PM)	Finished	Core: 4	206 / 206

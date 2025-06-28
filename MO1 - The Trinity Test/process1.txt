@@ -19802,3 +19802,1366 @@ Core:4 [2709]             DECLARE l=62289
 Core:4 [2710]             DECLARE m=30462
 Core:4 [2711]             PRINT -> Value from: +l: 62289
 Core:4 [2712]             DECLARE l=62289
+Core:1 [0] PRINT -> Hello world from process1!
+Core:1 [1] SLEEP 5
+Core:2 [2] DECLARE o=53224
+Core:4 [3] PRINT -> Value from: +o: 53224
+Core:4 [4] FOR ×2 (body 3)
+Core:4 [5]     DECLARE j=40532
+Core:4 [6]     PRINT -> Hello world from process1!
+Core:4 [7]     PRINT -> Value from: +j: 40532
+Core:2 [8]     DECLARE j=40532
+Core:2 [9]     PRINT -> Hello world from process1!
+Core:2 [10]     PRINT -> Value from: +j: 40532
+Core:2 [11] FOR ×2 (body 3)
+Core:2 [12]     SLEEP 3
+Core:4 [13]     PRINT -> Hello world from process1!
+Core:4 [14]     SLEEP 3
+Core:3 [15]     PRINT -> Hello world from process1!
+Core:3 [16] SLEEP 5
+Core:1 [17] SUB(j, 19, 128)
+Core:2 [18] PRINT -> Value from: +j: 0
+Core:2 [19] FOR ×2 (body 3)
+Core:2 [20]     ADD(j, 103, 140)
+Core:2 [21]     SUB(i, 240, 448)
+Core:2 [22]     SUB(j, 30, 429)
+Core:4 [23]     ADD(j, 103, 140)
+Core:4 [24]     SUB(i, 240, 448)
+Core:4 [25]     SUB(j, 30, 429)
+Core:4 [26] ADD(o, 108, 60)
+Core:4 [27] ADD(o, 37, 234)
+Core:1 [28] FOR ×3 (body 3)
+Core:1 [29]     DECLARE u=60347
+Core:1 [30]     ADD(i, 252, 129)
+Core:1 [31]     SUB(o, 119, 440)
+Core:1 [32]     DECLARE u=60347
+Core:2 [33]     ADD(i, 252, 129)
+Core:2 [34]     SUB(o, 119, 440)
+Core:2 [35]     DECLARE u=60347
+Core:2 [36]     ADD(i, 252, 129)
+Core:2 [37]     SUB(o, 119, 440)
+Core:3 [38] DECLARE k=46041
+Core:3 [39] SLEEP 1
+Core:1 [40] SUB(y, 17, 314)
+Core:1 [41] DECLARE v=6545
+Core:1 [42] SLEEP 4
+Core:4 [43] ADD(i, 208, 351)
+Core:4 [44] FOR ×2 (body 3)
+Core:4 [45]     PRINT -> Value from: +y: 0
+Core:4 [46]     PRINT -> Hello world from process1!
+Core:4 [47]     DECLARE w=61303
+Core:4 [48]     PRINT -> Value from: +y: 0
+Core:4 [49]     PRINT -> Hello world from process1!
+Core:2 [50]     DECLARE w=61303
+Core:2 [51] FOR ×3 (body 3)
+Core:2 [52]     DECLARE x=50469
+Core:2 [53]     PRINT -> Value from: +j: 0
+Core:2 [54]     ADD(j, 62, 419)
+Core:4 [55]     DECLARE x=50469
+Core:4 [56]     PRINT -> Value from: +j: 481
+Core:4 [57]     ADD(j, 62, 419)
+Core:4 [58]     DECLARE x=50469
+Core:4 [59]     PRINT -> Value from: +j: 481
+Core:2 [60]     ADD(j, 62, 419)
+Core:2 [61] FOR ×3 (body 3)
+Core:2 [62]     ADD(w, 500, 316)
+Core:2 [63]     PRINT -> Value from: +i: 559
+Core:2 [64]     SUB(v, 245, 250)
+Core:4 [65]     ADD(w, 500, 316)
+Core:4 [66]     PRINT -> Value from: +i: 559
+Core:4 [67]     SUB(v, 245, 250)
+Core:4 [68]     ADD(w, 500, 316)
+Core:4 [69]     PRINT -> Value from: +i: 559
+Core:1 [70]     SUB(v, 245, 250)
+Core:1 [71] DECLARE s=19607
+Core:1 [72] SUB(e, 370, 318)
+Core:1 [73] DECLARE r=1473
+Core:1 [74] SLEEP 1
+Core:4 [75] DECLARE v=50952
+Core:4 [76] SUB(k, 116, 472)
+Core:4 [77] FOR ×3 (body 3)
+Core:4 [78]     SUB(e, 242, 315)
+Core:4 [79]     SLEEP 5
+Core:3 [80]     ADD(v, 141, 73)
+Core:1 [81]     SUB(e, 242, 315)
+Core:1 [82]     SLEEP 5
+Core:2 [83]     ADD(v, 141, 73)
+Core:1 [84]     SUB(e, 242, 315)
+Core:1 [85]     SLEEP 5
+Core:4 [86]     ADD(v, 141, 73)
+Core:2 [87] DECLARE v=57552
+Core:2 [88] FOR ×2 (body 3)
+Core:2 [89]     SLEEP 3
+Core:4 [90]     DECLARE u=30890
+Core:4 [91]     SLEEP 3
+Core:3 [92]     DECLARE u=30890
+Core:3 [93] SLEEP 4
+Core:2 [94] PRINT -> Hello world from process1!
+Core:2 [95] DECLARE j=8964
+Core:3 [96] ADD(v, 137, 353)
+Core:3 [97] DECLARE g=13552
+Core:3 [98] PRINT -> Hello world from process1!
+Core:3 [99] PRINT -> Hello world from process1!
+Core:3 [100] DECLARE c=28696
+Core:4 [101] SUB(s, 470, 62)
+Core:4 [102] DECLARE z=48147
+Core:4 [103] DECLARE g=28756
+Core:1 [0] FOR ×2 (body 3)
+Core:1 [1]     SLEEP 2
+Core:3 [2]     DECLARE t=52430
+Core:3 [3]     SLEEP 2
+Core:2 [4]     DECLARE t=52430
+Core:2 [5] DECLARE i=19343
+Core:2 [6] DECLARE c=38712
+Core:2 [7] PRINT -> Value from: +i: 19343
+Core:3 [8] FOR ×2 (body 3)
+Core:3 [9]     DECLARE w=41983
+Core:3 [10]     DECLARE g=34770
+Core:3 [11]     PRINT -> Hello world from process1!
+Core:3 [12]     DECLARE w=41983
+Core:3 [13]     DECLARE g=34770
+Core:3 [14]     PRINT -> Hello world from process1!
+Core:3 [15] ADD(w, 35, 99)
+Core:3 [16] SLEEP 4
+Core:4 [17] SLEEP 5
+Core:1 [18] FOR ×3 (body 3)
+Core:1 [19]     DECLARE e=44886
+Core:1 [20]     SUB(t, 313, 178)
+Core:1 [21]     DECLARE g=53627
+Core:1 [22]     DECLARE e=44886
+Core:1 [23]     SUB(t, 313, 178)
+Core:3 [24]     DECLARE g=53627
+Core:3 [25]     DECLARE e=44886
+Core:3 [26]     SUB(t, 313, 178)
+Core:3 [27]     DECLARE g=53627
+Core:3 [28] SUB(g, 312, 429)
+Core:2 [29] FOR ×3 (body 3)
+Core:2 [30]     SUB(q, 122, 406)
+Core:2 [31]     ADD(c, 290, 478)
+Core:2 [32]     SUB(m, 381, 54)
+Core:2 [33]     SUB(q, 122, 406)
+Core:2 [34]     ADD(c, 290, 478)
+Core:2 [35]     SUB(m, 381, 54)
+Core:2 [36]     SUB(q, 122, 406)
+Core:2 [37]     ADD(c, 290, 478)
+Core:2 [38]     SUB(m, 381, 54)
+Core:4 [39] PRINT -> Hello world from process1!
+Core:4 [40] ADD(b, 199, 92)
+Core:4 [41] SLEEP 5
+Core:4 [42] FOR ×2 (body 3)
+Core:2 [43]     DECLARE b=30845
+Core:2 [44]     SUB(c, 432, 241)
+Core:2 [45]     SUB(q, 154, 214)
+Core:2 [46]     DECLARE b=30845
+Core:2 [47]     SUB(c, 432, 241)
+Core:3 [48]     SUB(q, 154, 214)
+Core:3 [49] SLEEP 3
+Core:3 [50] FOR ×2 (body 3)
+Core:3 [51]     ADD(y, 473, 24)
+Core:3 [52]     ADD(m, 371, 490)
+Core:3 [53]     ADD(m, 348, 15)
+Core:3 [54]     ADD(y, 473, 24)
+Core:3 [55]     ADD(m, 371, 490)
+Core:3 [56]     ADD(m, 348, 15)
+Core:3 [57] PRINT -> Value from: +t: 135
+Core:1 [58] ADD(s, 38, 74)
+Core:1 [59] ADD(b, 363, 83)
+Core:1 [60] PRINT -> Hello world from process1!
+Core:1 [61] FOR ×2 (body 3)
+Core:1 [62]     DECLARE h=17753
+Core:1 [63]     ADD(m, 156, 154)
+Core:1 [64]     DECLARE o=10292
+Core:1 [65]     DECLARE h=17753
+Core:1 [66]     ADD(m, 156, 154)
+Core:1 [67]     DECLARE o=10292
+Core:2 [68] SLEEP 2
+Core:1 [69] SLEEP 2
+Core:3 [70] ADD(y, 197, 500)
+Core:3 [71] FOR ×2 (body 3)
+Core:3 [72]     ADD(b, 71, 23)
+Core:3 [73]     SLEEP 4
+Core:2 [74]     FOR ×3 (body 3)
+Core:2 [75]         DECLARE d=59928
+Core:4 [76]         ADD(y, 327, 138)
+Core:4 [77]         DECLARE p=49500
+Core:4 [78]         DECLARE d=59928
+Core:4 [79]         ADD(y, 327, 138)
+Core:4 [80]         DECLARE p=49500
+Core:3 [81]         DECLARE d=59928
+Core:3 [82]         ADD(y, 327, 138)
+Core:3 [83]         DECLARE p=49500
+Core:3 [84]     FOR ×3 (body 3)
+Core:3 [85]         DECLARE q=21062
+Core:3 [86]         SUB(g, 84, 234)
+Core:3 [87]         DECLARE m=46960
+Core:3 [88]         DECLARE q=21062
+Core:3 [89]         SUB(g, 84, 234)
+Core:3 [90]         DECLARE m=46960
+Core:3 [91]         DECLARE q=21062
+Core:3 [92]         SUB(g, 84, 234)
+Core:3 [93]         DECLARE m=46960
+Core:3 [94]     DECLARE m=48152
+Core:3 [95]     ADD(b, 71, 23)
+Core:2 [96]     SLEEP 4
+Core:1 [97]     FOR ×3 (body 3)
+Core:1 [98]         DECLARE d=59928
+Core:1 [99]         ADD(y, 327, 138)
+Core:1 [100]         DECLARE p=49500
+Core:1 [101]         DECLARE d=59928
+Core:1 [102]         ADD(y, 327, 138)
+Core:1 [103]         DECLARE p=49500
+Core:1 [104]         DECLARE d=59928
+Core:1 [105]         ADD(y, 327, 138)
+Core:1 [106]         DECLARE p=49500
+Core:1 [107]     DECLARE d=59928
+Core:1 [108] ADD(y, 327, 138)
+Core:1 [109] DECLARE p=49500
+Core:1 [110] FOR ×3 (body 3)
+Core:1 [111]     DECLARE q=21062
+Core:1 [112]     SUB(g, 84, 234)
+Core:1 [113]     DECLARE m=46960
+Core:1 [114]     DECLARE q=21062
+Core:1 [115]     SUB(g, 84, 234)
+Core:1 [116]     DECLARE m=46960
+Core:1 [117]     DECLARE q=21062
+Core:1 [118]     SUB(g, 84, 234)
+Core:4 [119]     DECLARE m=46960
+Core:4 [120] DECLARE q=21062
+Core:4 [121] SUB(g, 84, 234)
+Core:4 [122] DECLARE m=46960
+Core:4 [123] DECLARE m=48152
+Core:4 [124] FOR ×2 (body 3)
+Core:4 [125]     DECLARE t=43343
+Core:4 [126]     SUB(g, 135, 494)
+Core:4 [127]     SLEEP 3
+Core:2 [128]     FOR ×3 (body 3)
+Core:2 [129]         SUB(j, 328, 427)
+Core:2 [130]         SLEEP 2
+Core:1 [131]         FOR ×2 (body 3)
+Core:1 [132]             SUB(p, 356, 140)
+Core:1 [133]             DECLARE x=46248
+Core:1 [134]             ADD(g, 256, 337)
+Core:4 [135]             SUB(p, 356, 140)
+Core:4 [136]             DECLARE x=46248
+Core:4 [137]             ADD(g, 256, 337)
+Core:4 [138]         ADD(m, 499, 20)
+Core:4 [139]         SUB(j, 328, 427)
+Core:1 [140]         SLEEP 2
+Core:2 [141]         FOR ×2 (body 3)
+Core:2 [142]             SUB(p, 356, 140)
+Core:2 [143]             DECLARE x=46248
+Core:2 [144]             ADD(g, 256, 337)
+Core:3 [145]             SUB(p, 356, 140)
+Core:3 [146]             DECLARE x=46248
+Core:3 [147]             ADD(g, 256, 337)
+Core:3 [148]         SUB(p, 356, 140)
+Core:3 [149]         SUB(j, 328, 427)
+Core:1 [150]         SLEEP 2
+Core:1 [151]         FOR ×2 (body 3)
+Core:1 [152]             SUB(p, 356, 140)
+Core:1 [153]             DECLARE x=46248
+Core:1 [154]             ADD(g, 256, 337)
+Core:1 [155]             SUB(p, 356, 140)
+Core:1 [156]             DECLARE x=46248
+Core:1 [157]             ADD(g, 256, 337)
+Core:1 [158]         SUB(p, 356, 140)
+Core:1 [159]     DECLARE x=46248
+Core:3 [160]     DECLARE t=43343
+Core:3 [161]     SUB(g, 135, 494)
+Core:3 [162]     SLEEP 3
+Core:2 [163]     FOR ×3 (body 3)
+Core:2 [164]         SUB(j, 328, 427)
+Core:2 [165]         SLEEP 2
+Core:2 [166]         SUB(j, 328, 427)
+Core:2 [167]         SUB(j, 328, 427)
+Core:2 [168]         SLEEP 2
+Core:1 [169]         SUB(j, 328, 427)
+Core:1 [170]         SUB(j, 328, 427)
+Core:1 [171]         SLEEP 2
+Core:4 [172]         SUB(j, 328, 427)
+Core:4 [173]     SLEEP 2
+Core:4 [174]     FOR ×2 (body 3)
+Core:4 [175]         SUB(p, 356, 140)
+Core:4 [176]         DECLARE x=46248
+Core:4 [177]         ADD(g, 256, 337)
+Core:4 [178]         SUB(p, 356, 140)
+Core:4 [179]         DECLARE x=46248
+Core:4 [180]         ADD(g, 256, 337)
+Core:4 [181]     SUB(p, 356, 140)
+Core:4 [182] DECLARE x=46248
+Core:4 [183] ADD(g, 256, 337)
+Core:4 [184] SUB(p, 356, 140)
+Core:4 [185] DECLARE x=46248
+Core:4 [186] ADD(g, 256, 337)
+Core:4 [187] SUB(p, 356, 140)
+Core:3 [188] DECLARE x=46248
+Core:3 [189] ADD(g, 256, 337)
+Core:3 [190] ADD(m, 499, 20)
+Core:3 [191] ADD(b, 422, 376)
+Core:3 [192] SLEEP 3
+Core:4 [193] SLEEP 2
+Core:2 [194] FOR ×3 (body 3)
+Core:2 [195]     SLEEP 5
+Core:3 [196]     SLEEP 1
+Core:2 [197]     FOR ×2 (body 3)
+Core:2 [198]         ADD(g, 31, 463)
+Core:2 [199]         SUB(p, 149, 110)
+Core:2 [200]         SUB(g, 253, 140)
+Core:2 [201]         ADD(g, 31, 463)
+Core:3 [202]         SUB(p, 149, 110)
+Core:3 [203]         SUB(g, 253, 140)
+Core:3 [204]     ADD(y, 65, 73)
+Core:3 [205]     SLEEP 5
+Core:2 [206]     SLEEP 1
+Core:4 [207]     FOR ×2 (body 3)
+Core:4 [208]         ADD(g, 31, 463)
+Core:4 [209]         SUB(p, 149, 110)
+Core:4 [210]         SUB(g, 253, 140)
+Core:4 [211]         ADD(g, 31, 463)
+Core:1 [212]         SUB(p, 149, 110)
+Core:1 [213]         SUB(g, 253, 140)
+Core:1 [214]     ADD(g, 31, 463)
+Core:1 [215]     SLEEP 5
+Core:1 [216]     SLEEP 1
+Core:4 [217]     FOR ×2 (body 3)
+Core:4 [218]         ADD(g, 31, 463)
+Core:4 [219]         SUB(p, 149, 110)
+Core:4 [220]         SUB(g, 253, 140)
+Core:4 [221]         ADD(g, 31, 463)
+Core:2 [222]         SUB(p, 149, 110)
+Core:2 [223]         SUB(g, 253, 140)
+Core:2 [224]     ADD(g, 31, 463)
+Core:2 [225] SUB(p, 149, 110)
+Core:2 [226] SUB(g, 253, 140)
+Core:2 [227] ADD(g, 31, 463)
+Core:2 [228] SUB(p, 149, 110)
+Core:2 [229] SUB(g, 253, 140)
+Core:2 [230] ADD(y, 65, 73)
+Core:2 [231] ADD(t, 228, 148)
+Core:4 [232] SUB(q, 366, 256)
+Core:4 [233] SLEEP 1
+Core:1 [234] FOR ×3 (body 3)
+Core:1 [235]     SUB(g, 261, 392)
+Core:1 [236]     PRINT -> Hello world from process1!
+Core:1 [237]     ADD(q, 137, 217)
+Core:1 [238]     SUB(g, 261, 392)
+Core:3 [239]     PRINT -> Hello world from process1!
+Core:3 [240]     ADD(q, 137, 217)
+Core:3 [241]     SUB(g, 261, 392)
+Core:3 [242]     PRINT -> Hello world from process1!
+Core:3 [243]     ADD(q, 137, 217)
+Core:3 [244] SLEEP 5
+Core:3 [245] DECLARE l=42584
+Core:2 [246] SUB(j, 167, 435)
+Core:2 [247] PRINT -> Hello world from process1!
+Core:2 [248] DECLARE t=39292
+Core:2 [249] PRINT -> Hello world from process1!
+Core:2 [250] PRINT -> Hello world from process1!
+Core:3 [251] SUB(u, 19, 491)
+Core:3 [252] PRINT -> Hello world from process1!
+Core:1 [0] SLEEP 1
+Core:4 [1] FOR ×2 (body 3)
+Core:4 [2]     SLEEP 2
+Core:4 [3]     DECLARE i=28459
+Core:4 [4]     SLEEP 2
+Core:4 [5]     DECLARE i=28459
+Core:4 [6] DECLARE e=55145
+Core:4 [7] PRINT -> Hello world from process1!
+Core:4 [8] DECLARE b=44432
+Core:2 [9] FOR ×2 (body 3)
+Core:2 [10]     DECLARE f=42391
+Core:2 [11]     DECLARE m=1067
+Core:2 [12]     SLEEP 4
+Core:3 [13]     FOR ×3 (body 3)
+Core:3 [14]         ADD(f, 161, 152)
+Core:3 [15]         PRINT -> Hello world from process1!
+Core:3 [16]         ADD(b, 422, 146)
+Core:3 [17]         ADD(f, 161, 152)
+Core:3 [18]         PRINT -> Hello world from process1!
+Core:3 [19]         ADD(b, 422, 146)
+Core:4 [20]         ADD(f, 161, 152)
+Core:4 [21]         PRINT -> Hello world from process1!
+Core:4 [22]         ADD(b, 422, 146)
+Core:4 [23]     SLEEP 4
+Core:1 [24]     SLEEP 1
+Core:3 [25]     FOR ×3 (body 3)
+Core:3 [26]         SUB(f, 422, 178)
+Core:3 [27]         SLEEP 4
+Core:2 [28]         SLEEP 1
+Core:3 [29]         PRINT -> Value from: +e: 55145
+Core:3 [30]         SUB(f, 422, 178)
+Core:3 [31]         SLEEP 4
+Core:4 [32]         SLEEP 1
+Core:4 [33]         PRINT -> Value from: +e: 55145
+Core:4 [34]         SUB(f, 422, 178)
+Core:4 [35]         SLEEP 4
+Core:2 [36]         SLEEP 1
+Core:2 [37]         PRINT -> Value from: +e: 55145
+Core:2 [38]     SLEEP 4
+Core:4 [39]     DECLARE i=38727
+Core:4 [40]     DECLARE f=42391
+Core:3 [41]     DECLARE m=1067
+Core:3 [42]     SLEEP 4
+Core:4 [43]     FOR ×3 (body 3)
+Core:4 [44]         ADD(f, 161, 152)
+Core:3 [45]         PRINT -> Hello world from process1!
+Core:3 [46]         ADD(b, 422, 146)
+Core:3 [47]         ADD(f, 161, 152)
+Core:3 [48]         PRINT -> Hello world from process1!
+Core:3 [49]         ADD(b, 422, 146)
+Core:1 [50]         ADD(f, 161, 152)
+Core:1 [51]         PRINT -> Hello world from process1!
+Core:1 [52]         ADD(b, 422, 146)
+Core:1 [53]     ADD(f, 161, 152)
+Core:1 [54] PRINT -> Hello world from process1!
+Core:4 [55] ADD(b, 422, 146)
+Core:4 [56] SLEEP 4
+Core:3 [57] SLEEP 1
+Core:2 [58] FOR ×3 (body 3)
+Core:2 [59]     SUB(f, 422, 178)
+Core:2 [60]     SLEEP 4
+Core:4 [61]     SUB(f, 422, 178)
+Core:4 [62]     SUB(f, 422, 178)
+Core:2 [63]     SLEEP 4
+Core:2 [64]     SUB(f, 422, 178)
+Core:2 [65]     SUB(f, 422, 178)
+Core:4 [66]     SLEEP 4
+Core:4 [67]     SUB(f, 422, 178)
+Core:4 [68] SLEEP 4
+Core:3 [69] SLEEP 1
+Core:2 [70] PRINT -> Value from: +e: 55145
+Core:2 [71] SLEEP 4
+Core:3 [72] DECLARE i=38727
+Core:3 [73] FOR ×3 (body 3)
+Core:1 [74]     DECLARE p=55135
+Core:1 [75]     ADD(b, 28, 277)
+Core:1 [76]     SLEEP 2
+Core:1 [77]     PRINT -> Hello world from process1!
+Core:1 [78]     DECLARE p=55135
+Core:1 [79]     ADD(b, 28, 277)
+Core:1 [80]     SLEEP 2
+Core:1 [81]     PRINT -> Hello world from process1!
+Core:1 [82]     DECLARE p=55135
+Core:1 [83]     ADD(b, 28, 277)
+Core:1 [84]     SLEEP 2
+Core:1 [85]     PRINT -> Hello world from process1!
+Core:1 [86] DECLARE g=1550
+Core:1 [87] ADD(p, 343, 100)
+Core:1 [88] SUB(t, 90, 494)
+Core:4 [89] PRINT -> Value from: +e: 55145
+Core:4 [90] DECLARE n=40768
+Core:4 [91] DECLARE u=55027
+Core:4 [92] ADD(p, 284, 325)
+Core:1 [0] SLEEP 1
+Core:4 [1] DECLARE z=32383
+Core:4 [2] FOR ×2 (body 3)
+Core:4 [3]     SLEEP 1
+Core:2 [4]     SUB(z, 247, 401)
+Core:2 [5]     DECLARE r=14606
+Core:2 [6]     SLEEP 1
+Core:3 [7]     SUB(z, 247, 401)
+Core:3 [8]     DECLARE r=14606
+Core:3 [9] FOR ×2 (body 3)
+Core:3 [10]     SLEEP 4
+Core:3 [11]     SUB(z, 308, 67)
+Core:3 [12]     SLEEP 4
+Core:1 [13]     SUB(z, 308, 67)
+Core:1 [14] SUB(q, 95, 408)
+Core:2 [15] SLEEP 5
+Core:1 [16] ADD(z, 367, 280)
+Core:3 [17] FOR ×2 (body 3)
+Core:3 [18]     SLEEP 1
+Core:2 [19]     ADD(q, 192, 331)
+Core:2 [20]     DECLARE i=11235
+Core:2 [21]     SLEEP 1
+Core:4 [22]     ADD(q, 192, 331)
+Core:4 [23]     DECLARE i=11235
+Core:4 [24] SLEEP 4
+Core:3 [25] SLEEP 2
+Core:1 [26] SLEEP 3
+Core:3 [27] SUB(k, 353, 350)
+Core:3 [28] FOR ×2 (body 3)
+Core:3 [29]     DECLARE t=61933
+Core:1 [30]     ADD(r, 498, 331)
+Core:1 [31]     DECLARE d=20795
+Core:1 [32]     DECLARE t=61933
+Core:1 [33]     ADD(r, 498, 331)
+Core:1 [34]     DECLARE d=20795
+Core:2 [35] SLEEP 2
+Core:1 [36] DECLARE z=33805
+Core:1 [37] ADD(t, 44, 145)
+Core:1 [38] PRINT -> Hello world from process1!
+
+Core:1 [39] SLEEP 4
+Core:2 [40] FOR ×2 (body 3)
+Core:2 [41]     PRINT -> Value from: +d: 20795
+
+Core:1 [42]     SLEEP 3
+Core:1 [43]     SLEEP 5
+Core:2 [44]     ADD(h, 452, 438)
+Core:1 [45]     PRINT -> Value from: +d: 20795
+
+Core:1 [46]     SLEEP 3
+Core:1 [47]     SLEEP 5
+Core:4 [48]     ADD(h, 452, 438)
+Core:3 [49] PRINT -> Value from: +q: 523
+
+Core:3 [50] FOR ×2 (body 3)
+Core:3 [51]     ADD(k, 220, 303)
+Core:3 [52]     PRINT -> Value from: +i: 11235
+
+Core:3 [53]     PRINT -> Value from: +h: 890
+
+Core:1 [54]     ADD(k, 220, 303)
+Core:1 [55]     PRINT -> Value from: +i: 11235
+
+Core:1 [56]     PRINT -> Value from: +h: 890
+
+Core:1 [57] ADD(j, 446, 50)
+Core:1 [58] SUB(t, 383, 459)
+Core:2 [59] ADD(q, 261, 375)
+Core:2 [60] SUB(r, 45, 450)
+Core:2 [61] PRINT -> Value from: +t: 0
+
+Core:2 [62] SUB(i, 487, 276)
+Core:2 [63] FOR ×3 (body 3)
+Core:3 [64]     SUB(d, 74, 227)
+Core:3 [65]     PRINT -> Value from: +t: 0
+
+Core:3 [66]     DECLARE k=55738
+Core:3 [67]     SUB(d, 74, 227)
+Core:3 [68]     PRINT -> Value from: +t: 0
+
+Core:2 [69]     DECLARE k=55738
+Core:2 [70]     SUB(d, 74, 227)
+Core:2 [71]     PRINT -> Value from: +t: 0
+
+Core:2 [72]     DECLARE k=55738
+Core:2 [73] SLEEP 5
+Core:2 [74] ADD(w, 431, 84)
+Core:4 [75] ADD(t, 65, 64)
+Core:4 [76] SLEEP 2
+Core:4 [77] PRINT -> Hello world from process1!
+
+Core:4 [78] ADD(i, 217, 475)
+Core:2 [0] FOR ×3 (body 3)
+Core:2 [1]     SUB(a, 233, 109)
+Core:2 [2]     DECLARE a=26984
+Core:2 [3]     SUB(a, 120, 136)
+Core:2 [4]     SUB(a, 233, 109)
+Core:1 [5]     DECLARE a=26984
+Core:1 [6]     SUB(a, 120, 136)
+Core:1 [7]     SUB(a, 233, 109)
+Core:1 [8]     DECLARE a=26984
+Core:1 [9]     SUB(a, 120, 136)
+Core:4 [10] FOR ×3 (body 3)
+Core:4 [11]     DECLARE j=46636
+Core:4 [12]     ADD(a, 319, 73)
+Core:4 [13]     SUB(u, 221, 273)
+Core:4 [14]     DECLARE j=46636
+Core:4 [15]     ADD(a, 319, 73)
+Core:4 [16]     SUB(u, 221, 273)
+Core:4 [17]     DECLARE j=46636
+Core:4 [18]     ADD(a, 319, 73)
+Core:4 [19]     SUB(u, 221, 273)
+Core:4 [20] DECLARE u=3336
+Core:4 [21] SLEEP 5
+Core:1 [22] ADD(u, 487, 212)
+Core:2 [23] ADD(j, 263, 285)
+Core:2 [24] FOR ×2 (body 3)
+Core:2 [25]     PRINT -> 
+Hello world from process1!
+Core:2 [26]     SUB(a, 450, 74)
+Core:2 [27]     DECLARE f=20720
+Core:2 [28]     PRINT -> 
+Hello world from process1!
+Core:2 [29]     SUB(a, 450, 74)
+Core:2 [30]     DECLARE f=20720
+Core:2 [31] FOR ×3 (body 3)
+Core:2 [32]     DECLARE h=39304
+Core:3 [33]     ADD(h, 7, 35)
+Core:3 [34]     DECLARE f=3490
+Core:3 [35]     DECLARE h=39304
+Core:3 [36]     ADD(h, 7, 35)
+Core:3 [37]     DECLARE f=3490
+Core:2 [38]     DECLARE h=39304
+Core:2 [39]     ADD(h, 7, 35)
+Core:2 [40]     DECLARE f=3490
+Core:2 [41] FOR ×3 (body 3)
+Core:2 [42]     ADD(h, 87, 373)
+Core:3 [43]     ADD(t, 488, 463)
+Core:3 [44]     PRINT -> 
+Hello world from process1!
+Core:3 [45]     ADD(h, 87, 373)
+Core:3 [46]     ADD(t, 488, 463)
+Core:3 [47]     PRINT -> 
+Hello world from process1!
+Core:2 [48]     ADD(h, 87, 373)
+Core:2 [49]     ADD(t, 488, 463)
+Core:2 [50]     PRINT -> 
+Hello world from process1!
+Core:2 [51] SUB(o, 441, 318)
+Core:2 [52] ADD(j, 257, 113)
+Core:1 [53] SLEEP 4
+Core:4 [54] DECLARE u=33632
+Core:4 [55] ADD(u, 312, 333)
+Core:4 [56] FOR ×3 (body 3)
+Core:4 [57]     ADD(u, 299, 220)
+Core:4 [58]     ADD(a, 252, 267)
+Core:4 [59]     PRINT -> 
+Hello world from process1!
+Core:4 [60]     ADD(u, 299, 220)
+Core:3 [61]     ADD(a, 252, 267)
+Core:3 [62]     PRINT -> 
+Hello world from process1!
+Core:3 [63]     ADD(u, 299, 220)
+Core:3 [64]     ADD(a, 252, 267)
+Core:3 [65]     PRINT -> 
+Hello world from process1!
+Core:4 [66] PRINT -> 
+Value from: +u: 519
+Core:4 [67] PRINT -> 
+Value from: +u: 519
+Core:4 [68] SLEEP 4
+Core:4 [69] SLEEP 1
+Core:1 [70] ADD(o, 227, 195)
+Core:1 [71] FOR ×2 (body 3)
+Core:1 [72]     SLEEP 5
+Core:3 [73]     PRINT -> 
+Value from: +x: 0
+Core:2 [74]     SLEEP 5
+Core:3 [75]     PRINT -> 
+Value from: +x: 0
+Core:2 [76] DECLARE k=51445
+Core:2 [77] FOR ×2 (body 3)
+Core:2 [78]     SUB(i, 178, 418)
+Core:2 [79]     ADD(h, 294, 406)
+Core:2 [80]     PRINT -> 
+Value from: +u: 519
+Core:3 [81]     SUB(i, 178, 418)
+Core:3 [82]     ADD(h, 294, 406)
+Core:3 [83]     PRINT -> 
+Value from: +u: 519
+Core:3 [84] ADD(h, 402, 330)
+Core:3 [85] FOR ×2 (body 3)
+Core:3 [86]     DECLARE y=6590
+Core:3 [87]     PRINT -> 
+Value from: +n: 0
+Core:3 [88]     PRINT -> 
+Value from: +t: 951
+Core:3 [89]     DECLARE y=6590
+Core:3 [90]     PRINT -> 
+Value from: +n: 0
+Core:2 [0] SLEEP 5
+Core:4 [1] PRINT -> 
+Value from: +y: 0
+Core:2 [2] DECLARE j=27925
+Core:2 [3] SLEEP 5
+Core:2 [4] SUB(i, 277, 200)
+Core:1 [5] ADD(j, 143, 427)
+Core:1 [6] DECLARE h=20671
+Core:1 [7] SUB(i, 403, 24)
+Core:1 [8] FOR ×2 (body 3)
+Core:1 [9]     DECLARE b=43709
+Core:3 [10]     SUB(b, 43, 271)
+Core:3 [11]     PRINT -> 
+Value from: +r: 0
+Core:3 [12]     DECLARE b=43709
+Core:3 [13]     SUB(b, 43, 271)
+Core:3 [14]     PRINT -> 
+Value from: +r: 0
+Core:2 [15] ADD(y, 456, 76)
+Core:2 [16] SUB(b, 65, 76)
+Core:2 [17] DECLARE c=56762
+Core:2 [18] PRINT -> 
+Value from: +i: 379
+Core:2 [19] FOR ×3 (body 3)
+Core:2 [20]     DECLARE w=50571
+Core:2 [21]     SUB(j, 414, 143)
+Core:2 [22]     SLEEP 2
+Core:4 [23]     SUB(j, 382, 141)
+Core:4 [24]     DECLARE w=50571
+Core:4 [25]     SUB(j, 414, 143)
+Core:4 [26]     SLEEP 2
+Core:1 [27]     SUB(j, 382, 141)
+Core:1 [28]     DECLARE w=50571
+Core:1 [29]     SUB(j, 414, 143)
+Core:1 [30]     SLEEP 2
+Core:4 [31]     SUB(j, 382, 141)
+Core:4 [32] PRINT -> 
+Hello world from process1!
+Core:4 [33] SUB(r, 96, 269)
+Core:4 [34] SLEEP 1
+Core:2 [35] FOR ×2 (body 3)
+Core:2 [36]     DECLARE y=11400
+Core:2 [37]     DECLARE p=65240
+Core:2 [38]     SLEEP 5
+Core:3 [39]     SUB(v, 69, 89)
+Core:4 [40]     DECLARE y=11400
+Core:4 [41]     DECLARE p=65240
+Core:4 [42]     SLEEP 5
+Core:1 [43]     SUB(v, 69, 89)
+Core:4 [44] SLEEP 2
+Core:4 [45] FOR ×2 (body 3)
+Core:4 [46]     SLEEP 3
+Core:4 [47]     DECLARE t=51778
+Core:4 [48]     SLEEP 3
+Core:2 [49]     DECLARE t=51778
+Core:2 [50] ADD(c, 161, 386)
+Core:2 [51] DECLARE g=13521
+Core:1 [52] SUB(t, 460, 474)
+Core:1 [53] SUB(y, 139, 20)
+Core:1 [54] DECLARE w=23038
+Core:1 [55] DECLARE l=39437
+Core:1 [56] FOR ×3 (body 3)
+Core:1 [57]     SUB(y, 397, 295)
+Core:1 [58]     ADD(h, 154, 404)
+Core:1 [59]     ADD(w, 461, 143)
+Core:1 [60]     SUB(y, 397, 295)
+Core:1 [61]     ADD(h, 154, 404)
+Core:3 [62]     ADD(w, 461, 143)
+Core:3 [63]     SUB(y, 397, 295)
+Core:3 [64]     ADD(h, 154, 404)
+Core:3 [65]     ADD(w, 461, 143)
+Core:3 [66] DECLARE a=62838
+Core:1 [67] SLEEP 1
+Core:1 [68] SLEEP 5
+Core:2 [69] ADD(p, 361, 12)
+Core:4 [70] PRINT -> 
+Hello world from process1!
+Core:4 [71] DECLARE k=454
+Core:4 [72] SLEEP 5
+Core:1 [73] FOR ×3 (body 3)
+Core:1 [74]     DECLARE n=4195
+Core:1 [75]     PRINT -> 
+Hello world from process1!
+Core:1 [76]     ADD(y, 162, 147)
+Core:1 [77]     DECLARE n=4195
+Core:1 [78]     PRINT -> 
+Hello world from process1!
+Core:3 [79]     ADD(y, 162, 147)
+Core:3 [80]     DECLARE n=4195
+Core:3 [81]     PRINT -> 
+Hello world from process1!
+Core:3 [82]     ADD(y, 162, 147)
+Core:3 [83] SUB(t, 377, 347)
+Core:4 [84] DECLARE r=1337
+Core:4 [85] SLEEP 3
+Core:1 [86] SUB(t, 266, 214)
+Core:1 [87] SUB(w, 254, 89)
+Core:1 [88] SUB(b, 145, 473)
+Core:1 [89] DECLARE m=60973
+Core:1 [90] SUB(q, 152, 295)
+Core:1 [91] PRINT -> 
+Hello world from process1!
+Core:1 [92] ADD(m, 175, 100)
+Core:1 [93] ADD(i, 488, 75)
+Core:1 [94] FOR ×2 (body 3)
+Core:1 [95]     SLEEP 4
+Core:1 [96]     DECLARE y=10224
+Core:1 [97]     SLEEP 4
+Core:2 [98]     DECLARE y=10224
+Core:2 [99] PRINT -> 
+Value from: +g: 13521
+Core:1 [100] SUB(q, 275, 37)
+Core:1 [101] SLEEP 3
+Core:3 [102] ADD(v, 338, 244)
+Core:3 [103] PRINT -> 
+Hello world from process1!
+Core:3 [104] FOR ×3 (body 3)
+Core:4 [105]     PRINT -> 
+Hello world from process1!
+Core:4 [106]     DECLARE a=30152
+Core:4 [107]     SLEEP 1
+Core:2 [108]     PRINT -> 
+Hello world from process1!
+Core:2 [109]     PRINT -> 
+Hello world from process1!
+Core:2 [110]     DECLARE a=30152
+Core:2 [111]     SLEEP 1
+Core:3 [112]     PRINT -> 
+Hello world from process1!
+Core:3 [113]     PRINT -> 
+Hello world from process1!
+Core:3 [114]     DECLARE a=30152
+Core:3 [115]     SLEEP 1
+Core:3 [116]     PRINT -> 
+Hello world from process1!
+Core:3 [117] DECLARE r=48946
+Core:3 [118] DECLARE z=44410
+Core:3 [119] SLEEP 2
+Core:3 [120] FOR ×3 (body 3)
+Core:3 [121]     PRINT -> 
+Value from: +i: 563
+Core:3 [122]     SLEEP 3
+Core:4 [123]     FOR ×3 (body 3)
+Core:4 [124]         ADD(j, 261, 213)
+Core:4 [125]         PRINT -> 
+Hello world from process1!
+Core:3 [126]         DECLARE n=8016
+Core:3 [127]         ADD(j, 261, 213)
+Core:3 [128]         PRINT -> 
+Hello world from process1!
+Core:3 [129]         DECLARE n=8016
+Core:3 [130]         ADD(j, 261, 213)
+Core:3 [131]         PRINT -> 
+Hello world from process1!
+Core:3 [132]         DECLARE n=8016
+Core:3 [133]     SLEEP 3
+Core:3 [134]     ADD(r, 227, 478)
+Core:3 [135]     PRINT -> 
+Value from: +i: 563
+Core:3 [136]     SLEEP 3
+Core:1 [137]     FOR ×3 (body 3)
+Core:1 [138]         ADD(j, 261, 213)
+Core:1 [139]         PRINT -> 
+Hello world from process1!
+Core:2 [140]         DECLARE n=8016
+Core:2 [141]         ADD(j, 261, 213)
+Core:2 [142]         PRINT -> 
+Hello world from process1!
+Core:2 [143]         DECLARE n=8016
+Core:2 [144]         ADD(j, 261, 213)
+Core:1 [145]         PRINT -> 
+Hello world from process1!
+Core:1 [146]         DECLARE n=8016
+Core:1 [147]     ADD(j, 261, 213)
+Core:1 [148]     PRINT -> 
+Value from: +i: 563
+Core:1 [149]     SLEEP 3
+Core:1 [150]     FOR ×3 (body 3)
+Core:1 [151]         ADD(j, 261, 213)
+Core:1 [152]         PRINT -> 
+Hello world from process1!
+Core:2 [153]         DECLARE n=8016
+Core:2 [154]         ADD(j, 261, 213)
+Core:2 [155]         PRINT -> 
+Hello world from process1!
+Core:2 [156]         DECLARE n=8016
+Core:2 [157]         ADD(j, 261, 213)
+Core:2 [158]         PRINT -> 
+Hello world from process1!
+Core:2 [159]         DECLARE n=8016
+Core:2 [160]     ADD(j, 261, 213)
+Core:2 [161] PRINT -> 
+Hello world from process1!
+Core:2 [162] DECLARE n=8016
+Core:4 [163] ADD(j, 261, 213)
+Core:4 [164] PRINT -> 
+Hello world from process1!
+Core:4 [165] DECLARE n=8016
+Core:4 [166] SLEEP 3
+Core:4 [167] ADD(r, 227, 478)
+Core:4 [168] DECLARE a=65057
+Core:4 [169] SLEEP 5
+Core:2 [170] FOR ×3 (body 3)
+Core:2 [171]     ADD(y, 245, 206)
+Core:2 [172]     SLEEP 5
+Core:4 [173]     ADD(j, 46, 203)
+Core:2 [174]     ADD(y, 245, 206)
+Core:2 [175]     SLEEP 5
+Core:3 [176]     ADD(j, 46, 203)
+Core:4 [177]     ADD(y, 245, 206)
+Core:4 [178]     SLEEP 5
+Core:2 [179]     ADD(j, 46, 203)
+Core:2 [180] ADD(k, 219, 378)
+Core:2 [181] FOR ×2 (body 3)
+Core:2 [182]     SUB(p, 61, 253)
+Core:2 [183]     DECLARE d=43257
+Core:2 [184]     SLEEP 2
+Core:2 [0] DECLARE c=53693
+Core:2 [1] FOR ×2 (body 3)
+Core:2 [2]     SUB(c, 127, 147)
+Core:2 [3]     DECLARE l=25891
+Core:2 [4]     SLEEP 3
+Core:4 [5]     SUB(l, 157, 417)
+Core:4 [6]     SUB(c, 127, 147)
+Core:4 [7]     DECLARE l=25891
+Core:4 [8]     SLEEP 3
+Core:2 [9]     SUB(l, 157, 417)
+Core:2 [10] ADD(l, 457, 354)
+Core:2 [11] PRINT -> 
+Hello world from process1!
+Core:4 [12] SUB(c, 397, 4)
+Core:4 [13] SUB(l, 12, 389)
+Core:4 [14] DECLARE h=27276
+Core:4 [15] FOR ×2 (body 3)
+Core:4 [16]     DECLARE r=1298
+Core:2 [17]     DECLARE n=37323
+Core:2 [18]     ADD(v, 218, 9)
+Core:2 [19]     DECLARE r=1298
+Core:2 [20]     DECLARE n=37323
+Core:2 [21]     ADD(v, 218, 9)
+Core:1 [22] DECLARE g=45247
+Core:1 [23] DECLARE t=42263
+Core:1 [24] FOR ×2 (body 3)
+Core:1 [25]     PRINT -> 
+Value from: +l: 0
+Core:1 [26]     DECLARE o=22531
+Core:2 [27]     SUB(h, 148, 94)
+Core:2 [28]     PRINT -> 
+Value from: +l: 0
+Core:2 [29]     DECLARE o=22531
+Core:2 [30]     SUB(h, 148, 94)
+Core:2 [31] FOR ×2 (body 3)
+Core:3 [32]     DECLARE w=14662
+Core:3 [33]     PRINT -> 
+Value from: +g: 45247
+Core:3 [34]     PRINT -> 
+Hello world from process1!
+Core:3 [35]     DECLARE w=14662
+Core:3 [36]     PRINT -> 
+Value from: +g: 45247
+Core:2 [37]     PRINT -> 
+Hello world from process1!
+Core:2 [38] FOR ×3 (body 3)
+Core:2 [39]     SUB(h, 271, 216)
+Core:2 [40]     PRINT -> 
+Value from: +r: 1298
+Core:2 [41]     SUB(l, 90, 255)
+Core:2 [42]     SUB(h, 271, 216)
+Core:2 [43]     PRINT -> 
+Value from: +r: 1298
+Core:2 [44]     SUB(l, 90, 255)
+Core:2 [45]     SUB(h, 271, 216)
+Core:2 [46]     PRINT -> 
+Value from: +r: 1298
+Core:1 [47]     SUB(l, 90, 255)
+Core:1 [48] ADD(t, 118, 165)
+Core:1 [49] PRINT -> 
+Hello world from process1!
+Core:1 [50] FOR ×3 (body 3)
+Core:1 [51]     PRINT -> 
+Hello world from process1!
+Core:4 [52]     ADD(r, 341, 172)
+Core:4 [53]     PRINT -> 
+Value from: +r: 513
+Core:4 [54]     PRINT -> 
+Hello world from process1!
+Core:4 [55]     ADD(r, 341, 172)
+Core:4 [56]     PRINT -> 
+Value from: +r: 513
+Core:3 [57]     PRINT -> 
+Hello world from process1!
+Core:3 [58]     ADD(r, 341, 172)
+Core:3 [59]     PRINT -> 
+Value from: +r: 513
+Core:3 [60] SUB(l, 132, 192)
+Core:3 [61] FOR ×3 (body 3)
+Core:4 [62]     SUB(g, 375, 432)
+Core:4 [63]     SLEEP 5
+Core:1 [64]     PRINT -> 
+Value from: +n: 37323
+Core:2 [65]     SUB(g, 375, 432)
+Core:2 [66]     SLEEP 5
+Core:1 [67]     PRINT -> 
+Value from: +n: 37323
+Core:2 [68]     SUB(g, 375, 432)
+Core:2 [69]     SLEEP 5
+Core:4 [70]     PRINT -> 
+Value from: +n: 37323
+Core:3 [71] FOR ×3 (body 3)
+Core:3 [72]     PRINT -> 
+Hello world from process1!
+Core:3 [73]     DECLARE u=36045
+Core:3 [74]     DECLARE n=58580
+Core:3 [75]     PRINT -> 
+Hello world from process1!
+Core:3 [76]     DECLARE u=36045
+Core:3 [77]     DECLARE n=58580
+Core:3 [78]     PRINT -> 
+Hello world from process1!
+Core:3 [79]     DECLARE u=36045
+Core:3 [80]     DECLARE n=58580
+Core:3 [81] ADD(n, 280, 27)
+Core:3 [82] SUB(v, 158, 402)
+Core:3 [83] FOR ×2 (body 3)
+Core:3 [84]     PRINT -> 
+Hello world from process1!
+Core:3 [85]     ADD(h, 473, 207)
+Core:3 [86]     SLEEP 2
+Core:2 [87]     PRINT -> 
+Value from: +o: 22531
+Core:2 [88]     PRINT -> 
+Hello world from process1!
+Core:2 [89]     ADD(h, 473, 207)
+Core:2 [90]     SLEEP 2
+Core:4 [91]     PRINT -> 
+Value from: +o: 22531
+Core:4 [92] FOR ×2 (body 3)
+Core:4 [93]     PRINT -> 
+Value from: +g: 0
+Core:4 [94]     DECLARE j=27372
+Core:4 [95]     PRINT -> 
+Hello world from process1!
+Core:4 [96]     PRINT -> 
+Value from: +g: 0
+Core:4 [97]     DECLARE j=27372
+Core:4 [98]     PRINT -> 
+Hello world from process1!
+Core:4 [99] DECLARE v=34384
+Core:1 [100] SUB(v, 272, 262)
+Core:1 [101] ADD(w, 102, 16)
+Core:1 [102] DECLARE u=60292
+Core:1 [103] PRINT -> 
+Hello world from process1!
+Core:1 [104] FOR ×3 (body 3)
+Core:4 [105]     DECLARE h=51397
+Core:4 [106]     SLEEP 4
+Core:4 [107]     SUB(v, 477, 439)
+Core:4 [108]     DECLARE h=51397
+Core:4 [109]     SLEEP 4
+Core:3 [110]     SUB(v, 477, 439)
+Core:3 [111]     DECLARE h=51397
+Core:3 [112]     SLEEP 4
+Core:2 [113]     SUB(v, 477, 439)
+Core:2 [114] DECLARE k=44284
+Core:1 [115] DECLARE h=7102
+Core:1 [116] ADD(c, 39, 370)
+Core:1 [117] SUB(w, 49, 476)
+Core:1 [118] PRINT -> 
+Hello world from process1!
+Core:1 [119] FOR ×3 (body 3)
+Core:1 [120]     ADD(c, 315, 155)
+Core:1 [121]     SUB(h, 238, 461)
+Core:1 [122]     DECLARE t=22326
+Core:1 [123]     ADD(c, 315, 155)
+Core:1 [124]     SUB(h, 238, 461)
+Core:2 [125]     DECLARE t=22326
+Core:2 [126]     ADD(c, 315, 155)
+Core:2 [127]     SUB(h, 238, 461)
+Core:2 [128]     DECLARE t=22326
+Core:2 [129] SLEEP 5
+Core:4 [130] PRINT -> 
+Hello world from process1!
+Core:2 [131] FOR ×2 (body 3)
+Core:2 [132]     SLEEP 3
+Core:2 [133]     PRINT -> 
+Value from: +h: 0
+Core:2 [134]     SLEEP 3
+Core:2 [135]     PRINT -> 
+Value from: +h: 0
+Core:2 [136] SLEEP 5
+Core:2 [0] PRINT -> 
+Hello world from process1!
+Core:2 [1] PRINT -> 
+Hello world from process1!
+Core:2 [2] FOR ×3 (body 3)
+Core:2 [3]     PRINT -> 
+Hello world from process1!
+Core:2 [4]     SLEEP 1
+Core:4 [5]     ADD(r, 382, 478)
+Core:4 [6]     PRINT -> 
+Hello world from process1!
+Core:4 [7]     SLEEP 1
+Core:3 [8]     ADD(r, 382, 478)
+Core:3 [9]     PRINT -> 
+Hello world from process1!
+Core:3 [10]     SLEEP 1
+Core:1 [11]     ADD(r, 382, 478)
+Core:1 [12] DECLARE l=36237
+Core:1 [13] FOR ×2 (body 3)
+Core:1 [14]     PRINT -> 
+Value from: +l: 36237
+Core:1 [15]     SLEEP 2
+Core:1 [16]     SUB(l, 158, 69)
+Core:1 [17]     PRINT -> 
+Value from: +l: 89
+Core:1 [18]     SLEEP 2
+Core:1 [19]     SUB(l, 158, 69)
+Core:1 [20] PRINT -> 
+Hello world from process1!
+Core:1 [21] SLEEP 1
+Core:3 [22] ADD(n, 411, 316)
+Core:3 [23] ADD(n, 183, 134)
+Core:3 [24] PRINT -> 
+Value from: +n: 317
+Core:3 [25] SLEEP 3
+Core:1 [26] PRINT -> 
+Hello world from process1!
+Core:1 [27] FOR ×2 (body 3)
+Core:1 [28]     SUB(l, 196, 40)
+Core:4 [29]     ADD(l, 467, 191)
+Core:4 [30]     SLEEP 3
+Core:4 [31]     ADD(i, 471, 428)
+Core:4 [32]     SUB(l, 196, 40)
+Core:4 [33]     ADD(l, 467, 191)
+Core:3 [34]     SLEEP 3
+Core:4 [35]     ADD(i, 471, 428)
+Core:4 [36] SUB(i, 377, 24)
+Core:4 [37] PRINT -> 
+Value from: +l: 658
+Core:3 [38] PRINT -> 
+Hello world from process1!
+Core:3 [39] SLEEP 1
+Core:4 [40] FOR ×3 (body 3)
+Core:4 [41]     DECLARE g=65226
+Core:4 [42]     ADD(l, 53, 187)
+Core:4 [43]     PRINT -> 
+Value from: +p: 0
+Core:4 [44]     DECLARE g=65226
+Core:1 [45]     ADD(l, 53, 187)
+Core:1 [46]     PRINT -> 
+Value from: +p: 0
+Core:1 [47]     DECLARE g=65226
+Core:1 [48]     ADD(l, 53, 187)
+Core:1 [49]     PRINT -> 
+Value from: +p: 0
+Core:2 [50] PRINT -> 
+Value from: +n: 317
+Core:2 [51] SLEEP 3
+Core:4 [52] DECLARE b=37375
+Core:4 [53] PRINT -> 
+Value from: +g: 65226
+Core:4 [54] SLEEP 5
+Core:4 [55] ADD(d, 408, 79)
+Core:4 [56] DECLARE m=8810
+Core:4 [57] SUB(n, 149, 169)
+Core:4 [58] SUB(m, 271, 298)
+Core:4 [59] SUB(n, 490, 128)
+Core:4 [60] SUB(i, 415, 481)
+Core:4 [61] PRINT -> 
+Value from: +n: 362
+Core:4 [62] ADD(d, 159, 46)
+Core:4 [63] FOR ×2 (body 3)
+Core:4 [64]     SUB(l, 226, 390)
+Core:4 [65]     SLEEP 4
+Core:4 [66]     ADD(m, 194, 483)
+Core:4 [67]     SUB(l, 226, 390)
+Core:3 [68]     SLEEP 4
+Core:2 [69]     ADD(m, 194, 483)
+Core:2 [70] ADD(n, 3, 349)
+Core:2 [71] ADD(g, 92, 382)
+Core:2 [72] SUB(g, 75, 100)
+Core:2 [73] PRINT -> 
+Hello world from process1!
+Core:2 [74] PRINT -> 
+Hello world from process1!
+Core:2 [75] SUB(d, 93, 172)
+Core:3 [76] ADD(l, 21, 288)
+Core:3 [77] FOR ×2 (body 3)
+Core:3 [78]     DECLARE a=10281
+Core:3 [79]     ADD(i, 316, 253)
+Core:3 [80]     DECLARE c=45048
+Core:1 [81]     DECLARE a=10281
+Core:1 [82]     ADD(i, 316, 253)
+Core:1 [83]     DECLARE c=45048
+Core:1 [84] SLEEP 4
+Core:4 [85] FOR ×2 (body 3)
+Core:4 [86]     SUB(l, 286, 97)
+Core:4 [87]     PRINT -> 
+Value from: +r: 860
+Core:4 [88]     PRINT -> 
+Value from: +m: 677
+Core:4 [89]     SUB(l, 286, 97)
+Core:4 [90]     PRINT -> 
+Value from: +r: 860
+Core:4 [91]     PRINT -> 
+Value from: +m: 677
+Core:2 [92] SLEEP 4
+Core:2 [93] SLEEP 3
+Core:2 [94] PRINT -> 
+Value from: +m: 677
+Core:2 [95] PRINT -> 
+Value from: +g: 0
+Core:2 [96] PRINT -> 
+Hello world from process1!
+Core:2 [97] FOR ×3 (body 3)
+Core:2 [98]     SUB(i, 496, 338)
+Core:2 [99]     SUB(a, 229, 334)
+Core:2 [100]     DECLARE t=41867
+Core:2 [101]     SUB(i, 496, 338)
+Core:2 [102]     SUB(a, 229, 334)
+Core:2 [103]     DECLARE t=41867
+Core:2 [104]     SUB(i, 496, 338)
+Core:2 [105]     SUB(a, 229, 334)
+Core:2 [106]     DECLARE t=41867
+Core:2 [107] FOR ×3 (body 3)
+Core:2 [108]     SLEEP 4
+Core:2 [109]     DECLARE d=7223
+Core:2 [110]     SLEEP 4
+Core:1 [111]     DECLARE d=7223
+Core:1 [112]     SLEEP 4
+Core:1 [113]     DECLARE d=7223
+Core:1 [114] SUB(i, 398, 426)
+Core:3 [115] DECLARE j=38200
+Core:3 [116] ADD(j, 122, 158)
+Core:3 [117] DECLARE t=55181
+Core:3 [118] ADD(r, 158, 277)
+Core:3 [119] PRINT -> 
+Hello world from process1!
+Core:3 [120] DECLARE l=27851
+Core:3 [121] SUB(a, 146, 112)
+Core:3 [122] SLEEP 5
+Core:2 [123] SUB(l, 428, 174)
+Core:4 [124] SUB(l, 394, 396)
+Core:4 [125] PRINT -> 
+Hello world from process1!
+Core:1 [0] PRINT -> 
+Hello world from process1!
+Core:1 [1] FOR ×2 (body 3)
+Core:1 [2]     SLEEP 3
+Core:3 [3]     DECLARE h=29553
+Core:3 [4]     SLEEP 3
+Core:3 [5]     DECLARE h=29553
+Core:3 [6] FOR ×2 (body 3)
+Core:3 [7]     DECLARE a=17472
+Core:4 [8]     SUB(t, 314, 454)
+Core:4 [9]     SUB(a, 180, 92)
+Core:4 [10]     DECLARE a=17472
+Core:4 [11]     SUB(t, 314, 454)
+Core:4 [12]     SUB(a, 180, 92)
+Core:2 [13] FOR ×2 (body 3)
+Core:2 [14]     DECLARE p=8175
+Core:2 [15]     ADD(a, 299, 19)
+Core:2 [16]     SUB(a, 335, 331)
+Core:2 [17]     DECLARE p=8175
+Core:3 [18]     ADD(a, 299, 19)
+Core:3 [19]     SUB(a, 335, 331)
+Core:3 [20] ADD(a, 404, 414)
+Core:3 [21] FOR ×2 (body 3)
+Core:3 [22]     SLEEP 4
+Core:4 [23]     PRINT -> 
+Hello world from process1!
+Core:4 [24]     SLEEP 4
+Core:4 [25]     PRINT -> 
+Hello world from process1!
+Core:4 [26] ADD(a, 44, 311)
+Core:1 [27] SLEEP 5
+Core:3 [28] SLEEP 5
+Core:3 [29] FOR ×3 (body 3)
+Core:2 [30]     SUB(p, 446, 151)
+Core:2 [31]     ADD(h, 41, 379)
+Core:2 [32]     SUB(t, 408, 246)
+Core:2 [33]     SUB(p, 446, 151)
+Core:2 [34]     ADD(h, 41, 379)
+Core:3 [35]     SUB(t, 408, 246)
+Core:3 [36]     SUB(p, 446, 151)
+Core:3 [37]     ADD(h, 41, 379)
+Core:3 [38]     SUB(t, 408, 246)
+Core:3 [39] PRINT -> 
+Value from: +p: 295
+Core:2 [40] DECLARE p=64323
+Core:2 [41] PRINT -> 
+Value from: +p: 64323
+Core:2 [42] PRINT -> 
+Value from: +a: 355
+Core:2 [43] FOR ×2 (body 3)
+Core:2 [44]     DECLARE n=48234
+Core:1 [45]     PRINT -> 
+Hello world from process1!
+Core:1 [46]     SLEEP 3
+Core:2 [47]     DECLARE m=18697
+Core:2 [48]     DECLARE n=48234
+Core:2 [49]     PRINT -> 
+Hello world from process1!
+Core:4 [50]     SLEEP 3
+Core:3 [51]     DECLARE m=18697
+Core:3 [52] SUB(u, 406, 361)
+Core:3 [53] FOR ×2 (body 3)
+Core:3 [54]     DECLARE v=46602
+Core:3 [55]     PRINT -> 
+Value from: +h: 420
+Core:3 [56]     ADD(h, 380, 240)
+Core:3 [57]     DECLARE v=46602
+Core:3 [58]     PRINT -> 
+Value from: +h: 620
+Core:2 [59]     ADD(h, 380, 240)
+Core:2 [60] SUB(t, 463, 269)
+Core:2 [61] PRINT -> 
+Hello world from process1!
+Core:2 [62] SLEEP 1
+Core:4 [63] PRINT -> 
+Value from: +h: 620
+Core:4 [64] SUB(h, 469, 383)
+Core:4 [65] SLEEP 5
+Core:1 [66] ADD(u, 27, 89)
+Core:4 [67] FOR ×3 (body 3)
+Core:4 [68]     ADD(h, 245, 461)
+Core:4 [69]     SUB(m, 416, 357)
+Core:4 [70]     PRINT -> 
+Value from: +n: 48234
+Core:4 [71]     ADD(h, 245, 461)
+Core:4 [72]     SUB(m, 416, 357)
+Core:4 [73]     PRINT -> 
+Value from: +n: 48234
+Core:4 [74]     ADD(h, 245, 461)
+Core:4 [75]     SUB(m, 416, 357)
+Core:4 [76]     PRINT -> 
+Value from: +n: 48234
+Core:4 [77] FOR ×3 (body 3)
+Core:4 [78]     ADD(f, 303, 163)
+Core:4 [79]     SLEEP 3
+Core:2 [80]     SLEEP 2
+Core:1 [81]     SLEEP 1
+Core:3 [82]     FOR ×3 (body 3)
+Core:3 [83]         SLEEP 5
+Core:2 [84]         ADD(o, 68, 484)
+Core:4 [85]         SLEEP 5
+Core:1 [86]         ADD(o, 68, 484)
+Core:3 [87]         SLEEP 5
+Core:1 [88]         ADD(o, 68, 484)
+Core:1 [89]     FOR ×2 (body 3)
+Core:1 [90]         ADD(t, 311, 476)
+Core:1 [91]         SLEEP 5
+Core:1 [92]         PRINT -> 
+Hello world from process1!
+Core:1 [93]         ADD(t, 311, 476)
+Core:1 [94]         SLEEP 5
+Core:4 [95]         PRINT -> 
+Hello world from process1!
+Core:2 [96]     ADD(v, 73, 374)
+Core:2 [97]     ADD(f, 303, 163)
+Core:2 [98]     SLEEP 3
+Core:2 [99]     SLEEP 2
+Core:2 [100]     SLEEP 1
+Core:1 [101]     FOR ×3 (body 3)
+Core:1 [102]         SLEEP 5
+Core:1 [103]         ADD(o, 68, 484)
+Core:3 [104]         SLEEP 5
+Core:2 [105]         ADD(o, 68, 484)
+Core:2 [106]         SLEEP 5
+Core:2 [107]         ADD(o, 68, 484)
+Core:2 [108]     SLEEP 5
+Core:2 [109]     ADD(o, 68, 484)
+Core:4 [110]     ADD(f, 303, 163)
+Core:4 [111]     SLEEP 3
+Core:3 [112]     SLEEP 2
+Core:4 [113]     SLEEP 1
+Core:2 [114]     FOR ×3 (body 3)
+Core:2 [115]         SLEEP 5
+Core:1 [116]         ADD(o, 68, 484)
+Core:1 [117]         SLEEP 5
+Core:3 [118]         ADD(o, 68, 484)
+Core:2 [119]         SLEEP 5
+Core:4 [120]         ADD(o, 68, 484)
+Core:4 [121]     SLEEP 5
+Core:2 [122]     ADD(o, 68, 484)
+Core:1 [123] SLEEP 5
+Core:1 [124] ADD(o, 68, 484)
+Core:3 [125] FOR ×2 (body 3)
+Core:3 [126]     ADD(t, 311, 476)
+Core:3 [127]     SLEEP 5
+Core:2 [128]     ADD(t, 311, 476)
+Core:4 [129]     ADD(t, 311, 476)
+Core:4 [130]     SLEEP 5
+Core:3 [131]     ADD(t, 311, 476)
+Core:1 [132] SLEEP 5
+Core:3 [133] PRINT -> 
+Hello world from process1!
+Core:2 [134] ADD(v, 73, 374)
+Core:2 [135] PRINT -> 
+Value from: +j: 0
+Core:2 [136] ADD(m, 384, 116)
+Core:2 [137] PRINT -> 
+Hello world from process1!
+Core:2 [138] PRINT -> 
+Value from: +t: 787
+Core:4 [139] SUB(p, 158, 387)
+Core:4 [140] PRINT -> 
+Value from: +n: 48234
+Core:4 [141] DECLARE k=22456
+Core:4 [142] DECLARE s=3412
+Core:4 [143] PRINT -> 
+Hello world from process1!
+Core:3 [144] SLEEP 1

@@ -314,7 +314,7 @@ void Commands::rSubCommand(const std::string& name) {
 
     try {
         ProcessInfo& process = scheduler->getProcess(name);
-        startThread(process);
+        enterProcessScreen(process);
     }
     catch (const std::runtime_error& e) {
         std::cerr << e.what() << std::endl;
@@ -345,65 +345,53 @@ void Commands::sSubCommand(const std::string& name)
     enterProcessScreen(scheduler->getProcess(name));
 }
 
-void Commands::startThread(ProcessInfo& proc) {
-
-    g_attachedPid = proc.processID;
-
-    std::cout << "THREAD START" << std::endl;
-    std::thread refresherThread(&Commands::enterProcessScreen, this, std::ref(proc));
-    std::thread inputerThread(&Commands::editProcessScreen, this, std::ref(proc));
-
-    inputerThread.join();
-    refresherThread.join();
-
-    clearScreen();
-    menuView();
-}
-
 void Commands::enterProcessScreen(ProcessInfo& proc)
 {
     const std::string procName = proc.processName;
     const int procId = proc.processID;
 
-    while (g_attachedPid == procId) {
+    g_attachedPid = procId;
+
+    ProcessInfo snap = scheduler->snapshotProcess(procName);
+
+    clearScreen();
+
+    std::cout << "Process: "     << snap.processName << std::endl;
+    std::cout << "ID: "          << snap.processID << std::endl;
+    std::cout << "Total Lines: " << snap.totalLine << std::endl;
+
+    displayProcessSmi(snap);
+
+    while (true) {
+
+        std::string cmd;
         auto snap = scheduler->snapshotProcess(procName);
 
-        if (snap.isFinished) { continue; }
-        clearScreen();
+        if (snap.isFinished) {
+            std::cout << "\nProcess has finished.\n";
+            displayProcessSmi(snap);
 
+            std::cout << "Press any key to return to menu...";
+            std::getline(std::cin, cmd);
+            break;
+        }
 
-        std::cout << "Process: " << snap.processName << std::endl;
-        std::cout << "ID: " << snap.processID << std::endl;
-        std::cout << "Total Lines: " << snap.totalLine << std::endl;
-
-        displayProcessSmi(snap);
-        std::this_thread::sleep_for(std::chrono::seconds(1));
-
-
-    }
-}
-
-void Commands::editProcessScreen(ProcessInfo& proc) {
-    const std::string name = proc.processName;
-    bool running = true;
-
-    while (running && !proc.isFinished) {
-        std::cout << "> ";
-        std::string cmd;
+        std::cout << "\n> ";
         std::getline(std::cin, cmd);
 
         if (cmd == "process-smi") {
-            auto snap = scheduler->snapshotProcess(name);
             displayProcessSmi(snap);
         }
         else if (cmd == "exit") {
-            running = false;
+            break;
         }
         else if (!cmd.empty()) {
             std::cout << "Invalid command. Available: process-smi | exit\n";
         }
     }
-    // signal the refresher thread to stop
+
+    clearScreen();
+    menuView();
     g_attachedPid = -1;
 }
 
