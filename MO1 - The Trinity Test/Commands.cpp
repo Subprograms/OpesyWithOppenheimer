@@ -117,6 +117,50 @@ static Instruction makeLeafInstr(std::vector<std::string>& vars)
                        std::to_string(Commands::getRandomInt(1, 5)));
 }
 
+static std::vector<Instruction>
+buildRandomProgram(int                       maxLogical,
+                   const Config&             cfg,
+                   std::vector<std::string>& vars,
+                   int                       depth      = 3,
+                   int                       fixedBody  = 3)
+{
+    static std::mt19937 rng{ std::random_device{}() };
+    std::vector<Instruction> prog;
+
+    auto used = [&]()->std::size_t { return logicalSize(prog); };
+
+    while (used() < static_cast<std::size_t>(maxLogical))
+    {
+        bool makeLoop = depth > 0 && (rng() % 4 == 0);
+        Instruction next;
+        std::size_t cost = 1;
+
+        if (makeLoop)
+        {
+            uint8_t reps = static_cast<uint8_t>(Commands::getRandomInt(2, 3));
+            auto body    = buildRandomProgram(fixedBody, cfg, vars,
+                                              depth - 1, fixedBody);
+            std::size_t bodyCost = logicalSize(body);
+            cost = 1 + bodyCost * reps;
+
+            if (used() + cost <= static_cast<std::size_t>(maxLogical))
+                next = Instruction(std::move(body), reps);
+            else
+                makeLoop = false;
+        }
+
+        if (!makeLoop)
+        {
+            next = makeLeafInstr(vars);
+            cost = 1;
+            if (used() + cost > static_cast<std::size_t>(maxLogical)) break;
+        }
+
+        prog.emplace_back(std::move(next));
+    }
+    return prog;
+}
+
 static int nextProcessID = 1; // For unique process IDs
 
 int Commands::getRandomInt(int floor, int ceiling) {
@@ -282,7 +326,7 @@ void Commands::sSubCommand(const std::string& name)
     try {
         ProcessInfo& existing = scheduler->getProcess(name);
         std::cout << "Reattaching to existing process: " << name << '\n';
-        startThread(existing);
+        enterProcessScreen(existing);
         return;
     }
     catch (const std::runtime_error&) { }
@@ -293,11 +337,12 @@ void Commands::sSubCommand(const std::string& name)
 
     std::vector<std::string> vars;
     proc.prog = buildRandomProgram(lines, config, vars);
+    proc.totalLine = static_cast<int>(logicalSize(proc.prog));
 
     scheduler->addProcess(std::move(proc));
     std::cout << "Created process \"" << name << "\" (" << lines << " lines)\n";
 
-    startThread(scheduler->getProcess(name));
+    enterProcessScreen(scheduler->getProcess(name));
 }
 
 void Commands::startThread(ProcessInfo& proc) {
@@ -485,7 +530,7 @@ void Commands::batchLoop()
         std::string pname = "process" + std::to_string(nextProcessID);
 
         try { scheduler->getProcess(pname); ++nextProcessID; continue; }
-        catch (...) {} // name is unique
+        catch (...) {}
 
         int lines = Commands::getRandomInt(config.minIns, config.maxIns);
 
@@ -493,6 +538,7 @@ void Commands::batchLoop()
 
         std::vector<std::string> vars;
         p.prog = buildRandomProgram(lines, config, vars);
+        p.totalLine = static_cast<int>(logicalSize(p.prog));
 
         scheduler->addProcess(std::move(p));
     }
