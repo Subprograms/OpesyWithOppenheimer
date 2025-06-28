@@ -22,15 +22,13 @@ namespace {
     }
 }
 
-static uint16_t Stoi16(const std::string& s, const std::string& ctx  = "<unknown>") // Stoi with debugger
-{
+static uint16_t Stoi16(const std::string& s, const std::string& ctx = "<unknown>") {
     try {
         long v = std::stol(s);
-        if (v < 0)          v = 0;
-        if (v > 65535)      v = 65535;
+        if (v < 0) v = 0;
+        if (v > 65535) v = 65535;
         return static_cast<uint16_t>(v);
-    }
-    catch (const std::exception& e) {
+    } catch (const std::exception& e) {
         std::cerr << " Debug: Stoi error in " << ctx
                   << " : \"" << s << "\" – " << e.what() << '\n';
         return 0;
@@ -133,68 +131,81 @@ std::vector<ProcessInfo> Scheduler::getWaitingProcesses() {
     return std::vector<ProcessInfo>(processQueue.begin(), processQueue.end());
 }
 
-void Scheduler::coreFunction(int coreId)
+void Scheduler::coreFunction(int nCoreId)
 {
-    auto strip = [](const std::string& s)
-                 { return (s.size() >= 2 && s.front() == '"' && s.back() == '"')
-                          ? s.substr(1, s.size() - 2) : s; };
+    auto strip = [](const std::string& s) -> std::string {
+        return (s.size() >= 2 && s.front() == '"' && s.back() == '"')
+             ? s.substr(1, s.size() - 2) : s;
+    };
+    auto varVal = [](const ProcessInfo& p, const std::string& v) -> std::string {
+        auto it = p.vars.find(v);
+        return (it != p.vars.end()) ? std::to_string(it->second) : "0";
+    };
+    auto log = [&](ProcessInfo& p, int c, const std::string& txt, int ind) {
+        p.outBuf.emplace_back("Core:" + std::to_string(c) + " [" +
+                              std::to_string(p.executedLines) + "] " +
+                              std::string(ind * 4, ' ') + txt);
+    };
 
-    auto valOf = [](const ProcessInfo& p, const std::string& n)
-                 { auto it = p.vars.find(n);
-                   return it != p.vars.end() ? std::to_string(it->second) : "0"; };
-
-    auto log = [](ProcessInfo& p, int core, const std::string& line)
-               {
-                   p.outBuf.emplace_back(
-                       "Core:" + std::to_string(core) +
-                       " ["    + std::to_string(p.executedLines) + "] " + line);
-               };
-
-    while (true)
+    while (running)
     {
         ProcessInfo proc(-1,"",0,"");
         {
             std::unique_lock<std::mutex> lk(queueMutex);
-            cv.wait(lk,[&]{ return !running || !processQueue.empty(); });
+            cv.wait(lk,[&]{ return !processQueue.empty() || !running; });
             if (!running && processQueue.empty()) return;
 
             proc = std::move(processQueue.front());
             processQueue.pop_front();
-            proc.assignedCore = coreId;
+            proc.assignedCore = nCoreId;
             runningProcesses.push_back(proc);
             ++coresInUse;
         }
 
-        const bool fcfs  = (schedulerType=="fcfs"||schedulerType=="FCFS");
-        const int  slice = fcfs ? INT_MAX : std::max(1,quantum);
+        const bool fcfs  = (schedulerType == "fcfs" || schedulerType == "FCFS");
+        const int  slice = fcfs ? std::numeric_limits<int>::max()
+                                : std::max(1, quantum);
 
-        int executed = 0;
-        while (proc.sleepTicks==0 &&
-               proc.currentLine < proc.totalLine &&
-               executed < slice && running)
+        auto& loopStack = proc.loopStack;
+
+        for (int used = 0; used < slice && running; )
         {
-            Instruction ins = proc.prog[proc.currentLine];
+            if (proc.sleepTicks) {
+                --proc.sleepTicks;
+                ++proc.executedLines;
+                ++used;
+                break;
+            }
+
+            // program finished?
+            if (proc.currentLine >= static_cast<int>(proc.prog.size()))
+                break;
+
+            Instruction& ins = proc.prog[proc.currentLine];
+            int indent = static_cast<int>(loopStack.size());
 
             switch (ins.op)
             {
                 case OpCode::PRINT:
                 {
-                    std::string msg = !ins.arg2.empty()       ? strip(ins.arg1)+valOf(proc,ins.arg2)
-                                        : proc.vars.count(ins.arg1) ? valOf(proc,ins.arg1)
-                                        : strip(ins.arg1);
+                    std::string msg;
+                    if (!ins.arg2.empty())
+                        msg = strip(ins.arg1) + "+" + ins.arg2 + ": "
+                            + varVal(proc, ins.arg2);
+                    else
+                        msg = strip(ins.arg1);
 
-                    if (g_attachedPid.load()==proc.processID)
-                    {
+                    if (g_attachedPid.load() == proc.processID) {
                         std::lock_guard<std::mutex> _(g_coutMx);
-                        std::cout << msg << '\n';
+                        std::cout << '\r' << msg << std::flush; // marquee
                     }
-                    log(proc,coreId,"PRINT " + ins.arg2 + " -> " + msg);
+                    log(proc, nCoreId, "PRINT -> " + msg, indent);
                     break;
                 }
 
                 case OpCode::DECLARE:
                     proc.vars[ins.arg1] = Stoi16(ins.arg2);
-                    log(proc,coreId,"DECLARE "+ins.arg1+'='+ins.arg2);
+                    log(proc, nCoreId, "DECLARE " + ins.arg1 + '=' + ins.arg2, indent);
                     break;
 
                 case OpCode::ADD:
@@ -202,82 +213,93 @@ void Scheduler::coreFunction(int coreId)
                 {
                     uint16_t v2 = ins.isArg2Var ? proc.vars[ins.arg2] : Stoi16(ins.arg2);
                     uint16_t v3 = ins.isArg3Var ? proc.vars[ins.arg3] : Stoi16(ins.arg3);
-                    uint32_t r = (ins.op==OpCode::ADD) ? v2+v3 : (v2>=v3 ? v2-v3 : 0u);
-                    proc.vars[ins.arg1] = static_cast<uint16_t>(std::min(r,65535u));
-                    log(proc,coreId,(ins.op==OpCode::ADD? "ADD ":"SUB ") + ins.arg1);
+                    uint32_t r  = (ins.op == OpCode::ADD) ? v2 + v3
+                                                           : (v2 >= v3 ? v2 - v3 : 0u);
+                    proc.vars[ins.arg1] = static_cast<uint16_t>(std::min(r, 65535u));
+                    log(proc, nCoreId,
+                        (ins.op == OpCode::ADD ? "ADD " : "SUB ") + ins.arg1, indent);
                     break;
                 }
 
                 case OpCode::SLEEP:
-                    proc.sleepTicks = Stoi16(ins.arg2);
-                    log(proc,coreId,"SLEEP "+ins.arg2);
-                    break;
-
-                case OpCode::FOR:        /* our single-instruction loop */
                 {
-                    int reps = Stoi16(ins.arg2);
-                    if (reps>0 && !ins.body.empty())
-                    {
-                        std::size_t insertPos = proc.currentLine + 1;
-                        for (int r=0;r<reps && running;++r)
-                        {
-                            proc.prog.insert(proc.prog.begin()+insertPos,
-                                             ins.body.begin(), ins.body.end());
-                            insertPos += ins.body.size();
-                        }
-                        proc.totalLine = static_cast<int>(proc.prog.size());
-                        log(proc,coreId,"FOR ×"+ins.arg2+
-                                        " (body "+std::to_string(ins.body.size())+')');
-                    }
+                    uint16_t ticks = Stoi16(ins.arg2);
+                    proc.sleepTicks = ticks ? ticks - 1 : 0;
+                    log(proc, nCoreId, "SLEEP " + ins.arg2, indent);
+                    ++proc.currentLine; ++proc.executedLines; ++used;
+                    continue; // next tick
+                }
+
+                case OpCode::FOR:
+                {
+                    if (ins.body.empty() || ins.repetitions == 0) break;
+
+                    int body   = static_cast<int>(ins.body.size());
+                    int insert = proc.currentLine + 1;
+
+                    proc.prog.insert(proc.prog.begin() + insert,
+                                     ins.body.begin(), ins.body.end());
+                    proc.totalLine = static_cast<int>(proc.prog.size());
+
+                    for (auto& f : loopStack)
+                        if (f.end >= insert) f.end += body;
+
+                    loopStack.push_back({ insert,
+                                          insert + body - 1,
+                                          static_cast<uint16_t>(ins.repetitions - 1),
+                                          indent });
+
+                    log(proc, nCoreId,
+                        "FOR ×" + std::to_string(ins.repetitions) +
+                        " (body " + std::to_string(body) + ')', indent);
                     break;
                 }
 
-                default: break;   // NOP
+                default: break;
             }
 
             ++proc.currentLine;
             ++proc.executedLines;
-            ++executed;
+            ++used;
 
-            /* keep mirror copy up-to-date so screen-smi shows progress */
-            for (auto& p : runningProcesses)
-                if (p.processID == proc.processID)
-                {   p.currentLine   = proc.currentLine;
-                    p.executedLines = proc.executedLines;
-                    p.assignedCore  = coreId;
-                    break;   }
-        }
+            // for loop accounting in here
+            if (!loopStack.empty()) {
+                auto& top = loopStack.back();
+                if (proc.currentLine > top.end) {
+                    if (top.remain) {
+                        --top.remain;
+                        proc.currentLine = top.start;
+                    } else {
+                        loopStack.pop_back();
+                    }
+                }
+            }
+        } // end of this time-slice for RR or block for FCFS
 
-        if (proc.sleepTicks>0) --proc.sleepTicks;
-        if (config.delaysPerExec>0)
+        if (config.delaysPerExec)
             std::this_thread::sleep_for(std::chrono::milliseconds(config.delaysPerExec));
 
-        const bool finished = (proc.currentLine>=proc.totalLine) &&
-                              proc.sleepTicks==0;
+        bool done = (proc.currentLine >= proc.totalLine) && (proc.sleepTicks == 0);
 
+        // process removal, logging, re-queuing
         {
             std::lock_guard<std::mutex> lk(queueMutex);
-
             runningProcesses.erase(
-                std::remove_if(runningProcesses.begin(),runningProcesses.end(),
-                    [&](const ProcessInfo& p){return p.processID==proc.processID;}),
+                std::remove_if(runningProcesses.begin(), runningProcesses.end(),
+                               [&](const ProcessInfo& p){ return p.processID == proc.processID; }),
                 runningProcesses.end());
             --coresInUse;
 
-            if (!proc.outBuf.empty())
-            {
-                std::ofstream f(proc.processName+".txt",std::ios::app);
-                for (auto& s:proc.outBuf) f<<s<<'\n';
+            if (!proc.outBuf.empty()) {
+                std::ofstream f(proc.processName + ".txt", std::ios::app);
+                for (auto& s : proc.outBuf) f << s << '\n';
                 proc.outBuf.clear();
             }
 
-            if (finished)
-                finishedProcesses.emplace_back(proc,coreId);
-            else if (!fcfs)
-            {
-                proc.assignedCore = -1;
-                processQueue.emplace_back(std::move(proc));
-            }
+            if (done)
+                finishedProcesses.emplace_back(proc, nCoreId);
+            else
+                processQueue.emplace_back(std::move(proc)); // back into ready-queue
         }
         cv.notify_all();
     }
