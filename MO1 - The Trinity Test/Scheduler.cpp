@@ -213,6 +213,8 @@ void Scheduler::coreFunction(int nCoreId)
                     else
                         msg=raw;
 
+                    msg = "\n" + msg;
+
                     if(g_attachedPid.load()==proc.processID){
                         std::lock_guard<std::mutex> _(g_coutMx);
                         std::cout <<'\r'<<msg<<std::flush;

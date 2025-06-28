@@ -22722,3 +22722,70 @@ Value from: +k: 0
 20:44:58.337 | Core:4 [47]     SLEEP 2
 20:45:13.696 | Core:1 [48]     ADD(t, 3, 181)
 20:45:13.696 | Core:1 [49]     SLEEP 2
+20:54:18.137 | Core:2 [0] FOR ×3 (body 3)
+20:54:18.137 | Core:2 [1]     SLEEP 1
+20:54:18.146 | Core:4 [2]     SLEEP 5
+20:54:18.314 | Core:3 [3]     PRINT -> 
+Value from: +u: 0
+20:54:18.362 | Core:4 [4]     SLEEP 1
+20:54:18.377 | Core:4 [5]     SLEEP 5
+20:54:18.532 | Core:4 [6]     PRINT -> 
+Value from: +u: 0
+20:54:18.610 | Core:2 [7]     SLEEP 1
+20:54:18.687 | Core:2 [8]     SLEEP 5
+20:54:18.918 | Core:4 [9]     PRINT -> 
+Value from: +u: 0
+20:54:19.058 | Core:2 [10] DECLARE o=39831
+20:54:19.058 | Core:2 [11] SLEEP 5
+20:54:19.383 | Core:3 [12] FOR ×2 (body 3)
+20:54:19.679 | Core:2 [13]     PRINT -> 
+Hello world from process1!
+20:54:19.679 | Core:2 [14]     SLEEP 4
+20:54:20.004 | Core:2 [15]     ADD(u, 202, 32)
+20:54:20.004 | Core:2 [16]     PRINT -> 
+Hello world from process1!
+20:54:20.220 | Core:3 [17]     SLEEP 4
+20:54:20.480 | Core:3 [18]     ADD(u, 202, 32)
+20:54:20.480 | Core:3 [19] PRINT -> 
+Hello world from process1!
+20:54:20.709 | Core:3 [20] PRINT -> 
+Hello world from process1!
+20:54:20.709 | Core:3 [21] DECLARE h=16246
+20:54:20.709 | Core:3 [22] FOR ×2 (body 3)
+20:54:20.709 | Core:3 [23]     DECLARE e=9817
+20:54:20.709 | Core:3 [24]     PRINT -> 
+Value from: +h: 16246
+20:54:20.926 | Core:4 [25]     SLEEP 2
+20:54:21.155 | Core:2 [26]     ADD(e, 147, 203)
+20:54:21.155 | Core:2 [27]     DECLARE e=9817
+20:54:21.155 | Core:2 [28]     PRINT -> 
+Value from: +h: 16246
+20:54:21.155 | Core:2 [29]     SLEEP 2
+20:54:21.388 | Core:3 [30]     ADD(e, 147, 203)
+20:54:21.388 | Core:3 [31] FOR ×3 (body 3)
+20:54:21.388 | Core:3 [32]     ADD(t, 497, 309)
+20:54:21.388 | Core:3 [33]     SUB(o, 449, 361)
+20:54:21.587 | Core:3 [34]     SLEEP 5
+20:54:21.879 | Core:4 [35]     SLEEP 4
+20:54:22.125 | Core:2 [36]     SLEEP 3
+20:54:22.311 | Core:3 [37]     SLEEP 4
+20:54:22.571 | Core:4 [38]     PRINT -> 
+Value from: +z: 0
+20:54:22.571 | Core:4 [39]     ADD(t, 497, 309)
+20:54:22.743 | Core:1 [40]     SUB(o, 449, 361)
+20:54:22.743 | Core:1 [41]     SLEEP 5
+20:54:22.988 | Core:4 [42]     SLEEP 4
+20:54:23.204 | Core:4 [43]     SLEEP 3
+20:54:23.398 | Core:3 [44]     SLEEP 4
+20:54:23.597 | Core:3 [45]     PRINT -> 
+Value from: +z: 0
+20:54:23.597 | Core:3 [46]     ADD(t, 497, 309)
+20:54:23.770 | Core:4 [47]     SUB(o, 449, 361)
+20:54:23.770 | Core:4 [48]     SLEEP 5
+20:54:23.954 | Core:3 [49]     SLEEP 4
+20:54:24.186 | Core:1 [50]     SLEEP 3
+20:54:24.310 | Core:1 [51]     SLEEP 4
+20:54:24.481 | Core:2 [52]     PRINT -> 
+Value from: +z: 0
+20:54:24.482 | Core:2 [53] SLEEP 5
+20:54:24.604 | Core:4 [54] SLEEP 2

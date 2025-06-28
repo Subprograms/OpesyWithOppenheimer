@@ -508,7 +508,7 @@ void Commands::displayProcessSmi(ProcessInfo& process)
 
 void Commands::batchLoop()
 {
-    const int tickS = config.delaysPerExec * 100;
+    const int tickS = config.delaysPerExec * 10;
 
     while (batchRunning.load()) {
         std::this_thread::sleep_for(
