@@ -349,6 +349,7 @@ void Commands::startThread(ProcessInfo& proc) {
 
     g_attachedPid = proc.processID;
 
+    std::cout << "THREAD START" << std::endl;
     std::thread refresherThread(&Commands::enterProcessScreen, this, std::ref(proc));
     std::thread inputerThread(&Commands::editProcessScreen, this, std::ref(proc));
 
@@ -364,46 +365,23 @@ void Commands::enterProcessScreen(ProcessInfo& proc)
     const std::string procName = proc.processName;
     const int procId = proc.processID;
 
-    auto showHeader = [&]() {
-        std::cout << "\nProcess: " << proc.processName
-            << "\nID: " << proc.processID
-            << "\nTotal Lines: " << proc.totalLine
-            << "\n";
-        };
+    while (g_attachedPid == procId) {
+        auto snap = scheduler->snapshotProcess(procName);
 
-    ProcessInfo snap = scheduler->snapshotProcess(procName);
-    clearScreen();
-    showHeader();
-    displayProcessSmi(snap);
+        if (snap.isFinished) { continue; }
+        clearScreen();
 
-    int lastExecuted = snap.executedLines;
 
-    while (!proc.isFinished && g_attachedPid == procId) {
-        ProcessInfo current = scheduler->snapshotProcess(procName);
+        std::cout << "Process: " << snap.processName << std::endl;
+        std::cout << "ID: " << snap.processID << std::endl;
+        std::cout << "Total Lines: " << snap.totalLine << std::endl;
 
-        if(current.executedLines > lastExecuted) {
-            lastExecuted = current.executedLines;
-            clearScreen();
-            showHeader();
-            displayProcessSmi(current);
-        }
+        displayProcessSmi(snap);
+        std::this_thread::sleep_for(std::chrono::seconds(1));
 
-        std::this_thread::sleep_for(std::chrono::milliseconds(1));
+
     }
 }
-
-void Commands::drawInputArea() {
-    std::lock_guard<std::mutex> lock(textMutex);
-
-    // First, print all the previous lines:
-    for (auto const& line : chatHistory) {
-        std::cout << line << "\n";
-    }
-
-    // Then re-draw the prompt with whatever is in pollinput:
-    std::cout << "> " << pollinput;
-}
-
 
 void Commands::editProcessScreen(ProcessInfo& proc) {
     const std::string name = proc.processName;
@@ -415,8 +393,8 @@ void Commands::editProcessScreen(ProcessInfo& proc) {
         std::getline(std::cin, cmd);
 
         if (cmd == "process-smi") {
-            auto proc = scheduler->snapshotProcess(name);
-            displayProcessSmi(proc);
+            auto snap = scheduler->snapshotProcess(name);
+            displayProcessSmi(snap);
         }
         else if (cmd == "exit") {
             running = false;
@@ -427,25 +405,6 @@ void Commands::editProcessScreen(ProcessInfo& proc) {
     }
     // signal the refresher thread to stop
     g_attachedPid = -1;
-}
-
-void Commands::displayProcessSmi(ProcessInfo& p)
-{
-    std::stringstream ss;
-
-    constexpr const char* border =
-        "====================  PROCESS SMI  ====================\n";
-
-    ss << '\n' << border << std::endl;
-    ss << std::left << std::setw(15) << "Name" << " : " << p.processName << std::endl;
-    ss << std::setw(15) << "PID" << " : " << p.processID << std::endl;
-    ss << std::setw(15) << "Timestamp: " << " : " << p.timeStamp << std::endl;
-    ss << std::setw(15) << "Assigned Core" << " : " << (p.assignedCore == -1 ? "N/A" : std::to_string(p.assignedCore)) << std::endl;
-    ss << std::setw(15) << "Progress" << " : " << p.executedLines << " / " << p.totalLine << std::endl;
-    ss << std::setw(15) << "Status" << " : " << (p.isFinished ? "Finished" : (p.assignedCore == -1 ? "Waiting" : "Running")) << std::endl;
-    ss << border << std::endl;
-
-    std::cout << ss.str() << std::endl;
 }
 
 // Scheduler-related commands
@@ -517,6 +476,24 @@ void Commands::displayProcess(const ProcessInfo& process) {
     std::cout << "Total Lines: " << process.totalLine << std::endl;
     std::cout << "Timestamp: " << process.timeStamp << std::endl;
     std::cout << "Status: " << (process.isFinished ? "Finished" : "Running") << std::endl;
+}
+
+void Commands::displayProcessSmi(ProcessInfo& p)
+{
+    std::stringstream ss;
+
+    constexpr const char* border =
+        "====================  PROCESS SMI  ====================\n";
+
+    ss << '\n' << border << std::endl;
+    ss << std::left << std::setw(15) << "Name"          << " : " << p.processName   << std::endl;
+    ss << std::setw(15) << "PID"                        << " : " << p.processID     << std::endl;
+    ss << std::setw(15) << "Assigned Core"             << " : " << (p.assignedCore == -1 ? "N/A" : std::to_string(p.assignedCore)) << std::endl;
+    ss << std::setw(15) << "Progress"                  << " : " << p.executedLines << " / " << p.totalLine << std::endl;
+    ss << std::setw(15) << "Status"                    << " : " << (p.isFinished ? "Finished" : (p.assignedCore == -1 ? "Waiting" : "Running")) << std::endl;
+    ss << border << std::endl;
+
+    std::cout << ss.str() << std::endl;
 }
 
 void Commands::batchLoop()
