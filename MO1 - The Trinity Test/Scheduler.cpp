@@ -232,26 +232,29 @@ void Scheduler::coreFunction(int nCoreId)
 
                 case OpCode::FOR:
                 {
-                    if (ins.body.empty() || ins.repetitions == 0) break;
+                    if (ins.body.empty() || ins.repetitions == 0)
+                        break;
 
-                    int body   = static_cast<int>(ins.body.size());
-                    int insert = proc.currentLine + 1;
+                    const uint16_t reps = ins.repetitions;
+                    const int      body = static_cast<int>(ins.body.size());
+                    const int      insert = proc.currentLine + 1;
 
                     proc.prog.insert(proc.prog.begin() + insert,
-                                     ins.body.begin(), ins.body.end());
+                                    ins.body.begin(), ins.body.end());
                     proc.totalLine = static_cast<int>(proc.prog.size());
 
                     for (auto& f : loopStack)
                         if (f.end >= insert) f.end += body;
 
                     loopStack.push_back({ insert,
-                                          insert + body - 1,
-                                          static_cast<uint16_t>(ins.repetitions - 1),
-                                          indent });
+                                        insert + body - 1,
+                                        static_cast<uint16_t>(reps - 1),
+                                        indent });
 
                     log(proc, nCoreId,
-                        "FOR ×" + std::to_string(ins.repetitions) +
-                        " (body " + std::to_string(body) + ')', indent);
+                        "FOR ×" + std::to_string(reps) +
+                        " (body " + std::to_string(body) + ')',
+                        indent);
                     break;
                 }
 
