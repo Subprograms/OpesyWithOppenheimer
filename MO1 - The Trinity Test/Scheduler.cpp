@@ -187,7 +187,7 @@ void Scheduler::coreFunction(int nCoreId)
         for(int used=0;used<slice && running; )
         {
             if(proc.sleepTicks){
-                std::this_thread::sleep_for(std::chrono::milliseconds(config.delaysPerExec));
+                std::this_thread::sleep_for(std::chrono::seconds(config.delaysPerExec));
                 --proc.sleepTicks;
                 ++used;
                 if(!proc.sleepTicks) ++proc.currentLine;
@@ -302,7 +302,7 @@ void Scheduler::coreFunction(int nCoreId)
         }
 
         if(config.delaysPerExec)
-            std::this_thread::sleep_for(std::chrono::milliseconds(config.delaysPerExec));
+            std::this_thread::sleep_for(std::chrono::seconds(config.delaysPerExec));
 
         bool finished=(proc.currentLine>=static_cast<int>(proc.prog.size()))&&proc.sleepTicks==0;
 
