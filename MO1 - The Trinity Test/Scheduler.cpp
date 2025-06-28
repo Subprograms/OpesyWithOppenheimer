@@ -186,8 +186,10 @@ void Scheduler::coreFunction(int nCoreId)
             {
                 case OpCode::PRINT:{
                     std::string raw = strip(ins.arg1);
-                    std::string msg;
+                    if(!ins.arg2.empty())               // auto-declare printed var
+                        proc.vars.try_emplace(ins.arg2,0);
 
+                    std::string msg;
                     if(raw.empty())
                         msg="Hello world from "+proc.processName+"!";
                     else if(!ins.arg2.empty())
@@ -269,7 +271,6 @@ void Scheduler::coreFunction(int nCoreId)
             ++proc.executedLines;
             ++used;
 
-            // for loop accounting in here
             if(!loopStack.empty()){
                 auto& top=loopStack.back();
                 if(proc.currentLine>top.end){
