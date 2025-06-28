@@ -4933,3 +4933,475 @@ Core:3 [3786] SLEEP 4
 Core:1 [3787] ADD j
 Core:1 [3788] SLEEP 4
 Core:1 [3789] PRINT f -> Value from: 844
+Core:1 [0] SLEEP 3
+Core:1 [1] FOR ×3 (body 2)
+Core:1 [2] FOR ×2 (body 2)
+Core:1 [3] FOR ×4 (body 2)
+Core:1 [4] DECLARE v=4155
+Core:1 [5] ADD v
+Core:1 [6] DECLARE v=4155
+Core:1 [7] ADD v
+Core:1 [8] DECLARE v=4155
+Core:1 [9] ADD v
+Core:1 [10] DECLARE v=4155
+Core:2 [11] ADD v
+Core:2 [12] PRINT v -> Value from: 451
+Core:2 [13] FOR ×4 (body 2)
+Core:2 [14] DECLARE v=4155
+Core:2 [15] ADD v
+Core:3 [16] DECLARE v=4155
+Core:3 [17] ADD v
+Core:3 [18] DECLARE v=4155
+Core:3 [19] ADD v
+Core:3 [20] DECLARE v=4155
+Core:4 [21] ADD v
+Core:4 [22] PRINT v -> Value from: 451
+Core:4 [23] FOR ×4 (body 2)
+Core:4 [24] DECLARE v=35829
+Core:4 [25] ADD v
+Core:2 [26] DECLARE v=35829
+Core:2 [27] ADD v
+Core:2 [28] DECLARE v=35829
+Core:2 [29] ADD v
+Core:2 [30] DECLARE v=35829
+Core:2 [31] ADD v
+Core:2 [32] FOR ×2 (body 2)
+Core:2 [33] FOR ×4 (body 2)
+Core:2 [34] DECLARE v=4155
+Core:2 [35] ADD v
+Core:4 [36] DECLARE v=4155
+Core:4 [37] ADD v
+Core:4 [38] DECLARE v=4155
+Core:4 [39] ADD v
+Core:4 [40] DECLARE v=4155
+Core:4 [41] ADD v
+Core:4 [42] PRINT v -> Value from: 451
+Core:4 [43] FOR ×4 (body 2)
+Core:4 [44] DECLARE v=4155
+Core:4 [45] ADD v
+Core:3 [46] DECLARE v=4155
+Core:3 [47] ADD v
+Core:3 [48] DECLARE v=4155
+Core:3 [49] ADD v
+Core:3 [50] DECLARE v=4155
+Core:1 [51] ADD v
+Core:1 [52] PRINT v -> Value from: 451
+Core:1 [53] FOR ×4 (body 2)
+Core:1 [54] DECLARE v=35829
+Core:1 [55] ADD v
+Core:3 [56] DECLARE v=35829
+Core:3 [57] ADD v
+Core:3 [58] DECLARE v=35829
+Core:3 [59] ADD v
+Core:3 [60] DECLARE v=35829
+Core:1 [61] ADD v
+Core:1 [62] FOR ×2 (body 2)
+Core:1 [63] FOR ×4 (body 2)
+Core:1 [64] DECLARE v=4155
+Core:1 [65] ADD v
+Core:2 [66] DECLARE v=4155
+Core:2 [67] ADD v
+Core:2 [68] DECLARE v=4155
+Core:2 [69] ADD v
+Core:2 [70] DECLARE v=4155
+Core:1 [71] ADD v
+Core:1 [72] PRINT v -> Value from: 451
+Core:1 [73] FOR ×4 (body 2)
+Core:1 [74] DECLARE v=4155
+Core:1 [75] ADD v
+Core:2 [76] DECLARE v=4155
+Core:2 [77] ADD v
+Core:2 [78] DECLARE v=4155
+Core:2 [79] ADD v
+Core:2 [80] DECLARE v=4155
+Core:4 [81] ADD v
+Core:4 [82] PRINT v -> Value from: 451
+Core:4 [83] FOR ×4 (body 2)
+Core:4 [84] DECLARE v=35829
+Core:4 [85] ADD v
+Core:3 [86] DECLARE v=35829
+Core:3 [87] ADD v
+Core:3 [88] DECLARE v=35829
+Core:3 [89] ADD v
+Core:3 [90] DECLARE v=35829
+Core:1 [91] ADD v
+Core:1 [92] PRINT v -> Value from: 464
+Core:1 [93] SLEEP 3
+Core:2 [94] SUB v
+Core:2 [95] ADD v
+Core:2 [96] SLEEP 2
+Core:3 [97] PRINT v -> Value from: 402
+Core:3 [98] ADD v
+Core:3 [99] SLEEP 5
+Core:1 [100] SUB v
+Core:1 [101] FOR ×2 (body 3)
+Core:1 [102] FOR ×3 (body 2)
+Core:1 [103] FOR ×5 (body 2)
+Core:1 [104] SLEEP 2
+Core:3 [105] SUB v
+Core:3 [106] SLEEP 2
+Core:1 [0] SLEEP 5
+Core:1 [1] DECLARE g=6141
+Core:1 [2] SLEEP 1
+Core:2 [3] PRINT g -> Value from: 6141
+Core:2 [4] DECLARE o=29628
+Core:2 [5] FOR ×2 (body 3)
+Core:2 [6] PRINT o -> Value from: 29628
+Core:2 [7] SUB o
+Core:3 [8] SUB g
+Core:3 [9] PRINT o -> Value from: 0
+Core:3 [10] SUB o
+Core:3 [11] SUB g
+Core:3 [12] PRINT o -> Value from: 0
+Core:1 [13] FOR ×4 (body 3)
+Core:1 [14] ADD o
+Core:1 [15] DECLARE j=2066
+Core:1 [16] FOR ×3 (body 2)
+Core:1 [17] FOR ×2 (body 2)
+Core:2 [18] DECLARE r=48047
+Core:2 [19] DECLARE s=3704
+Core:2 [20] DECLARE r=48047
+Core:2 [21] DECLARE s=3704
+Core:2 [22] ADD r
+Core:2 [23] FOR ×2 (body 2)
+Core:2 [24] DECLARE r=48047
+Core:2 [25] DECLARE s=3704
+Core:2 [26] DECLARE r=48047
+Core:2 [27] DECLARE s=3704
+Core:4 [28] ADD r
+Core:4 [29] FOR ×2 (body 2)
+Core:4 [30] DECLARE r=48047
+Core:4 [31] DECLARE s=3704
+Core:4 [32] DECLARE r=48047
+Core:3 [33] DECLARE s=3704
+Core:3 [34] ADD r
+Core:3 [35] ADD o
+Core:3 [36] DECLARE j=2066
+Core:3 [37] FOR ×3 (body 2)
+Core:2 [38] FOR ×2 (body 2)
+Core:2 [39] DECLARE r=48047
+Core:2 [40] DECLARE s=3704
+Core:2 [41] DECLARE r=48047
+Core:2 [42] DECLARE s=3704
+Core:2 [43] ADD r
+Core:2 [44] FOR ×2 (body 2)
+Core:2 [45] DECLARE r=48047
+Core:2 [46] DECLARE s=3704
+Core:2 [47] DECLARE r=48047
+Core:2 [48] DECLARE s=3704
+Core:2 [49] ADD r
+Core:2 [50] FOR ×2 (body 2)
+Core:2 [51] DECLARE r=48047
+Core:2 [52] DECLARE s=3704
+Core:2 [53] DECLARE r=48047
+Core:2 [54] DECLARE s=3704
+Core:2 [55] ADD r
+Core:2 [56] ADD o
+Core:2 [57] DECLARE j=2066
+Core:1 [58] FOR ×3 (body 2)
+Core:1 [59] FOR ×2 (body 2)
+Core:1 [60] DECLARE r=48047
+Core:1 [61] DECLARE s=3704
+Core:1 [62] DECLARE r=48047
+Core:4 [63] DECLARE s=3704
+Core:4 [64] ADD r
+Core:4 [65] FOR ×2 (body 2)
+Core:4 [66] DECLARE r=48047
+Core:4 [67] DECLARE s=3704
+Core:1 [68] DECLARE r=48047
+Core:1 [69] DECLARE s=3704
+Core:1 [70] ADD r
+Core:1 [71] FOR ×2 (body 2)
+Core:1 [72] DECLARE r=48047
+Core:3 [73] DECLARE s=3704
+Core:3 [74] DECLARE r=48047
+Core:3 [75] DECLARE s=3704
+Core:3 [76] ADD r
+Core:3 [77] ADD o
+Core:2 [78] DECLARE j=2066
+Core:2 [79] FOR ×3 (body 2)
+Core:2 [80] FOR ×2 (body 2)
+Core:2 [81] DECLARE r=48047
+Core:2 [82] DECLARE s=3704
+Core:2 [83] DECLARE r=48047
+Core:2 [84] DECLARE s=3704
+Core:2 [85] ADD r
+Core:2 [86] FOR ×2 (body 2)
+Core:2 [87] DECLARE r=48047
+Core:1 [88] DECLARE s=3704
+Core:1 [89] DECLARE r=48047
+Core:1 [90] DECLARE s=3704
+Core:1 [91] ADD r
+Core:1 [92] FOR ×2 (body 2)
+Core:3 [93] DECLARE r=48047
+Core:3 [94] DECLARE s=3704
+Core:3 [95] DECLARE r=48047
+Core:3 [96] DECLARE s=3704
+Core:3 [97] ADD r
+Core:3 [98] PRINT r -> Value from: 568
+Core:3 [99] FOR ×3 (body 3)
+Core:3 [100] DECLARE s=44666
+Core:3 [101] FOR ×4 (body 3)
+Core:3 [102] ADD s
+Core:2 [103] SLEEP 1
+Core:1 [104] ADD s
+Core:1 [105] ADD s
+Core:1 [106] SLEEP 1
+Core:2 [107] ADD s
+Core:2 [108] ADD s
+Core:2 [109] SLEEP 1
+Core:2 [110] ADD s
+Core:2 [111] ADD s
+Core:2 [112] SLEEP 1
+Core:2 [113] ADD s
+Core:2 [114] PRINT r -> Value from: 568
+Core:2 [115] DECLARE s=44666
+Core:2 [116] FOR ×4 (body 3)
+Core:2 [117] ADD s
+Core:2 [118] SLEEP 1
+Core:1 [119] ADD s
+Core:1 [120] ADD s
+Core:1 [121] SLEEP 1
+Core:4 [122] ADD s
+Core:4 [123] ADD s
+Core:4 [124] SLEEP 1
+Core:2 [125] ADD s
+Core:2 [126] ADD s
+Core:2 [127] SLEEP 1
+Core:1 [128] ADD s
+Core:1 [129] PRINT r -> Value from: 568
+Core:1 [130] DECLARE s=44666
+Core:1 [131] FOR ×4 (body 3)
+Core:1 [132] ADD s
+Core:1 [133] SLEEP 1
+Core:4 [134] ADD s
+Core:4 [135] ADD s
+Core:4 [136] SLEEP 1
+Core:3 [137] ADD s
+Core:3 [138] ADD s
+Core:3 [139] SLEEP 1
+Core:4 [140] ADD s
+Core:4 [141] ADD s
+Core:4 [142] SLEEP 1
+Core:2 [143] ADD s
+Core:2 [144] PRINT r -> Value from: 568
+Core:2 [145] ADD j
+Core:2 [146] ADD s
+Core:2 [147] FOR ×5 (body 2)
+Core:1 [148] SLEEP 2
+Core:1 [149] PRINT s -> Value from: 655
+Core:1 [150] SLEEP 2
+Core:4 [151] PRINT s -> Value from: 655
+Core:4 [152] SLEEP 2
+Core:1 [153] PRINT s -> Value from: 655
+Core:1 [154] SLEEP 2
+Core:1 [155] PRINT s -> Value from: 655
+Core:1 [156] SLEEP 2
+Core:3 [157] PRINT s -> Value from: 655
+Core:3 [158] SLEEP 2
+Core:2 [159] SUB j
+Core:2 [160] FOR ×2 (body 3)
+Core:2 [161] ADD s
+Core:2 [162] FOR ×2 (body 2)
+Core:2 [163] FOR ×3 (body 3)
+Core:3 [164] SUB s
+Core:3 [165] SUB g
+Core:3 [166] DECLARE e=13761
+Core:3 [167] SUB s
+Core:3 [168] SUB g
+Core:4 [169] DECLARE e=13761
+Core:4 [170] SUB s
+Core:4 [171] SUB g
+Core:4 [172] DECLARE e=13761
+Core:4 [173] SUB g
+Core:2 [174] FOR ×3 (body 3)
+Core:2 [175] SUB s
+Core:2 [176] SUB g
+Core:2 [177] DECLARE e=13761
+Core:2 [178] SUB s
+Core:1 [179] SUB g
+Core:1 [180] DECLARE e=13761
+Core:1 [181] SUB s
+Core:1 [182] SUB g
+Core:1 [183] DECLARE e=13761
+Core:4 [184] SUB g
+Core:4 [185] FOR ×4 (body 2)
+Core:4 [186] DECLARE q=15603
+Core:4 [187] SUB s
+Core:4 [188] DECLARE q=15603
+Core:2 [189] SUB s
+Core:2 [190] DECLARE q=15603
+Core:2 [191] SUB s
+Core:2 [192] DECLARE q=15603
+Core:2 [193] SUB s
+Core:1 [194] ADD s
+Core:1 [195] FOR ×2 (body 2)
+Core:1 [196] FOR ×3 (body 3)
+Core:1 [197] SUB s
+Core:1 [198] SUB g
+Core:4 [199] DECLARE e=13761
+Core:4 [200] SUB s
+Core:4 [201] SUB g
+Core:4 [202] DECLARE e=13761
+Core:4 [203] SUB s
+Core:1 [204] SUB g
+Core:1 [205] DECLARE e=13761
+Core:1 [206] SUB g
+Core:1 [207] FOR ×3 (body 3)
+Core:1 [208] SUB s
+Core:1 [209] SUB g
+Core:1 [210] DECLARE e=13761
+Core:1 [211] SUB s
+Core:1 [212] SUB g
+Core:1 [213] DECLARE e=13761
+Core:3 [214] SUB s
+Core:3 [215] SUB g
+Core:3 [216] DECLARE e=13761
+Core:3 [217] SUB g
+Core:3 [218] FOR ×4 (body 2)
+Core:1 [219] DECLARE q=15603
+Core:1 [220] SUB s
+Core:1 [221] DECLARE q=15603
+Core:1 [222] SUB s
+Core:1 [223] DECLARE q=15603
+Core:1 [224] SUB s
+Core:1 [225] DECLARE q=15603
+Core:1 [226] SUB s
+Core:1 [227] ADD g
+Core:1 [228] FOR ×5 (body 3)
+Core:4 [229] ADD q
+Core:4 [230] ADD e
+Core:4 [231] SUB o
+Core:4 [232] ADD q
+Core:4 [233] ADD e
+Core:2 [234] SUB o
+Core:2 [235] ADD q
+Core:2 [236] ADD e
+Core:2 [237] SUB o
+Core:2 [238] ADD q
+Core:1 [239] ADD e
+Core:1 [240] SUB o
+Core:1 [241] ADD q
+Core:1 [242] ADD e
+Core:1 [243] SUB o
+Core:2 [244] PRINT r -> Value from: 568
+Core:2 [245] FOR ×3 (body 2)
+Core:2 [246] DECLARE p=56862
+Core:2 [247] FOR ×5 (body 3)
+Core:2 [248] PRINT p -> Value from: 56862
+Core:1 [249] FOR ×5 (body 3)
+Core:1 [250] SLEEP 1
+Core:2 [251] SLEEP 2
+Core:4 [252] ADD p
+Core:4 [253] SLEEP 1
+Core:3 [254] SLEEP 2
+Core:4 [255] ADD p
+Core:4 [256] SLEEP 1
+Core:4 [257] SLEEP 2
+Core:3 [258] ADD p
+Core:3 [259] SLEEP 1
+Core:2 [260] SLEEP 2
+Core:2 [261] ADD p
+Core:2 [262] SLEEP 1
+Core:2 [263] SLEEP 2
+Core:1 [264] ADD p
+Core:1 [265] SUB s
+Core:1 [266] PRINT p -> Value from: 382
+Core:1 [267] FOR ×5 (body 3)
+Core:1 [268] SLEEP 1
+Core:3 [269] SLEEP 2
+Core:4 [270] ADD p
+Core:4 [271] SLEEP 1
+Core:4 [272] SLEEP 2
+Core:3 [273] ADD p
+Core:3 [274] SLEEP 1
+Core:2 [275] SLEEP 2
+Core:2 [276] ADD p
+Core:2 [277] SLEEP 1
+Core:3 [278] SLEEP 2
+Core:2 [279] ADD p
+Core:2 [280] SLEEP 1
+Core:2 [281] SLEEP 2
+Core:2 [282] ADD p
+Core:2 [283] SUB s
+Core:2 [284] PRINT p -> Value from: 382
+Core:2 [285] FOR ×5 (body 3)
+Core:2 [286] SLEEP 1
+Core:1 [287] SLEEP 2
+Core:2 [288] ADD p
+Core:2 [289] SLEEP 1
+Core:1 [290] SLEEP 2
+Core:2 [291] ADD p
+Core:2 [292] SLEEP 1
+Core:1 [293] SLEEP 2
+Core:3 [294] ADD p
+Core:3 [295] SLEEP 1
+Core:2 [296] SLEEP 2
+Core:2 [297] ADD p
+Core:2 [298] SLEEP 1
+Core:3 [299] SLEEP 2
+Core:3 [300] ADD p
+Core:3 [301] SUB s
+Core:3 [302] PRINT p -> Value from: 382
+Core:3 [303] FOR ×5 (body 3)
+Core:3 [304] SLEEP 1
+Core:4 [305] SLEEP 2
+Core:1 [306] ADD p
+Core:1 [307] SLEEP 1
+Core:1 [308] SLEEP 2
+Core:2 [309] ADD p
+Core:2 [310] SLEEP 1
+Core:2 [311] SLEEP 2
+Core:4 [312] ADD p
+Core:4 [313] SLEEP 1
+Core:3 [314] SLEEP 2
+Core:1 [315] ADD p
+Core:1 [316] SLEEP 1
+Core:1 [317] SLEEP 2
+Core:1 [318] ADD p
+Core:1 [319] SUB s
+Core:1 [320] PRINT p -> Value from: 382
+Core:1 [321] FOR ×5 (body 3)
+Core:1 [322] SLEEP 1
+Core:4 [323] SLEEP 2
+Core:1 [324] ADD p
+Core:1 [325] SLEEP 1
+Core:1 [326] SLEEP 2
+Core:4 [327] ADD p
+Core:4 [328] SLEEP 1
+Core:2 [329] SLEEP 2
+Core:4 [330] ADD p
+Core:4 [331] SLEEP 1
+Core:4 [332] SLEEP 2
+Core:3 [333] ADD p
+Core:3 [334] SLEEP 1
+Core:4 [335] SLEEP 2
+Core:3 [336] ADD p
+Core:3 [337] SUB s
+Core:3 [338] DECLARE p=56862
+Core:3 [339] FOR ×5 (body 3)
+Core:3 [340] PRINT p -> Value from: 56862
+Core:2 [341] FOR ×5 (body 3)
+Core:2 [342] SLEEP 1
+Core:3 [343] SLEEP 2
+Core:2 [344] ADD p
+Core:2 [345] SLEEP 1
+Core:4 [346] SLEEP 2
+Core:2 [347] ADD p
+Core:2 [348] SLEEP 1
+Core:2 [349] SLEEP 2
+Core:2 [350] ADD p
+Core:2 [351] SLEEP 1
+Core:3 [352] SLEEP 2
+Core:3 [353] ADD p
+Core:3 [354] SLEEP 1
+Core:1 [355] SLEEP 2
+Core:2 [356] ADD p
+Core:2 [357] SUB s
+Core:2 [358] PRINT p -> Value from: 382
+Core:2 [359] FOR ×5 (body 3)
+Core:2 [360] SLEEP 1
+Core:1 [361] SLEEP 2
+Core:2 [362] ADD p
+Core:2 [363] SLEEP 1
+Core:2 [364] SLEEP 2

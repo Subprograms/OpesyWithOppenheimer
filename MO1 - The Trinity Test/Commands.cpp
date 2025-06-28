@@ -261,6 +261,7 @@ void Commands::screenCommand(const std::string& cmdLine)
 
     iss >> token; // first token is "screen"  (skip it)
     iss >> subCmd; // "-r", "-s", or "-ls"
+
     if (subCmd != "-ls") // only need a name for -r or -s
         iss >> procName;
 
@@ -268,6 +269,7 @@ void Commands::screenCommand(const std::string& cmdLine)
         std::cout << "ERROR: Missing subcommand. Use -r | -s | -ls\n";
         return;
     }
+
     if (subCmd != "-ls" && procName.empty()) {
         std::cout << "ERROR: Process name required for " << subCmd << "\n";
         return;
