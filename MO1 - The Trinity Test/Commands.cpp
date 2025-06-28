@@ -16,6 +16,7 @@ static std::string randVar() {
     static std::mt19937 rng{ std::random_device{}() };
     return std::string(1, static_cast<char>('a' + (rng() % 26)));
 }
+
 static Instruction randomInstr(const Config& cfg,
                                std::vector<std::string>& vars)
 {
@@ -25,35 +26,37 @@ static Instruction randomInstr(const Config& cfg,
 
     switch (code)
     {
-    /* ---------- PRINT ------------------------------------ */
-    case 0:
-        if (vars.empty()) { // no var yet? force DECLARE one
+    /* ---------- PRINT ---------- */
+    case 0: {
+        if ((rng() & 3) == 0)
+            return Instruction{OpCode::PRINT, "\"\"", "", "", false, false};
+
+        if (vars.empty()) {
             std::string v = randVar();
             vars.push_back(v);
             std::string val = std::to_string(Commands::getRandomInt(0, 65535));
             return Instruction{OpCode::DECLARE, v, val, "", false, true };
-        } else {
-            std::string v = vars[rng() % vars.size()];
-            return Instruction{OpCode::PRINT, "", v, "", false, true };
         }
+        std::string v = vars[rng() % vars.size()];
+        return Instruction{OpCode::PRINT, "\"Value from: \"", v, "", false, true };
+    }
 
-    /* ---------- DECLARE ---------------------------------- */
+    /* ---------- DECLARE ---------- */
     case 1: {
-        std::string v = randVar();
-        vars.push_back(v);
+        std::string v = randVar(); vars.push_back(v);
         std::string val = std::to_string(Commands::getRandomInt(0, 65535));
         return Instruction{OpCode::DECLARE, v, val, "", false, true };
     }
 
-    /* ---------- ADD / SUBTRACT --------------------------- */
+    /* ---------- ADD / SUB ---------- */
     case 2:
     case 3: {
-        if (vars.empty()) return randomInstr(cfg, vars);   // ensure a var exists
+        if (vars.empty()) return randomInstr(cfg, vars);
 
-        bool rhs2Var = (rng() & 1);
-        bool rhs3Var = (rng() & 1);
+        bool rhs2Var = rng() & 1;
+        bool rhs3Var = rng() & 1;
 
-        std::string var1 = vars[rng() % vars.size()];      // target is a var
+        std::string var1 = vars[rng() % vars.size()];
         std::string arg2 = rhs2Var ? vars[rng() % vars.size()]
                                    : std::to_string(Commands::getRandomInt(0,500));
         std::string arg3 = rhs3Var ? vars[rng() % vars.size()]
@@ -63,34 +66,44 @@ static Instruction randomInstr(const Config& cfg,
                             var1, arg2, arg3, rhs2Var, rhs3Var };
     }
 
-    /* ---------- SLEEP ------------------------------------ */
+    /* ---------- SLEEP ---------- */
     case 4: {
         std::string ticks = std::to_string(Commands::getRandomInt(1, 5));
         return Instruction{ OpCode::SLEEP, "", ticks, "", false, true };
     }
 
-    /* ---------- FOR_BEGIN -------------------------------- */
+    /* ---------- FOR ---------- */
     default: {
         std::string reps = std::to_string(Commands::getRandomInt(1, 3));
     }
     }
 }
 
-static Instruction makeLeafInstr(std::vector<std::string>& vars) {
+static Instruction makeLeafInstr(std::vector<std::string>& vars)
+{
     static std::mt19937 rng{ std::random_device{}() };
     int code = rng() % 5;
 
-    if (code == 0) { // PRINT
+    /* ---------- PRINT ---------- */
+    if (code == 0) {
+        /* 50 % chance to emit a blank PRINT */
+        if (rng() & 1)
+            return Instruction(OpCode::PRINT, "\"\"", "", "", false, false);
+
         if (vars.empty()) return makeLeafInstr(vars);
         std::string v = vars[rng() % vars.size()];
         return Instruction(OpCode::PRINT, "\"Value from: \"", v, "", false, true);
     }
-    if (code == 1) { // DECLARE
+
+    /* ---------- DECLARE ---------- */
+    if (code == 1) {
         std::string v = randVar(); vars.push_back(v);
         return Instruction(OpCode::DECLARE, v,
                            std::to_string(Commands::getRandomInt(0, 65535)));
     }
-    if (code == 2 || code == 3) { // ADD / SUBTRACT
+
+    /* ---------- ADD / SUB ---------- */
+    if (code == 2 || code == 3) {
         if (vars.empty()) return makeLeafInstr(vars);
         std::string v1 = vars[rng() % vars.size()];
         std::string a2 = std::to_string(Commands::getRandomInt(1, 500));
@@ -99,39 +112,9 @@ static Instruction makeLeafInstr(std::vector<std::string>& vars) {
                            v1, a2, a3);
     }
 
-    /* SLEEP */
+    /* ---------- SLEEP ---------- */
     return Instruction(OpCode::SLEEP, "",
                        std::to_string(Commands::getRandomInt(1, 5)));
-}
-
-static std::vector<Instruction>
-buildRandomProgram(int                       len,
-                   const Config&             cfg,
-                   std::vector<std::string>& vars,
-                   int                       depth = 3)
-{
-    static std::mt19937 rng{ std::random_device{}() };
-    std::vector<Instruction> prog;
-
-    while (static_cast<int>(prog.size()) < len)
-    {
-        bool makeLoop = depth > 0 && (rng() % 4 == 0); // 25% chance
-        if (makeLoop)
-        {
-            int      bodyLen = Commands::getRandomInt(2, 3);
-            uint8_t  reps    = static_cast<uint8_t>(
-                                 Commands::getRandomInt(2, 3));
-            auto     body    = buildRandomProgram(bodyLen,
-                                                  cfg, vars,
-                                                  depth - 1);
-            prog.emplace_back(std::move(body), reps);
-        }
-        else
-        {
-            prog.emplace_back(makeLeafInstr(vars));
-        }
-    }
-    return prog;
 }
 
 static int nextProcessID = 1; // For unique process IDs
@@ -170,7 +153,7 @@ Commands::Commands() : scheduler(nullptr) {}
 
 void Commands::initialize(std::string filename) {
     if (scheduler == nullptr) {
-        
+
         //bool fileLoaded = false;
 
         while (true) {
@@ -327,13 +310,13 @@ void Commands::startThread(ProcessInfo& proc) {
 
     inputerThread.join();
     refresherThread.join();
-   
+
     clearScreen();
     menuView();
 }
 
 void Commands::enterProcessScreen(ProcessInfo& proc)
-{   
+{
     const std::string procName = proc.processName;
     const int procId = proc.processID;
 
@@ -342,12 +325,12 @@ void Commands::enterProcessScreen(ProcessInfo& proc)
 
         if (snap.isFinished) { continue; }
         clearScreen();
-        
+
 
         std::cout << "Process: " << snap.processName << std::endl;
         std::cout << "ID: " << snap.processID << std::endl;
         std::cout << "Total Lines: " << snap.totalLine << std::endl;
-        
+
         displayProcessSmi(snap);
         std::this_thread::sleep_for(std::chrono::seconds(1));
 

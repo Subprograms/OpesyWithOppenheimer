@@ -177,25 +177,28 @@ void Scheduler::coreFunction(int nCoreId)
                 break;
             }
 
-            // program finished?
-            if (proc.currentLine >= static_cast<int>(proc.prog.size()))
-                break;
+            if(proc.currentLine>=static_cast<int>(proc.prog.size()))
+                break; // program finished?
 
             Instruction& ins = proc.prog[proc.currentLine];
             int indent = static_cast<int>(loopStack.size());
 
             switch (ins.op)
             {
-                case OpCode::PRINT:
-                {
-                    std::string msg;
-                    if (!ins.arg2.empty())
-                        msg = strip(ins.arg1) + "+" + ins.arg2 + ": "
-                            + varVal(proc, ins.arg2);
-                    else
-                        msg = strip(ins.arg1);
+                case OpCode::PRINT:{
+                    std::string raw = strip(ins.arg1);
+                    if(!ins.arg2.empty())               // auto-declare printed var
+                        proc.vars.try_emplace(ins.arg2,0);
 
-                    if (g_attachedPid.load() == proc.processID) {
+                    std::string msg;
+                    if(raw.empty())
+                        msg="Hello world from "+proc.processName+"!";
+                    else if(!ins.arg2.empty())
+                        msg=raw+'+'+ins.arg2+": "+varVal(proc,ins.arg2);
+                    else
+                        msg=raw;
+
+                    if(g_attachedPid.load()==proc.processID){
                         std::lock_guard<std::mutex> _(g_coutMx);
                         std::cout << '\r' << msg << std::flush; // marquee
                     }
@@ -209,31 +212,42 @@ void Scheduler::coreFunction(int nCoreId)
                     break;
 
                 case OpCode::ADD:
-                case OpCode::SUBTRACT:
-                {
-                    uint16_t v2 = ins.isArg2Var ? proc.vars[ins.arg2] : Stoi16(ins.arg2);
-                    uint16_t v3 = ins.isArg3Var ? proc.vars[ins.arg3] : Stoi16(ins.arg3);
-                    uint32_t r  = (ins.op == OpCode::ADD) ? v2 + v3
-                                                           : (v2 >= v3 ? v2 - v3 : 0u);
-                    proc.vars[ins.arg1] = static_cast<uint16_t>(std::min(r, 65535u));
-                    log(proc, nCoreId,
-                        (ins.op == OpCode::ADD ? "ADD " : "SUB ") + ins.arg1, indent);
+                case OpCode::SUBTRACT:{
+                    if(ins.isArg2Var) proc.vars.try_emplace(ins.arg2,0);
+                    if(ins.isArg3Var) proc.vars.try_emplace(ins.arg3,0);
+
+                    uint16_t v2=ins.isArg2Var?proc.vars[ins.arg2]:Stoi16(ins.arg2);
+                    uint16_t v3=ins.isArg3Var?proc.vars[ins.arg3]:Stoi16(ins.arg3);
+
+                    uint32_t r=(ins.op==OpCode::ADD)?v2+v3:(v2>=v3?v2-v3:0u);
+                    proc.vars[ins.arg1]=static_cast<uint16_t>(std::min(r,65535u));
+
+                    std::string logStr=(ins.op==OpCode::ADD?"ADD(":"SUB(")+
+                                        ins.arg1+", "+
+                                        (ins.arg2.empty()?"0":ins.arg2)+", "+
+                                        (ins.arg3.empty()?"0":ins.arg3)+")";
+                    log(proc,nCoreId,logStr,indent);
                     break;
                 }
 
-                case OpCode::SLEEP:
-                {
-                    uint16_t ticks = Stoi16(ins.arg2);
-                    proc.sleepTicks = ticks ? ticks - 1 : 0;
-                    log(proc, nCoreId, "SLEEP " + ins.arg2, indent);
-                    ++proc.currentLine; ++proc.executedLines; ++used;
-                    continue; // next tick
+                case OpCode::SLEEP:{
+                    uint16_t t=Stoi16(ins.arg2);
+                    if(t>255) t=255;
+                    proc.sleepTicks = t ? t-1 : 0;
+                    log(proc,nCoreId,"SLEEP "+std::to_string(t),indent);
+                    ++proc.executedLines;
+                    ++used;
+                    ++proc.currentLine;
+                    used=slice;
+                    continue;
                 }
 
-                case OpCode::FOR:
-                {
-                    if (ins.body.empty() || ins.repetitions == 0)
-                        break;
+                case OpCode::FOR:{
+                    if(ins.body.empty()||ins.repetitions==0) break;
+                    if(loopStack.size()>=3) break;
+                    uint16_t reps=ins.repetitions;
+                    int bodyCnt=static_cast<int>(ins.body.size());
+                    int insertAt=proc.currentLine+1;
 
                     const uint16_t reps = ins.repetitions;
                     const int      body = static_cast<int>(ins.body.size());
@@ -265,11 +279,10 @@ void Scheduler::coreFunction(int nCoreId)
             ++proc.executedLines;
             ++used;
 
-            // for loop accounting in here
-            if (!loopStack.empty()) {
-                auto& top = loopStack.back();
-                if (proc.currentLine > top.end) {
-                    if (top.remain) {
+            if(!loopStack.empty()){
+                auto& top=loopStack.back();
+                if(proc.currentLine>top.end){
+                    if(top.remain){
                         --top.remain;
                         proc.currentLine = top.start;
                     } else {
