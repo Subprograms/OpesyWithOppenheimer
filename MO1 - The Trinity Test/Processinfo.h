@@ -12,7 +12,7 @@ struct ProcessInfo
     int         processID;
     std::string processName;
 
-    int  totalLine;
+    int  totalLine{0};
     int  currentLine{0};
     int  executedLines{0};
     int  assignedCore{-1};
