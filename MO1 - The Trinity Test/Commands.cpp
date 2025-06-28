@@ -508,11 +508,11 @@ void Commands::displayProcessSmi(ProcessInfo& process)
 
 void Commands::batchLoop()
 {
-    const int tickMs = config.delaysPerExec;
+    const int tickS = config.delaysPerExec * 100;
 
     while (batchRunning.load()) {
         std::this_thread::sleep_for(
-            std::chrono::milliseconds(config.batchProcessFreq * tickMs));
+            std::chrono::milliseconds(config.batchProcessFreq * tickS));
 
         std::string pname = "process" + std::to_string(nextProcessID);
 
