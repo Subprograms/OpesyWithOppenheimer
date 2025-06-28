@@ -176,7 +176,6 @@ void Scheduler::coreFunction(int nCoreId)
                 continue;
             }
 
-            if(proc.executedLines==proc.totalLine) break;
             if(proc.currentLine>=static_cast<int>(proc.prog.size())) break;
 
             Instruction& ins=proc.prog[proc.currentLine];
@@ -267,6 +266,7 @@ void Scheduler::coreFunction(int nCoreId)
 
             ++proc.currentLine;
             ++proc.executedLines;
+            if(proc.executedLines>proc.totalLine) proc.totalLine=proc.executedLines;
             ++used;
 
             if(!loopStack.empty()){
@@ -285,7 +285,7 @@ void Scheduler::coreFunction(int nCoreId)
         if(config.delaysPerExec)
             std::this_thread::sleep_for(std::chrono::milliseconds(config.delaysPerExec));
 
-        bool finished=(proc.executedLines>=proc.totalLine)&&proc.sleepTicks==0;
+        bool finished=(proc.currentLine>=static_cast<int>(proc.prog.size()))&&proc.sleepTicks==0;
 
         {
             std::lock_guard<std::mutex> lk(queueMutex);
