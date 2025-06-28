@@ -12,13 +12,10 @@
 #include <atomic>
 std::atomic<int> g_attachedPid{-1};
 
-static std::string randVar()
-{
+static std::string randVar() {
     static std::mt19937 rng{ std::random_device{}() };
-    std::uniform_int_distribution<int> pick('a', 'z');
-    return std::string(1, static_cast<char>(pick(rng)));
+    return std::string(1, static_cast<char>('a' + (rng() % 26)));
 }
-
 static Instruction randomInstr(const Config& cfg,
                                std::vector<std::string>& vars)
 {
@@ -79,57 +76,58 @@ static Instruction randomInstr(const Config& cfg,
     }
 }
 
-static Instruction makeLeaf(const Config&,std::vector<std::string>&);
-
-static Instruction makeLeaf(const Config& cfg,std::vector<std::string>& vars)
-{
+static Instruction makeLeafInstr(std::vector<std::string>& vars) {
     static std::mt19937 rng{ std::random_device{}() };
-    int code = rng()%5;
+    int code = rng() % 5;
 
-    if (code==0){                                // PRINT
-        if(vars.empty()) return makeLeaf(cfg,vars);
-        std::string v = vars[rng()%vars.size()];
-        return Instruction{
-                OpCode::PRINT,                // opcode
-                "\"Value from: \"",           // arg1 – literal prefix
-                v,                            // arg2 – variable name
-                "",                           // arg3
-                false,
-                true
-        };
-
+    if (code == 0) { // PRINT
+        if (vars.empty()) return makeLeafInstr(vars);
+        std::string v = vars[rng() % vars.size()];
+        return Instruction(OpCode::PRINT, "\"Value from: \"", v, "", false, true);
     }
-    if(code==1){                                 // DECLARE
-        std::string v = std::string(1,char('a'+rng()%26));
-        vars.push_back(v);
-        return { OpCode::DECLARE,v,
-                 std::to_string(Commands::getRandomInt(0,65535)) };
+    if (code == 1) { // DECLARE
+        std::string v = randVar(); vars.push_back(v);
+        return Instruction(OpCode::DECLARE, v,
+                           std::to_string(Commands::getRandomInt(0, 65535)));
     }
-    if(code==2||code==3){                        // ADD/SUB
-        if(vars.empty()) return makeLeaf(cfg,vars);
-        std::string v1 = vars[rng()%vars.size()];
-        std::string a2 = std::to_string(Commands::getRandomInt(1,500));
-        std::string a3 = std::to_string(Commands::getRandomInt(1,500));
-        return { code==2?OpCode::ADD:OpCode::SUBTRACT,v1,a2,a3 };
+    if (code == 2 || code == 3) { // ADD / SUBTRACT
+        if (vars.empty()) return makeLeafInstr(vars);
+        std::string v1 = vars[rng() % vars.size()];
+        std::string a2 = std::to_string(Commands::getRandomInt(1, 500));
+        std::string a3 = std::to_string(Commands::getRandomInt(1, 500));
+        return Instruction(code == 2 ? OpCode::ADD : OpCode::SUBTRACT,
+                           v1, a2, a3);
     }
-    return { OpCode::SLEEP,"",std::to_string(Commands::getRandomInt(1,5)) };
+    /* SLEEP */
+    return Instruction(OpCode::SLEEP, "",
+                       std::to_string(Commands::getRandomInt(1, 5)));
 }
 
 static std::vector<Instruction>
-buildRandomProgram(int len, const Config& cfg, std::vector<std::string>& vars, int depth = 3)
+buildRandomProgram(int                       len,
+                   const Config&             cfg,
+                   std::vector<std::string>& vars,
+                   int                       depth = 3)
 {
     static std::mt19937 rng{ std::random_device{}() };
     std::vector<Instruction> prog;
 
-    while (int(prog.size()) < len) {
-        bool mkLoop = depth > 0 && rng() % 4 == 0;
-        if (mkLoop) {
-            int bodyLen = Commands::getRandomInt(2, 3);
-            int reps    = Commands::getRandomInt(2, 5);
-            auto body   = buildRandomProgram(bodyLen, cfg, vars, depth - 1);
-            prog.emplace_back(OpCode::FOR, std::move(body), "", std::to_string(reps));
-        } else {
-            prog.push_back(makeLeaf(cfg, vars));
+    while (static_cast<int>(prog.size()) < len)
+    {
+        bool makeLoop = depth > 0 && (rng() % 4 == 0); // 25% chance
+        if (makeLoop)
+        {
+            int      bodyLen = Commands::getRandomInt(2, 3);
+            uint8_t  reps    = static_cast<uint8_t>(
+                                 Commands::getRandomInt(2, 3));
+            auto     body    = buildRandomProgram(bodyLen,
+                                                  cfg, vars,
+                                                  depth - 1);
+            prog.emplace_back(std::move(body), reps);
+        }
+        else
+        {
+            prog.emplace_back(makeLeafInstr(vars));
         }
     }
     return prog;
@@ -169,17 +167,19 @@ std::string Commands::getCurrentTimestamp() {
 // Constructor
 Commands::Commands() : scheduler(nullptr) {}
 
-void Commands::initialize(std::string filename) {
+void Commands::initialize() {
     if (scheduler == nullptr) {
- 
-        while (true) {
-            //std::cout << "Please enter the path to the config file (e.g., config.txt): ";
-            //std::getline(std::cin, filename);
+        std::string filename;
+        bool fileLoaded = false;
+
+        while (!fileLoaded) {
+            std::cout << "Please enter the path to the config file (e.g., config.txt): ";
+            std::getline(std::cin, filename);
 
             std::ifstream file(filename);
             if (!file.is_open()) {
                 std::cerr << "Error: Could not open the specified file. Please enter a valid path." << std::endl;
-                exit(0);
+                continue;
             }
             file.close();
 
@@ -187,11 +187,10 @@ void Commands::initialize(std::string filename) {
                 config = parseConfigFile(filename);
                 scheduler = std::make_unique<Scheduler>(config);
                 std::cout << "Scheduler initialized with " << config.numCpu << " CPUs." << std::endl;
-                break;
+                fileLoaded = true;
             }
             catch (const std::exception& e) {
                 std::cerr << "Error parsing config file: " << e.what() << std::endl;
-                exit(0);
             }
         }
     }
@@ -223,10 +222,10 @@ Config Commands::parseConfigFile(const std::string& filename) {
     return config;
 }
 
-//void Commands::initialScreen() {
-//    clearScreen();
-//    menuView();
-//}
+void Commands::initialScreen() {
+    clearScreen();
+    menuView();
+}
 
 void Commands::processCommand(const std::string& command) {
     if (command.find("screen") != std::string::npos) {
@@ -262,7 +261,6 @@ void Commands::screenCommand(const std::string& cmdLine)
 
     iss >> token; // first token is "screen"  (skip it)
     iss >> subCmd; // "-r", "-s", or "-ls"
-
     if (subCmd != "-ls") // only need a name for -r or -s
         iss >> procName;
 
@@ -270,7 +268,6 @@ void Commands::screenCommand(const std::string& cmdLine)
         std::cout << "ERROR: Missing subcommand. Use -r | -s | -ls\n";
         return;
     }
-
     if (subCmd != "-ls" && procName.empty()) {
         std::cout << "ERROR: Process name required for " << subCmd << "\n";
         return;
