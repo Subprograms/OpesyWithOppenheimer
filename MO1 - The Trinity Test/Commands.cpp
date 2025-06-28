@@ -98,6 +98,7 @@ static Instruction makeLeafInstr(std::vector<std::string>& vars) {
         return Instruction(code == 2 ? OpCode::ADD : OpCode::SUBTRACT,
                            v1, a2, a3);
     }
+
     /* SLEEP */
     return Instruction(OpCode::SLEEP, "",
                        std::to_string(Commands::getRandomInt(1, 5)));
@@ -167,19 +168,19 @@ std::string Commands::getCurrentTimestamp() {
 // Constructor
 Commands::Commands() : scheduler(nullptr) {}
 
-void Commands::initialize() {
+void Commands::initialize(std::string filename) {
     if (scheduler == nullptr) {
-        std::string filename;
-        bool fileLoaded = false;
+        
+        //bool fileLoaded = false;
 
-        while (!fileLoaded) {
-            std::cout << "Please enter the path to the config file (e.g., config.txt): ";
-            std::getline(std::cin, filename);
+        while (true) {
+            /*std::cout << "Please enter the path to the config file (e.g., config.txt): ";
+            std::getline(std::cin, filename);*/
 
             std::ifstream file(filename);
             if (!file.is_open()) {
                 std::cerr << "Error: Could not open the specified file. Please enter a valid path." << std::endl;
-                continue;
+                break;
             }
             file.close();
 
@@ -187,10 +188,11 @@ void Commands::initialize() {
                 config = parseConfigFile(filename);
                 scheduler = std::make_unique<Scheduler>(config);
                 std::cout << "Scheduler initialized with " << config.numCpu << " CPUs." << std::endl;
-                fileLoaded = true;
+                break;
             }
             catch (const std::exception& e) {
                 std::cerr << "Error parsing config file: " << e.what() << std::endl;
+                exit(0);
             }
         }
     }
@@ -285,7 +287,7 @@ void Commands::rSubCommand(const std::string& name) {
 
     try {
         ProcessInfo& process = scheduler->getProcess(name);
-        enterProcessScreen(process);
+        startThread(process);
     }
     catch (const std::runtime_error& e) {
         std::cerr << e.what() << std::endl;
@@ -297,7 +299,7 @@ void Commands::sSubCommand(const std::string& name)
     try {
         ProcessInfo& existing = scheduler->getProcess(name);
         std::cout << "Reattaching to existing process: " << name << '\n';
-        enterProcessScreen(existing);
+        startThread(existing);
         return;
     }
     catch (const std::runtime_error&) { }
@@ -312,50 +314,69 @@ void Commands::sSubCommand(const std::string& name)
     scheduler->addProcess(std::move(proc));
     std::cout << "Created process \"" << name << "\" (" << lines << " lines)\n";
 
-    enterProcessScreen(scheduler->getProcess(name));
+    startThread(scheduler->getProcess(name));
 }
 
-void Commands::enterProcessScreen(ProcessInfo& dummyRef)
-{
+void Commands::startThread(ProcessInfo& proc) {
+
+    g_attachedPid = proc.processID;
+
+    std::cout << "THREAD START" << std::endl;
+    std::thread refresherThread(&Commands::enterProcessScreen, this, std::ref(proc));
+    std::thread inputerThread(&Commands::editProcessScreen, this, std::ref(proc));
+
+    inputerThread.join();
+    refresherThread.join();
+   
     clearScreen();
-    const std::string procName = dummyRef.processName;
+    menuView();
+}
 
-    g_attachedPid = dummyRef.processID;
+void Commands::enterProcessScreen(ProcessInfo& proc)
+{   
+    const std::string procName = proc.processName;
+    const int procId = proc.processID;
 
-    auto showHeader = [&](){
-        ProcessInfo& p = scheduler->getProcess(procName);
-        std::cout << "\nProcess: "     << p.processName
-                  << "\nID: "          << p.processID
-                  << "\nTotal Lines: " << p.totalLine << "\n";
-    };
+    while (g_attachedPid == procId) {
+        auto snap = scheduler->snapshotProcess(procName);
 
-    showHeader();
-    displayProcessSmi(scheduler->getProcess(procName));
+        if (snap.isFinished) { continue; }
+        clearScreen();
+        
 
-    bool runningScreen = true;
-    while (runningScreen) {
-        ProcessInfo& live = scheduler->getProcess(procName);
-        if (live.isFinished) {
-            std::cout << "\nProcess has finished.\n";
-            break;
-        }
+        std::cout << "Process: " << snap.processName << std::endl;
+        std::cout << "ID: " << snap.processID << std::endl;
+        std::cout << "Total Lines: " << snap.totalLine << std::endl;
+        
+        displayProcessSmi(snap);
+        std::this_thread::sleep_for(std::chrono::seconds(1));
 
+
+    }
+}
+
+void Commands::editProcessScreen(ProcessInfo& proc) {
+    const std::string name = proc.processName;
+    bool running = true;
+
+    while (running && !proc.isFinished) {
         std::cout << "> ";
         std::string cmd;
         std::getline(std::cin, cmd);
 
         if (cmd == "process-smi") {
-            auto snap = scheduler->snapshotProcess(procName);
+            auto snap = scheduler->snapshotProcess(name);
             displayProcessSmi(snap);
         }
-        else if (cmd == "exit")        runningScreen = false;
-        else if (!cmd.empty())
+        else if (cmd == "exit") {
+            running = false;
+        }
+        else if (!cmd.empty()) {
             std::cout << "Invalid command. Available: process-smi | exit\n";
+        }
     }
-
+    // signal the refresher thread to stop
     g_attachedPid = -1;
-    clearScreen();
-    menuView();
 }
 
 // Scheduler-related commands
@@ -431,18 +452,20 @@ void Commands::displayProcess(const ProcessInfo& process) {
 
 void Commands::displayProcessSmi(ProcessInfo& p)
 {
+    std::stringstream ss;
+
     constexpr const char* border =
         "====================  PROCESS SMI  ====================\n";
 
-    std::cout << '\n' << border
-              << std::left << std::setw(15) << "Name"          << " : " << p.processName   << '\n'
-              << std::setw(15) << "PID"                        << " : " << p.processID     << '\n'
-              << std::setw(15) << "Assigned Core"             << " : " << (p.assignedCore == -1 ? "N/A"
-                                                                                               : std::to_string(p.assignedCore)) << '\n'
-              << std::setw(15) << "Progress"                  << " : " << p.executedLines << " / " << p.totalLine << '\n'
-              << std::setw(15) << "Status"                    << " : "
-              << (p.isFinished ? "Finished" : (p.assignedCore == -1 ? "Waiting" : "Running")) << '\n'
-              << border << std::endl;
+    ss << '\n' << border << std::endl;
+    ss << std::left << std::setw(15) << "Name"          << " : " << p.processName   << std::endl;
+    ss << std::setw(15) << "PID"                        << " : " << p.processID     << std::endl;
+    ss << std::setw(15) << "Assigned Core"             << " : " << (p.assignedCore == -1 ? "N/A" : std::to_string(p.assignedCore)) << std::endl;
+    ss << std::setw(15) << "Progress"                  << " : " << p.executedLines << " / " << p.totalLine << std::endl;
+    ss << std::setw(15) << "Status"                    << " : " << (p.isFinished ? "Finished" : (p.assignedCore == -1 ? "Waiting" : "Running")) << std::endl;
+    ss << border << std::endl;
+
+    std::cout << ss.str() << std::endl;
 }
 
 void Commands::batchLoop()
