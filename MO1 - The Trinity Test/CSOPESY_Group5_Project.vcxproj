@@ -29,6 +29,7 @@
     <ClInclude Include="Commands.h" />
     <ClInclude Include="Data.h" />
     <ClInclude Include="Config.h" />
+    <ClInclude Include="Instruction.h" />
     <ClInclude Include="Processinfo.h" />
     <ClInclude Include="Scheduler.h" />
     <ClInclude Include="Screen.h" />

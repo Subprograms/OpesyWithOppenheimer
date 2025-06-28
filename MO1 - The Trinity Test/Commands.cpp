@@ -169,19 +169,17 @@ std::string Commands::getCurrentTimestamp() {
 // Constructor
 Commands::Commands() : scheduler(nullptr) {}
 
-void Commands::initialize() {
+void Commands::initialize(std::string filename) {
     if (scheduler == nullptr) {
-        std::string filename;
-        bool fileLoaded = false;
-
-        while (!fileLoaded) {
-            std::cout << "Please enter the path to the config file (e.g., config.txt): ";
-            std::getline(std::cin, filename);
+ 
+        while (true) {
+            //std::cout << "Please enter the path to the config file (e.g., config.txt): ";
+            //std::getline(std::cin, filename);
 
             std::ifstream file(filename);
             if (!file.is_open()) {
                 std::cerr << "Error: Could not open the specified file. Please enter a valid path." << std::endl;
-                continue;
+                exit(0);
             }
             file.close();
 
@@ -189,10 +187,11 @@ void Commands::initialize() {
                 config = parseConfigFile(filename);
                 scheduler = std::make_unique<Scheduler>(config);
                 std::cout << "Scheduler initialized with " << config.numCpu << " CPUs." << std::endl;
-                fileLoaded = true;
+                break;
             }
             catch (const std::exception& e) {
                 std::cerr << "Error parsing config file: " << e.what() << std::endl;
+                exit(0);
             }
         }
     }
@@ -224,10 +223,10 @@ Config Commands::parseConfigFile(const std::string& filename) {
     return config;
 }
 
-void Commands::initialScreen() {
-    clearScreen();
-    menuView();
-}
+//void Commands::initialScreen() {
+//    clearScreen();
+//    menuView();
+//}
 
 void Commands::processCommand(const std::string& command) {
     if (command.find("screen") != std::string::npos) {
