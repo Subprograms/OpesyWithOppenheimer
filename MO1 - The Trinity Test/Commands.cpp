@@ -10,6 +10,7 @@
 #include <chrono>
 #include <random>
 #include <atomic>
+#include <algorithm>
 std::atomic<int> g_attachedPid{-1};
 
 static std::string randVar() {
@@ -347,52 +348,52 @@ void Commands::sSubCommand(const std::string& name)
 
 void Commands::enterProcessScreen(ProcessInfo& proc)
 {
-    const std::string procName = proc.processName;
-    const int procId = proc.processID;
+    const std::string name = proc.processName;
 
-    g_attachedPid = procId;
+    g_attachedPid = proc.processID; // attach
 
-    ProcessInfo snap = scheduler->snapshotProcess(procName);
+    {
+        ProcessInfo snap = scheduler->snapshotProcess(name);
+        clearScreen();
+        std::cout << "Process: "     << snap.processName << '\n'
+                  << "ID: "          << snap.processID   << '\n'
+                  << "Total Lines: " << snap.totalLine   << '\n';
+        displayProcessSmi(snap);
+    }
 
-    clearScreen();
-
-    std::cout << "Process: "     << snap.processName << std::endl;
-    std::cout << "ID: "          << snap.processID << std::endl;
-    std::cout << "Total Lines: " << snap.totalLine << std::endl;
-
-    displayProcessSmi(snap);
-
-    while (true) {
-
-        std::string cmd;
-        auto snap = scheduler->snapshotProcess(procName);
-
-        if (snap.isFinished) {
-            std::cout << "\nProcess has finished.\n";
-            displayProcessSmi(snap);
-
-            std::cout << "Press any key to return to menu...";
-            std::getline(std::cin, cmd);
-            break;
-        }
-
+    while (true)
+    {
         std::cout << "\n> ";
+        std::string cmd;
         std::getline(std::cin, cmd);
 
-        if (cmd == "process-smi") {
+        if (cmd == "process-smi")
+        {
+            ProcessInfo snap = scheduler->snapshotProcess(name);
             displayProcessSmi(snap);
+
+            if (snap.isFinished)
+            {
+                std::cout << "\nProcess has finished.\n"
+                          << "Press Enter to return to menu...";
+                std::string _;
+                std::getline(std::cin, _);
+                break;
+            }
         }
-        else if (cmd == "exit") {
+        else if (cmd == "exit")
+        {
             break;
         }
-        else if (!cmd.empty()) {
+        else if (!cmd.empty())
+        {
             std::cout << "Invalid command. Available: process-smi | exit\n";
         }
     }
 
+    g_attachedPid = -1; // dettach
     clearScreen();
     menuView();
-    g_attachedPid = -1;
 }
 
 // Scheduler-related commands
@@ -456,32 +457,53 @@ void Commands::reportUtilCommand() {
     }
 }
 
-// Function to display process details
-void Commands::displayProcess(const ProcessInfo& process) {
-    std::cout << "Displaying Process Details:" << std::endl;
-    std::cout << "Process Name: " << process.processName << std::endl;
-    std::cout << "Current Line: " << process.currentLine << std::endl;
-    std::cout << "Total Lines: " << process.totalLine << std::endl;
-    std::cout << "Timestamp: " << process.timeStamp << std::endl;
-    std::cout << "Status: " << (process.isFinished ? "Finished" : "Running") << std::endl;
-}
-
-void Commands::displayProcessSmi(ProcessInfo& p)
+void Commands::displayProcessSmi(ProcessInfo& process)
 {
-    std::stringstream ss;
+    ProcessInfo cur = scheduler->snapshotProcess(process.processName);
+
+    int coreId = -1;
+    std::string status;
+
+    const auto& finished = scheduler->getFinishedProcesses();
+    auto fit = std::find_if(finished.begin(), finished.end(),
+                            [&](const auto& e){
+                                return e.first.processID == cur.processID;
+                            });
+    if (fit != finished.end()) {
+        status = "Finished";
+        coreId = fit->second;
+        cur.executedLines = cur.totalLine;
+    }
+
+    if (status.empty()) {
+        for (const auto& p : scheduler->getRunningProcesses()) {
+            if (p.processID == cur.processID) {
+                status = "Running";
+                coreId = p.assignedCore;
+                break;
+            }
+        }
+    }
+
+    if (status.empty()) status = "Waiting";
+
+    const int shown = std::min(cur.executedLines, cur.totalLine);
 
     constexpr const char* border =
         "====================  PROCESS SMI  ====================\n";
 
-    ss << '\n' << border << std::endl;
-    ss << std::left << std::setw(15) << "Name"          << " : " << p.processName   << std::endl;
-    ss << std::setw(15) << "PID"                        << " : " << p.processID     << std::endl;
-    ss << std::setw(15) << "Assigned Core"             << " : " << (p.assignedCore == -1 ? "N/A" : std::to_string(p.assignedCore)) << std::endl;
-    ss << std::setw(15) << "Progress"                  << " : " << p.executedLines << " / " << p.totalLine << std::endl;
-    ss << std::setw(15) << "Status"                    << " : " << (p.isFinished ? "Finished" : (p.assignedCore == -1 ? "Waiting" : "Running")) << std::endl;
-    ss << border << std::endl;
+    std::stringstream out;
+    out << '\n' << border << '\n'
+        << std::left << std::setw(15) << "Name"          << " : " << cur.processName  << '\n'
+        << std::setw(15)               << "PID"           << " : " << cur.processID    << '\n'
+        << std::setw(15)               << "Assigned Core" << " : "
+        << (coreId == -1 ? "N/A" : std::to_string(coreId))             << '\n'
+        << std::setw(15)               << "Progress"      << " : "
+        << shown << " / " << cur.totalLine                               << '\n'
+        << std::setw(15)               << "Status"        << " : " << status << '\n'
+        << border << '\n';
 
-    std::cout << ss.str() << std::endl;
+    std::cout << out.str();
 }
 
 void Commands::batchLoop()

@@ -2,14 +2,25 @@
   "version": "0.2.0",
   "configurations": [
     {
+      "name": "Run CSOPESY-S16_Group5.exe",
+      "type": "cppvsdbg",
+      "request": "launch",
+      "program": "${workspaceFolder}/CSOPESY-S16_Group5.exe",
+      "args": [],
+      "stopAtEntry": false,
+      "cwd": "${workspaceFolder}",
+      "environment": [],
+      "console": "integratedTerminal"
+    },
+    {
       "name": "C/C++ Runner: Debug Session",
       "type": "cppdbg",
       "request": "launch",
       "args": [],
       "stopAtEntry": false,
       "externalConsole": true,
-      "cwd": "c:/Users/Gabe/Documents/CSOPESY/OpesyWithOppenheimer/MO1 - The Trinity Test",
-      "program": "c:/Users/Gabe/Documents/CSOPESY/OpesyWithOppenheimer/MO1 - The Trinity Test/build/Debug/outDebug",
+      "cwd": "c:/Users/Gabe/source/repos/CSOPESY_Group5_Project/BeinnerDaps/CSOPESY-Group5/CSOPESY_Group5_Project",
+      "program": "c:/Users/Gabe/source/repos/CSOPESY_Group5_Project/BeinnerDaps/CSOPESY-Group5/CSOPESY_Group5_Project/build/Debug/outDebug",
       "MIMode": "gdb",
       "miDebuggerPath": "gdb",
       "setupCommands": [

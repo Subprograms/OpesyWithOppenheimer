@@ -133,6 +133,23 @@ std::vector<ProcessInfo> Scheduler::getWaitingProcesses() {
 
 void Scheduler::coreFunction(int nCoreId)
 {
+    auto nowStamp = []()->std::string {
+        using namespace std::chrono;
+        auto   tp   = system_clock::now();
+        auto   ms   = duration_cast<milliseconds>(tp.time_since_epoch()) % 1000;
+        std::time_t tt = system_clock::to_time_t(tp);
+        std::tm     tm;
+#ifdef _WIN32
+        localtime_s(&tm, &tt);
+#else
+        localtime_r(&tt, &tm);
+#endif
+        std::ostringstream os;
+        os << std::put_time(&tm, "%H:%M:%S") << '.'
+           << std::setw(3) << std::setfill('0') << ms.count();
+        return os.str();
+    };
+
     auto strip = [](const std::string& s)->std::string{
         return (s.size()>=2 && s.front()=='"' && s.back()=='"')
                ? s.substr(1,s.size()-2):s;
@@ -141,12 +158,13 @@ void Scheduler::coreFunction(int nCoreId)
         auto it=p.vars.find(v);
         return (it!=p.vars.end())?std::to_string(it->second):"0";
     };
-    auto log=[&](ProcessInfo& p,int c,const std::string& t,int ind){
-        p.outBuf.emplace_back("Core:"+std::to_string(c)+" ["+
-                              std::to_string(p.executedLines)+"] "+
-                              std::string(ind*4,' ')+t);
-    };
 
+    auto log=[&](ProcessInfo& p,int c,const std::string& t,int ind){
+        p.outBuf.emplace_back(
+            nowStamp() + " | Core:" + std::to_string(c) + " [" +
+            std::to_string(p.executedLines) + "] " +
+            std::string(ind*4,' ') + t);
+    };
     while(running)
     {
         ProcessInfo proc(-1,"",0,"");
@@ -194,8 +212,6 @@ void Scheduler::coreFunction(int nCoreId)
                         msg=raw+'+'+ins.arg2+": "+varVal(proc,ins.arg2);
                     else
                         msg=raw;
-
-                    msg = "\n" + msg;
 
                     if(g_attachedPid.load()==proc.processID){
                         std::lock_guard<std::mutex> _(g_coutMx);
