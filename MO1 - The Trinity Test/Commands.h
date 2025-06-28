@@ -22,12 +22,7 @@ private:
     std::vector<ProcessInfo> processList;
     void writeProcessReport(std::ostream& os);
 
-    std::string               pollinput;     // what the user is typing right now
-    std::vector<std::string>  chatHistory;   // past lines (on Enter)
-    std::mutex                textMutex;     // protects both of the above
-
     void startThread(ProcessInfo& proc);
-    void drawInputArea();
     void editProcessScreen(ProcessInfo& proc);
     void enterProcessScreen(ProcessInfo& proc);
 
