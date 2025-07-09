@@ -1,4 +1,5 @@
 #include "Scheduler.h"
+#include "Commands.h"
 #include <iostream>
 #include <fstream>
 #include <chrono>
@@ -7,7 +8,9 @@
 #include <atomic>
 #include <sstream>
 #include <iomanip>
+#include <mutex>
 extern std::atomic<int> g_attachedPid;
+int curQuantumCycle = 1;
 
 namespace {
     std::mutex g_coutMx;
@@ -131,154 +134,254 @@ std::vector<ProcessInfo> Scheduler::getWaitingProcesses() {
     return std::vector<ProcessInfo>(processQueue.begin(), processQueue.end());
 }
 
+bool Scheduler::allocateMemory(ProcessInfo& proc) {
+    const int frameSize = config.memPerFrame;
+    const int blockReq = config.memPerProc;
+    // Round up required bytes to nearest frame
+    int reqFrames = (blockReq + frameSize - 1) / frameSize;
+    int reqBytes  = reqFrames * frameSize;
+
+    int lastEnd = 0;
+    for (auto it = memoryBlocks.begin(); it != memoryBlocks.end(); ++it) {
+        int alignedEnd = ((lastEnd + frameSize - 1) / frameSize) * frameSize;
+        int gap = it->start - alignedEnd;
+        if (gap >= reqBytes) {
+            memoryBlocks.insert(it,
+                MemoryBlock{ alignedEnd,
+                             alignedEnd + reqBytes,
+                             proc.processName });
+            return true;
+        }
+        lastEnd = it->end;
+    }
+
+    int alignedEnd = ((lastEnd + frameSize - 1) / frameSize) * frameSize;
+    if (config.maxOverallMem - alignedEnd >= reqBytes) {
+        memoryBlocks.push_back(
+            MemoryBlock{ alignedEnd,
+                         alignedEnd + reqBytes,
+                         proc.processName });
+        return true;
+    }
+
+    return false;
+}
+
+void Scheduler::deallocateMemory(const std::string& pid) {
+    memoryBlocks.erase(
+        std::remove_if(
+            memoryBlocks.begin(),
+            memoryBlocks.end(),
+            [&](auto& b){ return b.pid == pid; }
+        ),
+        memoryBlocks.end()
+    );
+}
+
+void Scheduler::writeMemorySnapshot() {
+    std::lock_guard<std::mutex> lk(queueMutex);
+
+    std::ostringstream fn;
+    fn << "memory_stamp_"
+       << std::setw(2) << std::setfill('0') << curQuantumCycle
+       << ".txt";
+
+    std::ofstream file(fn.str());
+    if (!file.is_open()) return;
+
+    file << "Timestamp: (" << Commands::getCurrentTimestamp() << ")\n";
+    file << "Number of processes in memory: "
+         << memoryBlocks.size() << "\n";
+
+    // Compute total external fragmentation (bytes)
+    int totalFrag = 0;
+    int lastEnd   = 0;
+    std::vector<MemoryBlock> asc = memoryBlocks;
+    std::sort(asc.begin(), asc.end(),
+              [](auto const &a, auto const &b){ return a.start < b.start; });
+    for (auto const &blk : asc) {
+        if (blk.start > lastEnd)
+            totalFrag += blk.start - lastEnd;
+        lastEnd = blk.end;
+    }
+    if (lastEnd < config.maxOverallMem)
+        totalFrag += config.maxOverallMem - lastEnd;
+
+    file << "Total external fragmentation in KB: "
+         << (totalFrag / 1024) << "\n\n";
+
+    file << "----end---- = " << config.maxOverallMem << "\n\n";
+
+    std::vector<MemoryBlock> desc = memoryBlocks;
+    std::sort(desc.begin(), desc.end(),
+              [](auto const &a, auto const &b){ return a.start > b.start; });
+    for (auto const &blk : desc) {
+        file << blk.end << "\n"
+             << blk.pid << "\n"
+             << blk.start << "\n\n";
+    }
+
+    file << "----start---- = 0\n";
+    file.close();
+
+    ++curQuantumCycle;
+}
+
 void Scheduler::coreFunction(int nCoreId)
 {
-    auto nowStamp = []()->std::string {
+    auto nowStamp = []() -> std::string {
         using namespace std::chrono;
-        auto   tp   = system_clock::now();
-        auto   ms   = duration_cast<milliseconds>(tp.time_since_epoch()) % 1000;
+        auto tp = system_clock::now();
+        auto ms = duration_cast<milliseconds>(tp.time_since_epoch()) % 1000;
         std::time_t tt = system_clock::to_time_t(tp);
-        std::tm     tm;
-#ifdef _WIN32
+        std::tm tm;
+    #ifdef _WIN32
         localtime_s(&tm, &tt);
-#else
+    #else
         localtime_r(&tt, &tm);
-#endif
+    #endif
         std::ostringstream os;
         os << std::put_time(&tm, "%H:%M:%S") << '.'
            << std::setw(3) << std::setfill('0') << ms.count();
         return os.str();
     };
 
-    auto strip = [](const std::string& s)->std::string{
-        return (s.size()>=2 && s.front()=='"' && s.back()=='"')
-               ? s.substr(1,s.size()-2):s;
-    };
-    auto varVal = [](const ProcessInfo& p,const std::string& v)->std::string{
-        auto it=p.vars.find(v);
-        return (it!=p.vars.end())?std::to_string(it->second):"0";
+    auto log = [&](ProcessInfo& p, const std::string& what, int indent) {
+        p.outBuf.emplace_back(
+            nowStamp() + " | Core:" + std::to_string(nCoreId)
+          + " [" + std::to_string(p.executedLines) + "] "
+          + std::string(indent * 4, ' ')
+          + what
+        );
     };
 
-    auto log=[&](ProcessInfo& p,int c,const std::string& t,int ind){
-        p.outBuf.emplace_back(
-            nowStamp() + " | Core:" + std::to_string(c) + " [" +
-            std::to_string(p.executedLines) + "] " +
-            std::string(ind*4,' ') + t);
-    };
-    while(running)
+    while (running)
     {
-        ProcessInfo proc(-1,"",0,"");
+        ProcessInfo proc(-1, "", 0, "");
+
         {
             std::unique_lock<std::mutex> lk(queueMutex);
-            cv.wait(lk,[&]{return !processQueue.empty()||!running;});
-            if(!running&&processQueue.empty()) return;
-            proc=std::move(processQueue.front());
+            cv.wait(lk, [&]{ return !processQueue.empty() || !running; });
+            if (!running && processQueue.empty()) return;
+
+            proc = std::move(processQueue.front());
             processQueue.pop_front();
-            proc.assignedCore=nCoreId;
+
+            bool alreadyInMem = std::any_of(
+                memoryBlocks.begin(), memoryBlocks.end(),
+                [&](auto const &blk){ return blk.pid == proc.processName; }
+            );
+            if (!alreadyInMem) {
+                if (!allocateMemory(proc)) {
+                    processQueue.push_back(std::move(proc));
+                    continue;
+                }
+            }
+
+            proc.assignedCore = nCoreId;
             runningProcesses.push_back(proc);
             ++coresInUse;
         }
 
-        const bool fcfs=(schedulerType=="fcfs"||schedulerType=="FCFS");
-        const int  slice=fcfs?std::numeric_limits<int>::max():std::max(1,quantum);
+        const bool fcfs = (schedulerType == "fcfs" || schedulerType == "FCFS");
+        const int  slice = fcfs
+                          ? std::numeric_limits<int>::max()
+                          : std::max(1, quantum);
+        auto&      loopStack = proc.loopStack;
 
-        auto& loopStack=proc.loopStack;
-
-        for(int used=0;used<slice && running; )
+        for (int used = 0; used < slice && running; )
         {
-            if(proc.sleepTicks){
-                std::this_thread::sleep_for(std::chrono::milliseconds(config.delaysPerExec));
+            if (proc.sleepTicks) {
+                std::this_thread::sleep_for(
+                    std::chrono::milliseconds(config.delaysPerExec)
+                );
                 --proc.sleepTicks;
                 ++used;
-                if(!proc.sleepTicks) ++proc.currentLine;
+                if (!proc.sleepTicks) ++proc.currentLine;
+                if (used % config.quantumCycles == 0) writeMemorySnapshot();
                 continue;
             }
 
-            if(proc.currentLine>=static_cast<int>(proc.prog.size())) break;
+            if (proc.currentLine >= static_cast<int>(proc.prog.size()))
+                break;
 
-            Instruction& ins=proc.prog[proc.currentLine];
-            int indent=static_cast<int>(loopStack.size());
+            Instruction& ins = proc.prog[proc.currentLine];
+            int indent = static_cast<int>(loopStack.size());
 
-            switch(ins.op)
+            switch (ins.op)
             {
-                case OpCode::PRINT:{
-                    std::string raw = strip(ins.arg1);
-                    if(!ins.arg2.empty()) proc.vars.try_emplace(ins.arg2,0);
-
-                    std::string msg;
-                    if(raw.empty())
-                        msg="Hello world from "+proc.processName+"!";
-                    else if(!ins.arg2.empty())
-                        msg=raw+'+'+ins.arg2+": "+varVal(proc,ins.arg2);
-                    else
-                        msg=raw;
-
-                    msg = "\n" + msg;
-
-                    if(g_attachedPid.load()==proc.processID){
-                        std::lock_guard<std::mutex> _(g_coutMx);
-                        std::cout <<'\r'<<msg<<std::flush;
-                        std::cout << "\n>";
-                    }
-                    log(proc,nCoreId,"PRINT -> "+msg,indent);
+                case OpCode::PRINT: {
+                    std::string txt = stripQuotes(ins.arg1);
+                    if (ins.arg2.size()) txt += '+' + ins.arg2
+                                          + ": " + varVal(proc, ins.arg2);
+                    log(proc, "PRINT -> " + txt, indent);
                     break;
                 }
 
                 case OpCode::DECLARE:
-                    proc.vars[ins.arg1]=Stoi16(ins.arg2);
-                    log(proc,nCoreId,"DECLARE "+ins.arg1+'='+ins.arg2,indent);
+                    proc.vars[ins.arg1] = Stoi16(ins.arg2, ins.arg1);
+                    log(proc, "DECLARE " + ins.arg1 + '=' + ins.arg2, indent);
                     break;
 
                 case OpCode::ADD:
-                case OpCode::SUBTRACT:{
-                    if(ins.isArg2Var) proc.vars.try_emplace(ins.arg2,0);
-                    if(ins.isArg3Var) proc.vars.try_emplace(ins.arg3,0);
-
-                    uint16_t v2=ins.isArg2Var?proc.vars[ins.arg2]:Stoi16(ins.arg2);
-                    uint16_t v3=ins.isArg3Var?proc.vars[ins.arg3]:Stoi16(ins.arg3);
-
-                    uint32_t r=(ins.op==OpCode::ADD)?v2+v3:(v2>=v3?v2-v3:0u);
-                    proc.vars[ins.arg1]=static_cast<uint16_t>(std::min(r,65535u));
-
-                    std::string logStr=(ins.op==OpCode::ADD?"ADD(":"SUB(")+
-                                        ins.arg1+", "+
-                                        (ins.arg2.empty()?"0":ins.arg2)+", "+
-                                        (ins.arg3.empty()?"0":ins.arg3)+")";
-                    log(proc,nCoreId,logStr,indent);
+                case OpCode::SUBTRACT: {
+                    uint16_t v2 = ins.isArg2Var
+                                ? proc.vars[ins.arg2]
+                                : Stoi16(ins.arg2, ins.arg2);
+                    uint16_t v3 = ins.isArg3Var
+                                ? proc.vars[ins.arg3]
+                                : Stoi16(ins.arg3, ins.arg3);
+                    uint32_t r = (ins.op == OpCode::ADD)
+                                   ? v2 + v3
+                                   : (v2 >= v3 ? v2 - v3 : 0);
+                    proc.vars[ins.arg1] = static_cast<uint16_t>(std::min(r, 65535u));
+                    log(proc,
+                        (ins.op == OpCode::ADD ? "ADD(" : "SUB(")
+                      + ins.arg1 + ", " + ins.arg2 + ", " + ins.arg3 + ')',
+                        indent);
                     break;
                 }
 
-                case OpCode::SLEEP:{
-                    uint16_t t=Stoi16(ins.arg2);
-                    if(t>255) t=255;
-                    proc.sleepTicks = t ? t-1 : 0;
-                    log(proc,nCoreId,"SLEEP "+std::to_string(t),indent);
+                case OpCode::SLEEP: {
+                    auto t = Stoi16(ins.arg2);
+                    proc.sleepTicks = (t>0 ? t-1 : 0);
+                    log(proc, "SLEEP " + std::to_string(t), indent);
                     ++proc.executedLines;
-                    ++used;
                     ++proc.currentLine;
-                    used=slice;
+                    used = slice;
+                    if (used % config.quantumCycles == 0)
+                        writeMemorySnapshot();
                     continue;
                 }
 
-                case OpCode::FOR:{
-                    if(ins.body.empty()||ins.repetitions==0) break;
-                    if(loopStack.size()>=3) break;
-                    uint16_t reps=ins.repetitions;
-                    int bodyCnt=static_cast<int>(ins.body.size());
-                    int insertAt=proc.currentLine+1;
+                case OpCode::FOR: {
+                    auto  body = ins.body;
+                    auto  reps = ins.repetitions;
+                    if (!body.empty() && reps > 0 && loopStack.size() < 3) {
+                        int bodySz   = static_cast<int>(body.size());
+                        int insertAt = proc.currentLine + 1;
 
-                    proc.prog.insert(proc.prog.begin()+insertAt,
-                                     ins.body.begin(),ins.body.end());
+                        proc.prog.insert(
+                            proc.prog.begin() + insertAt,
+                            body.begin(), body.end()
+                        );
 
-                    for(auto& f:loopStack) if(f.end>=insertAt) f.end+=bodyCnt;
+                        for (auto& f : loopStack)
+                            if (f.end >= insertAt) f.end += bodySz;
 
-                    loopStack.push_back({insertAt,
-                                         insertAt+bodyCnt-1,
-                                         static_cast<uint16_t>(reps-1),
-                                         indent});
+                        loopStack.push_back({
+                            uint16_t(insertAt),
+                            uint16_t(insertAt + bodySz - 1),
+                            uint16_t(reps - 1),
+                            indent
+                        });
 
-                    log(proc,nCoreId,"FOR ×"+std::to_string(reps)+
-                                     " (body "+std::to_string(bodyCnt)+')',indent);
+                        log(proc,
+                            "FOR×" + std::to_string(reps)
+                        + " body=" + std::to_string(bodySz),
+                            indent
+                        );
+                    }
                     break;
                 }
 
@@ -287,46 +390,62 @@ void Scheduler::coreFunction(int nCoreId)
 
             ++proc.currentLine;
             ++proc.executedLines;
-            if(proc.executedLines>proc.totalLine) proc.totalLine=proc.executedLines;
+            if (proc.executedLines > proc.totalLine)
+                proc.totalLine = proc.executedLines;
             ++used;
+            if (used % config.quantumCycles == 0)
+                writeMemorySnapshot();
 
-            if(!loopStack.empty()){
-                auto& top=loopStack.back();
-                if(proc.currentLine>top.end){
-                    if(top.remain){
+            if (!loopStack.empty()) {
+                auto& top = loopStack.back();
+                if (proc.currentLine > top.end) {
+                    if (top.remain) {
                         --top.remain;
-                        proc.currentLine=top.start;
-                    }else{
+                        proc.currentLine = top.start;
+                    }
+                    else {
                         loopStack.pop_back();
                     }
                 }
             }
         }
 
-        if(config.delaysPerExec)
-            std::this_thread::sleep_for(std::chrono::milliseconds(config.delaysPerExec));
+        if (config.delaysPerExec)
+            std::this_thread::sleep_for(
+              std::chrono::milliseconds(config.delaysPerExec)
+            );
 
-        bool finished=(proc.currentLine>=static_cast<int>(proc.prog.size()))&&proc.sleepTicks==0;
+        bool finished = (proc.currentLine >= static_cast<int>(proc.prog.size()))
+                     && proc.sleepTicks == 0;
 
         {
             std::lock_guard<std::mutex> lk(queueMutex);
+
             runningProcesses.erase(
-                std::remove_if(runningProcesses.begin(),runningProcesses.end(),
-                               [&](const ProcessInfo& p){return p.processID==proc.processID;}),
-                runningProcesses.end());
+                std::remove_if(
+                    runningProcesses.begin(),
+                    runningProcesses.end(),
+                    [&](auto const& p){ return p.processID == proc.processID; }
+                ),
+                runningProcesses.end()
+            );
             --coresInUse;
 
-            if(!proc.outBuf.empty()){
-                std::ofstream f(proc.processName+".txt",std::ios::app);
-                for(auto& s:proc.outBuf) f<<s<<'\n';
+            if (!proc.outBuf.empty()) {
+                std::ofstream f(proc.processName + ".txt", std::ios::app);
+                for (auto& line : proc.outBuf) f << line << "\n";
                 proc.outBuf.clear();
             }
 
-            if(finished)
-                finishedProcesses.emplace_back(proc,nCoreId);
-            else
-                processQueue.emplace_back(std::move(proc));
+            if (finished) {
+                deallocateMemory(proc.processName);
+                finishedProcesses.emplace_back(proc, nCoreId);
+            }
+            else {
+                processQueue.push_back(std::move(proc));
+            }
         }
+
         cv.notify_all();
     }
 }

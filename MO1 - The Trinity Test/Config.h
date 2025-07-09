@@ -11,6 +11,9 @@ struct Config {
     int minIns;
     int maxIns;
     int delaysPerExec;
+    int maxOverallMem;
+    int memPerFrame;
+    int memPerProc;
 };
 
 #endif

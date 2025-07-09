@@ -18,68 +18,6 @@ static std::string randVar() {
     return std::string(1, static_cast<char>('a' + (rng() % 26)));
 }
 
-static Instruction randomInstr(const Config& cfg,
-                               std::vector<std::string>& vars)
-{
-    static std::mt19937 rng{ std::random_device{}() };
-    std::uniform_int_distribution<int> pick(0, 5);
-    int code = pick(rng);
-
-    switch (code)
-    {
-    /* ---------- PRINT ---------- */
-    case 0: {
-        if ((rng() & 3) == 0)
-            return Instruction{OpCode::PRINT, "\"\"", "", "", false, false};
-
-        if (vars.empty()) {
-            std::string v = randVar();
-            vars.push_back(v);
-            std::string val = std::to_string(Commands::getRandomInt(0, 65535));
-            return Instruction{OpCode::DECLARE, v, val, "", false, true };
-        }
-        std::string v = vars[rng() % vars.size()];
-        return Instruction{OpCode::PRINT, "\"Value from: \"", v, "", false, true };
-    }
-
-    /* ---------- DECLARE ---------- */
-    case 1: {
-        std::string v = randVar(); vars.push_back(v);
-        std::string val = std::to_string(Commands::getRandomInt(0, 65535));
-        return Instruction{OpCode::DECLARE, v, val, "", false, true };
-    }
-
-    /* ---------- ADD / SUB ---------- */
-    case 2:
-    case 3: {
-        if (vars.empty()) return randomInstr(cfg, vars);
-
-        bool rhs2Var = rng() & 1;
-        bool rhs3Var = rng() & 1;
-
-        std::string var1 = vars[rng() % vars.size()];
-        std::string arg2 = rhs2Var ? vars[rng() % vars.size()]
-                                   : std::to_string(Commands::getRandomInt(0,500));
-        std::string arg3 = rhs3Var ? vars[rng() % vars.size()]
-                                   : std::to_string(Commands::getRandomInt(0,500));
-
-        return Instruction{ code == 2 ? OpCode::ADD : OpCode::SUBTRACT,
-                            var1, arg2, arg3, rhs2Var, rhs3Var };
-    }
-
-    /* ---------- SLEEP ---------- */
-    case 4: {
-        std::string ticks = std::to_string(Commands::getRandomInt(1, 5));
-        return Instruction{ OpCode::SLEEP, "", ticks, "", false, true };
-    }
-
-    /* ---------- FOR ---------- */
-    default: {
-        std::string reps = std::to_string(Commands::getRandomInt(1, 3));
-    }
-    }
-}
-
 static Instruction makeLeafInstr(std::vector<std::string>& vars)
 {
     static std::mt19937 rng{ std::random_device{}() };
@@ -162,6 +100,111 @@ buildRandomProgram(int                       maxLogical,
     return prog;
 }
 
+static Instruction randomInstr(const Config& cfg,
+                               std::vector<std::string>& vars)
+{
+    static std::mt19937 rng{ std::random_device{}() };
+    std::uniform_int_distribution<int> pickOp(0, 5);
+    int code = pickOp(rng);
+
+    switch (code)
+    {
+        /* ---------- PRINT ---------- */
+        case 0: {
+            if ((rng() & 3) == 0) {
+                return Instruction{OpCode::PRINT, "\"\"", "", "", false, false};
+            }
+            if (vars.empty()) {
+                std::string v = randVar();
+                vars.push_back(v);
+                return Instruction{
+                    OpCode::DECLARE,
+                    v,
+                    std::to_string(Commands::getRandomInt(0, 65535)),
+                    "",
+                    false,
+                    true
+                };
+            }
+            {
+                std::string v = vars[rng() % vars.size()];
+                return Instruction{
+                    OpCode::PRINT,
+                    "\"Value from: \"",
+                    v,
+                    "",
+                    false,
+                    true
+                };
+            }
+        }
+
+        /* ---------- DECLARE ---------- */
+        case 1: {
+            std::string v = randVar();
+            vars.push_back(v);
+            return Instruction{
+                OpCode::DECLARE,
+                v,
+                std::to_string(Commands::getRandomInt(0, 65535)),
+                "",
+                false,
+                true
+            };
+        }
+
+        /* ---------- ADD / SUBTRACT ---------- */
+        case 2:
+        case 3: {
+            if (vars.empty()) {
+                // fall back to something simpler
+                return randomInstr(cfg, vars);
+            }
+
+            bool rhs2Var = (rng() & 1);
+            bool rhs3Var = (rng() & 1);
+            std::string target = vars[rng() % vars.size()];
+            std::string arg2 = rhs2Var
+                ? vars[rng() % vars.size()]
+                : std::to_string(Commands::getRandomInt(0, 500));
+            std::string arg3 = rhs3Var
+                ? vars[rng() % vars.size()]
+                : std::to_string(Commands::getRandomInt(0, 500));
+
+            return Instruction{
+                code == 2 ? OpCode::ADD : OpCode::SUBTRACT,
+                target,
+                arg2,
+                arg3,
+                rhs2Var,
+                rhs3Var
+            };
+        }
+
+        /* ---------- SLEEP ---------- */
+        case 4: {
+            return Instruction{
+                OpCode::SLEEP,
+                "",
+                std::to_string(Commands::getRandomInt(1, 5)),
+                "",
+                false,
+                true
+            };
+        }
+
+        /* ---------- FOR (loop) ---------- */
+        default: {
+            // build a tiny one-instruction body
+            uint8_t reps = static_cast<uint8_t>(
+                Commands::getRandomInt(1, 3));
+            std::vector<Instruction> body;
+            body.push_back(makeLeafInstr(vars));
+            return Instruction(std::move(body), reps);
+        }
+    }
+}
+
 static int nextProcessID = 1; // For unique process IDs
 
 int Commands::getRandomInt(int floor, int ceiling) {
@@ -171,24 +214,24 @@ int Commands::getRandomInt(int floor, int ceiling) {
 }
 
 std::string Commands::getCurrentTimestamp() {
-    auto now = std::chrono::system_clock::now();
-    auto now_ms = std::chrono::time_point_cast<std::chrono::milliseconds>(now);
-    auto epoch = now_ms.time_since_epoch();
-    auto seconds = std::chrono::duration_cast<std::chrono::seconds>(epoch);
-    auto milliseconds = std::chrono::duration_cast<std::chrono::milliseconds>(epoch - seconds);
+    using namespace std::chrono;
 
-    std::time_t now_c = std::chrono::system_clock::to_time_t(now);
-    std::tm localTime;
+    // current time
+    auto tp    = system_clock::now();
+    auto ms    = duration_cast<milliseconds>(tp.time_since_epoch()) % 1000;
+    std::time_t tt = system_clock::to_time_t(tp);
+    std::tm    tm;
+
 #ifdef _WIN32
-    localtime_s(&localTime, &now_c);
+    localtime_s(&tm, &tt);
 #else
-    localtime_r(&now_c, &localTime);
+    localtime_r(&tt, &tm);
 #endif
 
     std::ostringstream oss;
-    oss << std::put_time(&localTime, "%m/%d/%Y, %I:%M:%S");
-    oss << "." << std::setfill('0') << std::setw(3) << milliseconds.count();
-    oss << (localTime.tm_hour < 12 ? " AM" : " PM");
+    oss << std::put_time(&tm, "%m/%d/%Y %I:%M:%S")
+        << '.' << std::setfill('0') << std::setw(3) << ms.count()
+        << (tm.tm_hour < 12 ? "AM" : "PM");
 
     return oss.str();
 }
@@ -198,7 +241,6 @@ Commands::Commands() : scheduler(nullptr) {}
 
 void Commands::initialize(std::string filename) {
     if (scheduler == nullptr) {
-
         //bool fileLoaded = false;
 
         while (true) {
@@ -207,7 +249,8 @@ void Commands::initialize(std::string filename) {
 
             std::ifstream file(filename);
             if (!file.is_open()) {
-                std::cerr << "Error: Could not open the specified file. Please enter a valid path." << std::endl;
+                std::cerr << "Error: Could not open the specified file. Please enter a valid path."
+                          << std::endl;
                 break;
             }
             file.close();
@@ -215,41 +258,50 @@ void Commands::initialize(std::string filename) {
             try {
                 config = parseConfigFile(filename);
                 scheduler = std::make_unique<Scheduler>(config);
-                std::cout << "Scheduler initialized with " << config.numCpu << " CPUs." << std::endl;
+                std::cout << "Scheduler initialized with "
+                          << config.numCpu << " CPUs." << std::endl;
                 break;
             }
             catch (const std::exception& e) {
-                std::cerr << "Error parsing config file: " << e.what() << std::endl;
-                exit(0);
+                std::cerr << "Error parsing config file: "
+                          << e.what() << std::endl;
+                std::exit(0);
             }
         }
     }
 }
 
 Config Commands::parseConfigFile(const std::string& filename) {
-    Config config;
+    Config cfg{};  // Initialize
+
     std::ifstream file(filename);
-    if (!file.is_open()) {
+    if (!file.is_open())
         throw std::runtime_error("Could not open config file");
-    }
 
     std::string line;
     while (std::getline(file, line)) {
         std::istringstream iss(line);
         std::string key;
-        if (!(iss >> key)) continue;
+        if (!(iss >> key))
+            continue;
 
-        if (key == "num-cpu") iss >> config.numCpu;
-        else if (key == "scheduler") iss >> config.scheduler;
-        else if (key == "quantum-cycles") iss >> config.quantumCycles;
-        else if (key == "batch-process-freq") iss >> config.batchProcessFreq;
-        else if (key == "min-ins") iss >> config.minIns;
-        else if (key == "max-ins") iss >> config.maxIns;
-        else if (key == "delays-per-exec") iss >> config.delaysPerExec;
+        if      (key == "num-cpu")                iss >> cfg.numCpu;
+        else if (key == "scheduler")               iss >> cfg.scheduler;
+        else if (key == "quantum-cycles")          iss >> cfg.quantumCycles;
+        else if (key == "batch-process-freq")      iss >> cfg.batchProcessFreq;
+        else if (key == "min-ins")                 iss >> cfg.minIns;
+        else if (key == "max-ins")                 iss >> cfg.maxIns;
+        else if (key == "delays-per-exec")         iss >> cfg.delaysPerExec;
+        else if (key == "max-overall-mem"  ||
+                 key == "maxOverallMem")          iss >> cfg.maxOverallMem;
+        else if (key == "mem-per-frame"     ||
+                 key == "memPerFrame")           iss >> cfg.memPerFrame;
+        else if (key == "mem-per-proc"      ||
+                 key == "memPerProc")            iss >> cfg.memPerProc;
     }
-    config.delaysPerExec++;
-    file.close();
-    return config;
+
+    cfg.delaysPerExec++;
+    return cfg;
 }
 
 void Commands::initialScreen() {
@@ -508,23 +560,56 @@ void Commands::displayProcessSmi(ProcessInfo& process)
 
 void Commands::batchLoop()
 {
-    const int tickS = config.delaysPerExec * 10;
+    const int tickMultiplier = config.delaysPerExec * 10;
 
     while (batchRunning.load()) {
         std::this_thread::sleep_for(
-            std::chrono::milliseconds(config.batchProcessFreq * tickS));
+            std::chrono::milliseconds(config.batchProcessFreq * tickMultiplier)
+        );
 
         std::string pname = "process" + std::to_string(nextProcessID);
 
-        try { scheduler->getProcess(pname); ++nextProcessID; continue; }
-        catch (...) {}
+        bool exists = false;
+
+        for (auto const& p : scheduler->getWaitingProcesses()) {
+            if (p.processName == pname) {
+                exists = true;
+                break;
+            }
+        }
+        if (!exists) {
+            for (auto const& p : scheduler->getRunningProcesses()) {
+                if (p.processName == pname) {
+                    exists = true;
+                    break;
+                }
+            }
+        }
+        if (!exists) {
+            for (auto const& e : scheduler->getFinishedProcesses()) {
+                if (e.first.processName == pname) {
+                    exists = true;
+                    break;
+                }
+            }
+        }
+
+        if (exists) {
+            ++nextProcessID;
+            continue;
+        }
 
         int lines = Commands::getRandomInt(config.minIns, config.maxIns);
-
-        ProcessInfo p(nextProcessID++, pname, lines, getCurrentTimestamp(), false);
+        ProcessInfo p(
+            nextProcessID++,
+            pname,
+            lines,
+            getCurrentTimestamp(),
+            false
+        );
 
         std::vector<std::string> vars;
-        p.prog = buildRandomProgram(lines, config, vars);
+        p.prog      = buildRandomProgram(lines, config, vars);
         p.totalLine = static_cast<int>(logicalSize(p.prog));
 
         scheduler->addProcess(std::move(p));

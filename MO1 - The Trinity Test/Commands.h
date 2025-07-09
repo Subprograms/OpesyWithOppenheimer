@@ -21,11 +21,9 @@ private:
     Config config;
     std::vector<ProcessInfo> processList;
     void writeProcessReport(std::ostream& os);
-
     void startThread(ProcessInfo& proc);
     void editProcessScreen(ProcessInfo& proc);
     void enterProcessScreen(ProcessInfo& proc);
-
     void displayProcessSmi(ProcessInfo& process);
     Config parseConfigFile(const std::string& filename);
     std::mutex queueMutex;
@@ -41,11 +39,9 @@ public:
     void initialScreen();
     void processCommand(const std::string& command);
     void screenCommand(const std::string& command);
-    
     void rSubCommand(const std::string& name);
     void sSubCommand(const std::string& name);
     void lsSubCommand();
-
     void schedulerStartCommand();
     void schedulerStopCommand();
     void reportUtilCommand();
