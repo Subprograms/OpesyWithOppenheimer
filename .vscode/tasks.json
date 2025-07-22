@@ -1,0 +1,24 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "Build Full Project",
+      "type": "shell",
+      "command": "cl.exe",
+      "args": [
+        "/Zi", "/EHsc", "/nologo",
+        "/Fe:CSOPESY-S16_Group5.exe",
+        "CSOPESY-S16_Group5.cpp",
+        "Commands.cpp",
+        "Screen.cpp",
+        "Scheduler.cpp",
+        "Data.cpp"
+      ],
+      "group": {
+        "kind": "build",
+        "isDefault": true
+      },
+      "problemMatcher": ["$msCompile"]
+    }
+  ]
+}

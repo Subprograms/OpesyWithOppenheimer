@@ -1,0 +1,677 @@
+20:25:59.349 | Core:1 [0] FOR ×3 (body 3)
+20:25:59.349 | Core:1 [1]     DECLARE v=32215
+20:25:59.349 | Core:1 [2]     PRINT -> Hello world from test!
+20:25:59.349 | Core:1 [3]     DECLARE x=44809
+20:25:59.349 | Core:1 [4]     DECLARE v=32215
+20:25:59.356 | Core:4 [5]     PRINT -> Hello world from test!
+20:25:59.356 | Core:4 [6]     DECLARE x=44809
+20:25:59.356 | Core:4 [7]     DECLARE v=32215
+20:25:59.356 | Core:4 [8]     PRINT -> Hello world from test!
+20:25:59.356 | Core:4 [9]     DECLARE x=44809
+20:25:59.372 | Core:3 [10] FOR ×3 (body 3)
+20:25:59.372 | Core:3 [11]     ADD(e, 495, 266)
+20:25:59.372 | Core:3 [12]     DECLARE i=14526
+20:25:59.372 | Core:3 [13]     ADD(i, 368, 120)
+20:25:59.372 | Core:3 [14]     ADD(e, 495, 266)
+20:25:59.389 | Core:1 [15]     DECLARE i=14526
+20:25:59.389 | Core:1 [16]     ADD(i, 368, 120)
+20:25:59.389 | Core:1 [17]     ADD(e, 495, 266)
+20:25:59.389 | Core:1 [18]     DECLARE i=14526
+20:25:59.389 | Core:1 [19]     ADD(i, 368, 120)
+20:25:59.402 | Core:4 [20] ADD(v, 326, 116)
+20:25:59.402 | Core:4 [21] SUB(v, 324, 168)
+20:25:59.402 | Core:4 [22] PRINT -> Hello world from test!
+20:25:59.402 | Core:4 [23] SUB(v, 465, 214)
+20:25:59.402 | Core:4 [24] FOR ×2 (body 3)
+20:25:59.418 | Core:2 [25]     PRINT -> Value from: +x: 44809
+20:25:59.418 | Core:2 [26]     SUB(x, 103, 269)
+20:25:59.418 | Core:2 [27]     SLEEP 3
+20:25:59.463 | Core:3 [28]     PRINT -> Hello world from test!
+20:25:59.463 | Core:3 [29]     PRINT -> Value from: +x: 0
+20:25:59.463 | Core:3 [30]     SUB(x, 103, 269)
+20:25:59.479 | Core:1 [31]     SLEEP 3
+20:25:59.526 | Core:2 [32]     PRINT -> Hello world from test!
+20:25:59.526 | Core:2 [33] ADD(e, 318, 292)
+20:25:59.526 | Core:2 [34] SUB(v, 21, 281)
+20:25:59.543 | Core:3 [35] ADD(e, 387, 404)
+20:25:59.543 | Core:3 [36] SLEEP 4
+20:25:59.604 | Core:4 [37] FOR ×3 (body 3)
+20:25:59.604 | Core:4 [38]     ADD(i, 212, 61)
+20:25:59.620 | Core:2 [39]     PRINT -> Hello world from test!
+20:25:59.620 | Core:2 [40]     SUB(x, 231, 182)
+20:25:59.620 | Core:2 [41]     ADD(i, 212, 61)
+20:25:59.620 | Core:2 [42]     PRINT -> Hello world from test!
+20:25:59.620 | Core:2 [43]     SUB(x, 231, 182)
+20:25:59.635 | Core:1 [44]     ADD(i, 212, 61)
+20:25:59.636 | Core:1 [45]     PRINT -> Hello world from test!
+20:25:59.636 | Core:1 [46]     SUB(x, 231, 182)
+20:25:59.636 | Core:1 [47] SLEEP 4
+20:25:59.696 | Core:3 [48] FOR ×3 (body 3)
+20:25:59.696 | Core:3 [49]     DECLARE w=62508
+20:25:59.712 | Core:2 [50]     SUB(e, 129, 244)
+20:25:59.712 | Core:2 [51]     DECLARE l=6421
+20:25:59.712 | Core:2 [52]     DECLARE w=62508
+20:25:59.712 | Core:2 [53]     SUB(e, 129, 244)
+20:25:59.712 | Core:2 [54]     DECLARE l=6421
+20:25:59.727 | Core:1 [55]     DECLARE w=62508
+20:25:59.727 | Core:1 [56]     SUB(e, 129, 244)
+20:25:59.727 | Core:1 [57]     DECLARE l=6421
+20:25:59.727 | Core:1 [58] SLEEP 1
+20:25:59.742 | Core:4 [59] PRINT -> Value from: +i: 273
+20:25:59.742 | Core:4 [60] DECLARE g=6400
+20:25:59.743 | Core:4 [61] PRINT -> Value from: +g: 6400
+20:25:59.743 | Core:4 [62] DECLARE x=15137
+20:25:59.743 | Core:4 [63] ADD(i, 342, 199)
+20:25:59.758 | Core:4 [64] SUB(l, 23, 273)
+20:25:59.758 | Core:4 [65] FOR ×3 (body 3)
+20:25:59.758 | Core:4 [66]     DECLARE e=10403
+20:25:59.758 | Core:4 [67]     ADD(i, 467, 131)
+20:25:59.758 | Core:4 [68]     SUB(e, 468, 259)
+20:25:59.774 | Core:2 [69]     DECLARE e=10403
+20:25:59.774 | Core:2 [70]     ADD(i, 467, 131)
+20:25:59.774 | Core:2 [71]     SUB(e, 468, 259)
+20:25:59.774 | Core:2 [72]     DECLARE e=10403
+20:25:59.774 | Core:2 [73]     ADD(i, 467, 131)
+20:25:59.789 | Core:3 [74]     SUB(e, 468, 259)
+20:25:59.789 | Core:3 [75] DECLARE r=34659
+20:25:59.789 | Core:3 [76] ADD(i, 200, 90)
+20:25:59.789 | Core:3 [77] ADD(v, 114, 106)
+20:25:59.789 | Core:3 [78] SUB(v, 263, 94)
+20:25:59.805 | Core:4 [79] PRINT -> Hello world from test!
+20:25:59.805 | Core:4 [80] DECLARE z=47356
+20:25:59.805 | Core:4 [81] PRINT -> Value from: +x: 15137
+20:25:59.805 | Core:4 [82] SLEEP 1
+20:25:59.819 | Core:2 [83] FOR ×2 (body 3)
+20:25:59.819 | Core:2 [84]     DECLARE x=61191
+20:25:59.820 | Core:2 [85]     PRINT -> Hello world from test!
+20:25:59.820 | Core:2 [86]     SLEEP 2
+20:26:23.932 | Core:3 [0] SLEEP 1
+20:26:23.950 | Core:1 [1] PRINT -> Hello world from test!
+20:26:23.950 | Core:1 [2] PRINT -> Hello world from test!
+20:26:23.950 | Core:1 [3] SLEEP 4
+20:26:24.011 | Core:2 [4] FOR ×3 (body 3)
+20:26:24.011 | Core:2 [5]     DECLARE d=14819
+20:26:24.027 | Core:4 [6]     ADD(m, 166, 370)
+20:26:24.027 | Core:4 [7]     DECLARE r=39980
+20:26:24.027 | Core:4 [8]     DECLARE d=14819
+20:26:24.027 | Core:4 [9]     ADD(m, 166, 370)
+20:26:24.027 | Core:4 [10]     DECLARE r=39980
+20:26:24.042 | Core:3 [11]     DECLARE d=14819
+20:26:24.042 | Core:3 [12]     ADD(m, 166, 370)
+20:26:24.042 | Core:3 [13]     DECLARE r=39980
+20:26:24.043 | Core:3 [14] PRINT -> Value from: +d: 14819
+20:26:24.043 | Core:3 [15] ADD(m, 122, 6)
+20:26:24.058 | Core:1 [16] PRINT -> Hello world from test!
+20:26:24.058 | Core:1 [17] DECLARE q=45093
+20:26:24.058 | Core:1 [18] FOR ×3 (body 3)
+20:26:24.058 | Core:1 [19]     ADD(q, 276, 121)
+20:26:24.058 | Core:1 [20]     SLEEP 3
+20:26:24.104 | Core:2 [21]     DECLARE q=7337
+20:26:24.104 | Core:2 [22]     ADD(q, 276, 121)
+20:26:24.104 | Core:2 [23]     SLEEP 3
+20:26:24.150 | Core:4 [24]     DECLARE q=7337
+20:26:24.150 | Core:4 [25]     ADD(q, 276, 121)
+20:26:24.150 | Core:4 [26]     SLEEP 3
+20:26:24.195 | Core:3 [27]     DECLARE q=7337
+20:26:24.195 | Core:3 [28] FOR ×3 (body 3)
+20:26:24.196 | Core:3 [29]     DECLARE g=34848
+20:26:24.211 | Core:1 [30]     SLEEP 3
+20:26:24.256 | Core:4 [31]     FOR ×2 (body 3)
+20:26:24.256 | Core:4 [32]         SLEEP 4
+20:26:24.318 | Core:2 [33]         DECLARE s=34793
+20:26:24.318 | Core:2 [34]         SLEEP 4
+20:26:24.379 | Core:4 [35]         DECLARE s=34793
+20:26:24.380 | Core:4 [36]     FOR ×2 (body 3)
+20:26:24.396 | Core:1 [37]         SUB(d, 447, 331)
+20:26:24.396 | Core:1 [38]         ADD(g, 260, 61)
+20:26:24.396 | Core:1 [39]         PRINT -> Hello world from test!
+20:26:24.396 | Core:1 [40]         SUB(d, 447, 331)
+20:26:24.396 | Core:1 [41]         ADD(g, 260, 61)
+20:26:24.411 | Core:2 [42]         PRINT -> Hello world from test!
+20:26:24.411 | Core:2 [43]     FOR ×2 (body 3)
+20:26:24.411 | Core:2 [44]         SUB(d, 287, 351)
+20:26:24.411 | Core:2 [45]         SUB(r, 391, 290)
+20:26:24.411 | Core:2 [46]         SUB(q, 225, 440)
+20:26:24.426 | Core:4 [47]         SUB(d, 287, 351)
+20:26:24.426 | Core:4 [48]         SUB(r, 391, 290)
+20:26:24.426 | Core:4 [49]         SUB(q, 225, 440)
+20:26:24.426 | Core:4 [50]     ADD(s, 77, 324)
+20:26:24.426 | Core:4 [51]     DECLARE g=34848
+20:26:24.442 | Core:3 [52]     SLEEP 3
+20:26:24.486 | Core:1 [53]     FOR ×2 (body 3)
+20:26:24.486 | Core:1 [54]         SLEEP 4
+20:26:24.548 | Core:2 [55]         DECLARE s=34793
+20:26:24.548 | Core:2 [56]         SLEEP 4
+20:26:24.609 | Core:1 [57]         DECLARE s=34793
+20:26:24.609 | Core:1 [58]     SLEEP 4
+20:26:24.670 | Core:4 [59]     DECLARE s=34793
+20:26:24.670 | Core:4 [60]     DECLARE g=34848
+20:26:24.686 | Core:2 [61]     SLEEP 3
+20:26:24.731 | Core:3 [62]     FOR ×2 (body 3)
+20:26:24.731 | Core:3 [63]         SLEEP 4
+20:26:24.792 | Core:1 [64]         DECLARE s=34793
+20:26:24.792 | Core:1 [65]         SLEEP 4
+20:26:24.854 | Core:4 [66]         DECLARE s=34793
+20:26:24.854 | Core:4 [67]     SLEEP 4
+20:26:24.916 | Core:3 [68]     DECLARE s=34793
+20:26:24.916 | Core:3 [69] SLEEP 4
+20:26:24.978 | Core:1 [70] DECLARE s=34793
+20:26:24.978 | Core:1 [71] FOR ×2 (body 3)
+20:26:24.994 | Core:4 [72]     SUB(d, 447, 331)
+20:26:24.994 | Core:4 [73]     ADD(g, 260, 61)
+20:26:24.994 | Core:4 [74]     PRINT -> Hello world from test!
+20:26:24.994 | Core:4 [75]     SUB(d, 447, 331)
+20:26:24.994 | Core:4 [76]     ADD(g, 260, 61)
+20:26:25.010 | Core:3 [77]     PRINT -> Hello world from test!
+20:26:25.010 | Core:3 [78] SUB(d, 447, 331)
+20:26:25.010 | Core:3 [79] ADD(g, 260, 61)
+20:26:25.010 | Core:3 [80] PRINT -> Hello world from test!
+20:26:25.010 | Core:3 [81] FOR ×2 (body 3)
+20:26:25.024 | Core:1 [82]     SUB(d, 287, 351)
+20:26:25.024 | Core:1 [83]     SUB(r, 391, 290)
+20:26:25.024 | Core:1 [84]     SUB(q, 225, 440)
+20:26:25.024 | Core:1 [85]     SUB(d, 287, 351)
+20:26:25.025 | Core:1 [86]     SUB(r, 391, 290)
+20:26:25.040 | Core:4 [87]     SUB(q, 225, 440)
+20:26:25.041 | Core:4 [88] SUB(d, 287, 351)
+20:26:25.041 | Core:4 [89] SUB(r, 391, 290)
+20:26:25.041 | Core:4 [90] SUB(q, 225, 440)
+20:26:25.041 | Core:4 [91] ADD(s, 77, 324)
+20:26:25.056 | Core:3 [92] FOR ×2 (body 3)
+20:26:25.056 | Core:3 [93]     DECLARE e=32559
+20:26:25.056 | Core:3 [94]     SLEEP 2
+20:26:25.085 | Core:1 [95]     SUB(q, 253, 200)
+20:26:25.085 | Core:1 [96]     DECLARE e=32559
+20:26:25.085 | Core:1 [97]     SLEEP 2
+20:26:25.115 | Core:2 [98]     SUB(q, 253, 200)
+20:26:25.115 | Core:2 [99] SUB(q, 217, 110)
+20:26:25.115 | Core:2 [100] DECLARE s=315
+20:26:25.115 | Core:2 [101] SLEEP 2
+20:26:25.146 | Core:3 [102] FOR ×3 (body 3)
+20:26:25.146 | Core:3 [103]     ADD(s, 390, 113)
+20:26:25.146 | Core:3 [104]     SUB(s, 112, 467)
+20:26:25.147 | Core:3 [105]     PRINT -> Hello world from test!
+20:26:25.162 | Core:3 [106]     ADD(s, 390, 113)
+20:26:25.162 | Core:3 [107]     SUB(s, 112, 467)
+20:26:25.162 | Core:3 [108]     PRINT -> Hello world from test!
+20:26:25.162 | Core:3 [109]     ADD(s, 390, 113)
+20:26:25.162 | Core:3 [110]     SUB(s, 112, 467)
+20:26:25.177 | Core:2 [111]     PRINT -> Hello world from test!
+20:26:25.178 | Core:2 [112] SUB(q, 284, 87)
+20:26:25.178 | Core:2 [113] PRINT -> Hello world from test!
+20:26:25.178 | Core:2 [114] FOR ×3 (body 3)
+20:26:25.178 | Core:2 [115]     SUB(m, 230, 142)
+20:26:25.193 | Core:2 [116]     SUB(h, 318, 2)
+20:26:25.193 | Core:2 [117]     PRINT -> Value from: +h: 316
+20:26:25.193 | Core:2 [118]     SUB(m, 230, 142)
+20:26:25.193 | Core:2 [119]     SUB(h, 318, 2)
+20:26:25.193 | Core:2 [120]     PRINT -> Value from: +h: 316
+20:26:25.208 | Core:3 [121]     SUB(m, 230, 142)
+20:26:25.208 | Core:3 [122]     SUB(h, 318, 2)
+20:26:25.208 | Core:3 [123]     PRINT -> Value from: +h: 316
+20:26:25.208 | Core:3 [124] SUB(r, 450, 468)
+20:26:25.208 | Core:3 [125] DECLARE i=16770
+20:26:25.223 | Core:4 [126] SUB(r, 259, 79)
+20:26:25.223 | Core:4 [127] SLEEP 3
+20:26:25.268 | Core:1 [128] SUB(h, 382, 109)
+20:26:57.524 | Core:1 [0] PRINT -> Hello world from test!
+20:26:57.524 | Core:1 [1] DECLARE y=15544
+20:26:57.524 | Core:1 [2] SLEEP 2
+20:26:57.554 | Core:4 [3] FOR ×2 (body 3)
+20:26:57.554 | Core:4 [4]     SLEEP 1
+20:26:57.569 | Core:2 [5]     DECLARE b=44248
+20:26:57.569 | Core:2 [6]     SLEEP 5
+20:26:57.646 | Core:1 [7]     FOR ×3 (body 3)
+20:26:57.661 | Core:4 [8]         ADD(b, 376, 454)
+20:26:57.661 | Core:4 [9]         DECLARE d=64801
+20:26:57.661 | Core:4 [10]         ADD(q, 307, 407)
+20:26:57.661 | Core:4 [11]         ADD(b, 376, 454)
+20:26:57.661 | Core:4 [12]         DECLARE d=64801
+20:26:57.676 | Core:3 [13]         ADD(q, 307, 407)
+20:26:57.676 | Core:3 [14]         ADD(b, 376, 454)
+20:26:57.676 | Core:3 [15]         DECLARE d=64801
+20:26:57.676 | Core:3 [16]         ADD(q, 307, 407)
+20:26:57.676 | Core:3 [17]     SUB(b, 69, 484)
+20:26:57.691 | Core:1 [18]     SLEEP 1
+20:26:57.707 | Core:2 [19]     DECLARE b=44248
+20:26:57.707 | Core:2 [20]     SLEEP 5
+20:26:57.782 | Core:3 [21]     FOR ×3 (body 3)
+20:26:57.798 | Core:4 [22]         ADD(b, 376, 454)
+20:26:57.798 | Core:4 [23]         DECLARE d=64801
+20:26:57.798 | Core:4 [24]         ADD(q, 307, 407)
+20:26:57.798 | Core:4 [25]         ADD(b, 376, 454)
+20:26:57.798 | Core:4 [26]         DECLARE d=64801
+20:26:57.813 | Core:1 [27]         ADD(q, 307, 407)
+20:26:57.813 | Core:1 [28]         ADD(b, 376, 454)
+20:26:57.813 | Core:1 [29]         DECLARE d=64801
+20:26:57.813 | Core:1 [30]         ADD(q, 307, 407)
+20:26:57.813 | Core:1 [31]     ADD(b, 376, 454)
+20:26:57.828 | Core:4 [32] DECLARE d=64801
+20:26:57.828 | Core:4 [33] ADD(q, 307, 407)
+20:26:57.828 | Core:4 [34] SUB(b, 69, 484)
+20:26:57.828 | Core:4 [35] SUB(b, 488, 199)
+20:26:57.828 | Core:4 [36] FOR ×2 (body 3)
+20:26:57.843 | Core:3 [37]     ADD(q, 445, 123)
+20:26:57.843 | Core:3 [38]     SUB(y, 84, 266)
+20:26:57.843 | Core:3 [39]     ADD(b, 288, 264)
+20:26:57.843 | Core:3 [40]     ADD(q, 445, 123)
+20:26:57.843 | Core:3 [41]     SUB(y, 84, 266)
+20:26:57.859 | Core:1 [42]     ADD(b, 288, 264)
+20:26:57.859 | Core:1 [43] PRINT -> Hello world from test!
+20:26:57.859 | Core:1 [44] SUB(b, 179, 316)
+20:26:57.859 | Core:1 [45] FOR ×2 (body 3)
+20:26:57.859 | Core:1 [46]     SLEEP 2
+20:26:57.889 | Core:2 [47]     SUB(q, 465, 361)
+20:26:57.889 | Core:2 [48]     SLEEP 2
+20:26:57.919 | Core:3 [49]     SUB(q, 465, 361)
+20:26:57.919 | Core:3 [50] DECLARE s=43408
+20:26:57.919 | Core:3 [51] FOR ×2 (body 3)
+20:26:57.919 | Core:3 [52]     DECLARE o=49301
+20:26:57.935 | Core:4 [53]     DECLARE n=49085
+20:26:57.935 | Core:4 [54]     ADD(y, 190, 450)
+20:26:57.936 | Core:4 [55]     DECLARE o=49301
+20:26:57.936 | Core:4 [56]     DECLARE n=49085
+20:26:57.936 | Core:4 [57]     ADD(y, 190, 450)
+20:26:57.952 | Core:3 [58] FOR ×2 (body 3)
+20:26:57.952 | Core:3 [59]     PRINT -> Hello world from test!
+20:26:57.952 | Core:3 [60]     SUB(q, 134, 180)
+20:26:57.952 | Core:3 [61]     ADD(n, 341, 309)
+20:26:57.952 | Core:3 [62]     PRINT -> Hello world from test!
+20:26:57.967 | Core:2 [63]     SUB(q, 134, 180)
+20:26:57.967 | Core:2 [64]     ADD(n, 341, 309)
+20:26:57.967 | Core:2 [65] ADD(x, 315, 300)
+20:26:57.967 | Core:2 [66] FOR ×3 (body 3)
+20:26:57.967 | Core:2 [67]     SUB(f, 135, 8)
+20:26:57.983 | Core:1 [68]     ADD(r, 475, 66)
+20:26:57.983 | Core:1 [69]     SLEEP 4
+20:26:58.043 | Core:3 [70]     FOR ×3 (body 3)
+20:26:58.043 | Core:3 [71]         DECLARE j=33468
+20:26:58.058 | Core:3 [72]         ADD(b, 431, 367)
+20:26:58.059 | Core:3 [73]         DECLARE d=9583
+20:26:58.059 | Core:3 [74]         DECLARE j=33468
+20:26:58.059 | Core:3 [75]         ADD(b, 431, 367)
+20:26:58.059 | Core:3 [76]         DECLARE d=9583
+20:26:58.074 | Core:1 [77]         DECLARE j=33468
+20:26:58.074 | Core:1 [78]         ADD(b, 431, 367)
+20:26:58.074 | Core:1 [79]         DECLARE d=9583
+20:26:58.074 | Core:1 [80]     ADD(j, 497, 357)
+20:26:58.074 | Core:1 [81]     SUB(f, 135, 8)
+20:26:58.090 | Core:2 [82]     ADD(r, 475, 66)
+20:26:58.090 | Core:2 [83]     SLEEP 4
+20:26:58.150 | Core:4 [84]     FOR ×3 (body 3)
+20:26:58.150 | Core:4 [85]         DECLARE j=33468
+20:26:58.166 | Core:3 [86]         ADD(b, 431, 367)
+20:26:58.166 | Core:3 [87]         DECLARE d=9583
+20:26:58.166 | Core:3 [88]         DECLARE j=33468
+20:26:58.166 | Core:3 [89]         ADD(b, 431, 367)
+20:26:58.166 | Core:3 [90]         DECLARE d=9583
+20:26:58.182 | Core:3 [91]         DECLARE j=33468
+20:26:58.182 | Core:3 [92]         ADD(b, 431, 367)
+20:26:58.182 | Core:3 [93]         DECLARE d=9583
+20:26:58.182 | Core:3 [94]     DECLARE j=33468
+20:26:58.182 | Core:3 [95]     SUB(f, 135, 8)
+20:26:58.197 | Core:2 [96]     ADD(r, 475, 66)
+20:26:58.197 | Core:2 [97]     SLEEP 4
+20:26:58.257 | Core:1 [98]     FOR ×3 (body 3)
+20:26:58.257 | Core:1 [99]         DECLARE j=33468
+20:26:58.273 | Core:4 [100]         ADD(b, 431, 367)
+20:26:58.273 | Core:4 [101]         DECLARE d=9583
+20:26:58.273 | Core:4 [102]         DECLARE j=33468
+20:26:58.273 | Core:4 [103]         ADD(b, 431, 367)
+20:26:58.273 | Core:4 [104]         DECLARE d=9583
+20:26:58.289 | Core:2 [105]         DECLARE j=33468
+20:26:58.289 | Core:2 [106]         ADD(b, 431, 367)
+20:26:58.289 | Core:2 [107]         DECLARE d=9583
+20:26:58.289 | Core:2 [108]     DECLARE j=33468
+20:26:58.289 | Core:2 [109] ADD(b, 431, 367)
+20:26:58.304 | Core:1 [110] DECLARE d=9583
+20:26:58.304 | Core:1 [111] DECLARE j=33468
+20:26:58.304 | Core:1 [112] ADD(b, 431, 367)
+20:26:58.304 | Core:1 [113] DECLARE d=9583
+20:26:58.304 | Core:1 [114] ADD(j, 497, 357)
+20:26:58.319 | Core:4 [115] SLEEP 5
+20:26:58.395 | Core:2 [116] PRINT -> Value from: +c: 0
+20:27:22.067 | Core:1 [0] SLEEP 5
+20:27:24.617 | Core:1 [1] SUB(c, 491, 222)
+20:27:25.132 | Core:4 [2] PRINT -> Hello world from test!
+20:27:25.132 | Core:4 [3] SLEEP 2
+20:27:26.152 | Core:1 [4] FOR ×2 (body 3)
+20:27:26.152 | Core:1 [5]     DECLARE p=31342
+20:27:26.152 | Core:1 [6]     PRINT -> Value from: +c: 269
+20:27:26.152 | Core:1 [7]     DECLARE y=55561
+20:27:26.667 | Core:3 [8]     DECLARE p=31342
+20:27:26.667 | Core:3 [9]     PRINT -> Value from: +c: 269
+20:27:26.667 | Core:3 [10]     DECLARE y=55561
+20:27:26.667 | Core:3 [11] DECLARE c=13378
+20:27:26.667 | Core:3 [12] FOR ×3 (body 3)
+20:27:27.182 | Core:3 [13]     SUB(c, 330, 497)
+20:27:27.182 | Core:3 [14]     SUB(c, 58, 310)
+20:27:27.183 | Core:3 [15]     SLEEP 3
+20:27:28.716 | Core:2 [16]     PRINT -> Hello world from test!
+20:27:28.716 | Core:2 [17]     SUB(c, 330, 497)
+20:27:28.716 | Core:2 [18]     SUB(c, 58, 310)
+20:27:29.231 | Core:1 [19]     SLEEP 3
+20:27:30.766 | Core:3 [20]     PRINT -> Hello world from test!
+20:27:30.766 | Core:3 [21]     SUB(c, 330, 497)
+20:27:30.766 | Core:3 [22]     SUB(c, 58, 310)
+20:27:31.278 | Core:2 [23]     SLEEP 3
+20:27:32.804 | Core:2 [24]     PRINT -> Hello world from test!
+20:27:32.804 | Core:2 [25] ADD(c, 122, 239)
+20:27:32.804 | Core:2 [26] DECLARE i=48034
+20:27:33.318 | Core:1 [27] ADD(c, 1, 374)
+20:27:33.318 | Core:1 [28] FOR ×3 (body 3)
+20:27:33.318 | Core:1 [29]     SLEEP 3
+20:27:34.850 | Core:1 [30]     PRINT -> Hello world from test!
+20:27:34.850 | Core:1 [31]     SLEEP 3
+20:27:36.384 | Core:1 [32]     PRINT -> Hello world from test!
+20:27:36.384 | Core:1 [33]     SLEEP 3
+20:27:37.929 | Core:3 [34]     PRINT -> Hello world from test!
+20:27:37.929 | Core:3 [35] DECLARE v=35334
+20:27:37.929 | Core:3 [36] PRINT -> Hello world from test!
+20:27:38.443 | Core:4 [37] FOR ×2 (body 3)
+20:27:38.443 | Core:4 [38]     DECLARE o=49503
+20:27:38.443 | Core:4 [39]     SLEEP 3
+20:27:39.968 | Core:1 [40]     FOR ×3 (body 3)
+20:27:39.968 | Core:1 [41]         PRINT -> Hello world from test!
+20:27:39.968 | Core:1 [42]         ADD(n, 133, 81)
+20:27:40.480 | Core:2 [43]         SUB(c, 187, 109)
+20:27:40.481 | Core:2 [44]         PRINT -> Hello world from test!
+20:27:40.481 | Core:2 [45]         ADD(n, 133, 81)
+20:27:40.481 | Core:2 [46]         SUB(c, 187, 109)
+20:27:40.481 | Core:2 [47]         PRINT -> Hello world from test!
+20:27:40.994 | Core:3 [48]         ADD(n, 133, 81)
+20:27:40.994 | Core:3 [49]         SUB(c, 187, 109)
+20:27:40.994 | Core:3 [50]     SUB(l, 469, 332)
+20:27:40.994 | Core:3 [51]     DECLARE o=49503
+20:27:40.994 | Core:3 [52]     SLEEP 3
+20:27:42.522 | Core:1 [53]     FOR ×3 (body 3)
+20:27:42.523 | Core:1 [54]         PRINT -> Hello world from test!
+20:27:42.523 | Core:1 [55]         ADD(n, 133, 81)
+20:27:43.033 | Core:1 [56]         SUB(c, 187, 109)
+20:27:43.034 | Core:1 [57]         PRINT -> Hello world from test!
+20:27:43.034 | Core:1 [58]         ADD(n, 133, 81)
+20:27:43.034 | Core:1 [59]         SUB(c, 187, 109)
+20:27:43.034 | Core:1 [60]         PRINT -> Hello world from test!
+20:27:43.543 | Core:2 [61]         ADD(n, 133, 81)
+20:27:43.543 | Core:2 [62]         SUB(c, 187, 109)
+20:27:43.543 | Core:2 [63]     PRINT -> Hello world from test!
+20:27:43.544 | Core:2 [64] ADD(n, 133, 81)
+20:27:43.544 | Core:2 [65] SUB(c, 187, 109)
+20:27:44.056 | Core:2 [66] SUB(l, 469, 332)
+20:27:44.056 | Core:2 [67] SUB(l, 164, 8)
+20:27:44.056 | Core:2 [68] ADD(m, 97, 132)
+20:27:44.056 | Core:2 [69] DECLARE d=55073
+20:29:10.477 | Core:1 [0] DECLARE m=57640
+20:29:10.477 | Core:1 [1] PRINT -> Hello world from test!
+20:29:10.477 | Core:1 [2] SLEEP 4
+20:29:12.507 | Core:4 [3] ADD(m, 355, 144)
+20:29:12.507 | Core:4 [4] DECLARE d=34904
+20:29:13.018 | Core:2 [5] FOR ×2 (body 3)
+20:29:13.018 | Core:2 [6]     SLEEP 2
+20:29:14.042 | Core:2 [7]     DECLARE d=12742
+20:29:14.042 | Core:2 [8]     SLEEP 2
+20:29:15.067 | Core:4 [9]     DECLARE d=12742
+20:29:15.067 | Core:4 [10] FOR ×2 (body 3)
+20:29:15.067 | Core:4 [11]     ADD(d, 302, 232)
+20:29:15.067 | Core:4 [12]     DECLARE t=3142
+20:29:15.580 | Core:3 [13]     PRINT -> Value from: +d: 534
+20:29:15.580 | Core:3 [14]     ADD(d, 302, 232)
+20:29:15.580 | Core:3 [15]     DECLARE t=3142
+20:29:15.580 | Core:3 [16]     PRINT -> Value from: +d: 534
+20:29:15.580 | Core:3 [17] SLEEP 5
+20:29:18.133 | Core:3 [18] SLEEP 5
+20:30:53.461 | Core:1 [0] FOR ×3 (body 3)
+20:30:53.461 | Core:1 [1]     DECLARE s=59943
+20:30:53.461 | Core:1 [2]     SUB(s, 141, 209)
+20:30:53.461 | Core:1 [3]     ADD(s, 298, 432)
+20:30:53.461 | Core:1 [4]     DECLARE s=59943
+20:30:53.967 | Core:4 [5]     SUB(s, 141, 209)
+20:30:53.967 | Core:4 [6]     ADD(s, 298, 432)
+20:30:53.967 | Core:4 [7]     DECLARE s=59943
+20:30:53.967 | Core:4 [8]     SUB(s, 141, 209)
+20:30:53.967 | Core:4 [9]     ADD(s, 298, 432)
+20:30:54.478 | Core:1 [10] PRINT -> Hello world from test!
+20:30:54.478 | Core:1 [11] SLEEP 2
+20:30:55.498 | Core:3 [12] FOR ×2 (body 3)
+20:30:55.498 | Core:3 [13]     ADD(i, 129, 406)
+20:30:55.498 | Core:3 [14]     DECLARE v=43279
+20:30:55.498 | Core:3 [15]     ADD(v, 97, 139)
+20:30:56.011 | Core:1 [16]     ADD(i, 129, 406)
+20:30:56.011 | Core:1 [17]     DECLARE v=43279
+20:30:56.011 | Core:1 [18]     ADD(v, 97, 139)
+20:30:56.011 | Core:1 [19] FOR ×2 (body 3)
+20:30:56.011 | Core:1 [20]     SUB(v, 214, 167)
+20:30:56.520 | Core:3 [21]     SUB(h, 145, 53)
+20:30:56.520 | Core:3 [22]     DECLARE n=4977
+20:30:56.520 | Core:3 [23]     SUB(v, 214, 167)
+20:30:56.520 | Core:3 [24]     SUB(h, 145, 53)
+20:30:56.520 | Core:3 [25]     DECLARE n=4977
+20:30:57.030 | Core:4 [26] SUB(v, 352, 391)
+20:30:57.030 | Core:4 [27] PRINT -> Value from: +s: 730
+20:30:57.030 | Core:4 [28] DECLARE i=34020
+20:30:57.030 | Core:4 [29] ADD(i, 295, 66)
+20:30:57.030 | Core:4 [30] ADD(h, 315, 107)
+20:30:57.538 | Core:1 [31] ADD(s, 389, 22)
+20:30:57.538 | Core:1 [32] DECLARE q=28028
+20:30:57.538 | Core:1 [33] DECLARE l=47446
+20:30:57.538 | Core:1 [34] FOR ×2 (body 3)
+20:30:57.538 | Core:1 [35]     DECLARE l=64354
+20:30:58.053 | Core:4 [36]     DECLARE x=7915
+20:30:58.053 | Core:4 [37]     DECLARE s=232
+20:30:58.053 | Core:4 [38]     DECLARE l=64354
+20:30:58.053 | Core:4 [39]     DECLARE x=7915
+20:30:58.053 | Core:4 [40]     DECLARE s=232
+20:30:58.564 | Core:4 [41] FOR ×2 (body 3)
+20:30:58.564 | Core:4 [42]     SUB(h, 222, 278)
+20:30:58.564 | Core:4 [43]     ADD(v, 481, 473)
+20:30:58.564 | Core:4 [44]     PRINT -> Hello world from test!
+20:30:58.564 | Core:4 [45]     SUB(h, 222, 278)
+20:30:59.078 | Core:4 [46]     ADD(v, 481, 473)
+20:30:59.079 | Core:4 [47]     PRINT -> Hello world from test!
+20:30:59.079 | Core:4 [48] ADD(v, 426, 60)
+20:30:59.079 | Core:4 [49] PRINT -> Hello world from test!
+20:30:59.079 | Core:4 [50] SLEEP 3
+20:31:00.616 | Core:4 [51] SLEEP 1
+20:31:01.131 | Core:4 [52] SLEEP 4
+20:31:03.167 | Core:4 [53] SLEEP 4
+20:31:05.225 | Core:1 [54] ADD(s, 308, 159)
+20:31:05.225 | Core:1 [55] FOR ×2 (body 3)
+20:31:05.737 | Core:2 [56]     SUB(k, 349, 387)
+20:31:05.737 | Core:2 [57]     DECLARE q=22950
+20:31:05.737 | Core:2 [58]     SUB(n, 108, 456)
+20:31:05.737 | Core:2 [59]     SUB(k, 349, 387)
+20:31:05.737 | Core:2 [60]     DECLARE q=22950
+20:31:06.252 | Core:2 [61]     SUB(n, 108, 456)
+20:31:06.252 | Core:2 [62] FOR ×2 (body 3)
+20:31:06.252 | Core:2 [63]     PRINT -> Value from: +q: 22950
+20:31:06.252 | Core:2 [64]     SUB(l, 458, 156)
+20:31:06.252 | Core:2 [65]     PRINT -> Value from: +l: 302
+20:31:06.762 | Core:4 [66]     PRINT -> Value from: +q: 22950
+20:31:06.762 | Core:4 [67]     SUB(l, 458, 156)
+20:31:06.762 | Core:4 [68]     PRINT -> Value from: +l: 302
+20:31:06.762 | Core:4 [69] ADD(q, 57, 309)
+20:31:06.762 | Core:4 [70] ADD(q, 446, 167)
+20:31:07.274 | Core:4 [71] SUB(s, 252, 334)
+20:31:07.274 | Core:4 [72] SLEEP 1
+20:31:07.784 | Core:3 [73] SLEEP 4
+20:31:09.829 | Core:1 [74] SLEEP 2
+20:31:10.853 | Core:1 [75] DECLARE g=18991
+20:31:10.853 | Core:1 [76] DECLARE u=24380
+20:31:10.853 | Core:1 [77] PRINT -> Value from: +l: 302
+20:31:10.853 | Core:1 [78] PRINT -> Value from: +g: 18991
+20:32:24.076 | Core:1 [0] SLEEP 2
+20:32:25.089 | Core:4 [1] PRINT -> Hello world from test!
+20:32:25.090 | Core:4 [2] FOR ×2 (body 3)
+20:32:25.090 | Core:4 [3]     PRINT -> Hello world from test!
+20:32:25.090 | Core:4 [4]     DECLARE h=61947
+20:32:25.604 | Core:3 [5]     PRINT -> Value from: +h: 61947
+20:32:25.604 | Core:3 [6]     PRINT -> Hello world from test!
+20:32:25.604 | Core:3 [7]     DECLARE h=61947
+20:32:25.604 | Core:3 [8]     PRINT -> Value from: +h: 61947
+20:32:25.604 | Core:3 [9] SLEEP 5
+20:32:28.160 | Core:3 [10] SUB(h, 486, 222)
+20:32:28.673 | Core:3 [11] SUB(h, 2, 45)
+20:32:28.673 | Core:3 [12] ADD(h, 156, 495)
+20:32:28.673 | Core:3 [13] ADD(h, 322, 498)
+20:32:28.673 | Core:3 [14] DECLARE z=33055
+20:32:28.673 | Core:3 [15] SUB(h, 420, 45)
+20:32:29.186 | Core:3 [16] FOR ×2 (body 3)
+20:32:29.186 | Core:3 [17]     SUB(z, 255, 253)
+20:32:29.186 | Core:3 [18]     SUB(h, 80, 49)
+20:32:29.187 | Core:3 [19]     PRINT -> Hello world from test!
+20:32:29.187 | Core:3 [20]     SUB(z, 255, 253)
+20:32:29.703 | Core:2 [21]     SUB(h, 80, 49)
+20:32:29.704 | Core:2 [22]     PRINT -> Hello world from test!
+20:32:29.704 | Core:2 [23] SUB(i, 424, 318)
+20:32:29.704 | Core:2 [24] DECLARE s=23208
+20:32:29.704 | Core:2 [25] DECLARE b=8282
+20:32:30.214 | Core:1 [26] FOR ×2 (body 3)
+20:32:30.214 | Core:1 [27]     SLEEP 4
+20:32:32.255 | Core:3 [28]     ADD(k, 187, 337)
+20:32:32.255 | Core:3 [29]     SLEEP 4
+20:32:34.300 | Core:3 [30]     ADD(k, 187, 337)
+20:32:34.300 | Core:3 [31] ADD(r, 23, 455)
+20:32:34.815 | Core:4 [32] FOR ×3 (body 3)
+20:32:34.815 | Core:4 [33]     ADD(i, 42, 326)
+20:32:34.815 | Core:4 [34]     PRINT -> Value from: +h: 31
+20:32:34.815 | Core:4 [35]     DECLARE p=48282
+20:32:34.815 | Core:4 [36]     ADD(i, 42, 326)
+20:32:35.329 | Core:4 [37]     PRINT -> Value from: +h: 31
+20:32:35.329 | Core:4 [38]     DECLARE p=48282
+20:32:35.329 | Core:4 [39]     ADD(i, 42, 326)
+20:32:35.329 | Core:4 [40]     PRINT -> Value from: +h: 31
+20:32:35.329 | Core:4 [41]     DECLARE p=48282
+20:32:35.837 | Core:4 [42] PRINT -> Hello world from test!
+20:32:35.837 | Core:4 [43] SUB(i, 318, 390)
+20:32:35.837 | Core:4 [44] FOR ×2 (body 3)
+20:32:35.837 | Core:4 [45]     ADD(m, 306, 295)
+20:32:35.837 | Core:4 [46]     SUB(i, 64, 234)
+20:32:36.350 | Core:2 [47]     SUB(p, 382, 239)
+20:32:36.350 | Core:2 [48]     ADD(m, 306, 295)
+20:32:36.350 | Core:2 [49]     SUB(i, 64, 234)
+20:32:36.350 | Core:2 [50]     SUB(p, 382, 239)
+20:32:36.350 | Core:2 [51] SLEEP 4
+20:32:38.399 | Core:3 [52] SLEEP 2
+20:32:39.429 | Core:3 [53] PRINT -> Hello world from test!
+20:32:39.430 | Core:3 [54] PRINT -> Value from: +p: 143
+20:32:39.430 | Core:3 [55] SUB(z, 109, 71)
+20:32:39.430 | Core:3 [56] DECLARE b=54906
+20:32:39.943 | Core:2 [57] SUB(b, 148, 399)
+20:32:39.943 | Core:2 [58] FOR ×3 (body 3)
+20:32:39.943 | Core:2 [59]     SLEEP 4
+20:32:41.995 | Core:1 [60]     SUB(m, 399, 129)
+20:32:41.995 | Core:1 [61]     SLEEP 4
+20:32:44.043 | Core:3 [62]     SUB(m, 399, 129)
+20:32:44.043 | Core:3 [63]     SLEEP 4
+20:32:46.088 | Core:3 [64]     SUB(m, 399, 129)
+20:32:46.088 | Core:3 [65] FOR ×3 (body 3)
+20:32:46.597 | Core:3 [66]     PRINT -> Value from: +b: 0
+20:32:46.597 | Core:3 [67]     SUB(b, 325, 14)
+20:32:46.597 | Core:3 [68]     ADD(r, 340, 284)
+20:32:46.597 | Core:3 [69]     PRINT -> Value from: +b: 311
+20:32:46.597 | Core:3 [70]     SUB(b, 325, 14)
+20:32:47.108 | Core:3 [71]     ADD(r, 340, 284)
+20:32:47.108 | Core:3 [72]     PRINT -> Value from: +b: 311
+20:32:47.108 | Core:3 [73]     SUB(b, 325, 14)
+20:32:47.108 | Core:3 [74]     ADD(r, 340, 284)
+20:32:47.109 | Core:3 [75] PRINT -> Value from: +t: 0
+20:32:47.615 | Core:2 [76] DECLARE z=57730
+20:32:47.615 | Core:2 [77] SLEEP 5
+20:32:50.162 | Core:2 [78] ADD(i, 96, 181)
+20:32:50.675 | Core:1 [79] SUB(k, 433, 450)
+20:36:57.988 | Core:2 [0] FOR ×2 (body 3)
+20:36:57.988 | Core:2 [1]     DECLARE f=32409
+20:36:57.988 | Core:2 [2]     PRINT -> Hello world from test!
+20:36:57.988 | Core:2 [3]     SUB(f, 328, 458)
+20:36:57.988 | Core:2 [4]     DECLARE f=32409
+20:36:59.992 | Core:4 [5]     PRINT -> Hello world from test!
+20:36:59.992 | Core:4 [6]     SUB(f, 328, 458)
+20:36:59.992 | Core:4 [7] PRINT -> Hello world from test!
+20:36:59.992 | Core:4 [8] FOR ×2 (body 3)
+20:36:59.992 | Core:4 [9]     SUB(f, 183, 5)
+20:37:02.002 | Core:1 [10]     SLEEP 2
+20:37:06.017 | Core:2 [11]     FOR ×2 (body 3)
+20:37:06.018 | Core:2 [12]         SUB(f, 469, 346)
+20:37:06.018 | Core:2 [13]         ADD(f, 132, 263)
+20:37:06.018 | Core:2 [14]         DECLARE p=49825
+20:37:08.034 | Core:4 [15]         SUB(f, 469, 346)
+20:37:08.034 | Core:4 [16]         ADD(f, 132, 263)
+20:37:08.034 | Core:4 [17]         DECLARE p=49825
+20:37:08.034 | Core:4 [18]     DECLARE a=25930
+20:37:08.034 | Core:4 [19]     SUB(f, 183, 5)
+20:37:10.039 | Core:3 [20]     SLEEP 2
+20:37:14.061 | Core:2 [21]     FOR ×2 (body 3)
+20:37:14.061 | Core:2 [22]         SUB(f, 469, 346)
+20:37:14.061 | Core:2 [23]         ADD(f, 132, 263)
+20:37:14.061 | Core:2 [24]         DECLARE p=49825
+20:52:37.659 | Core:1 [0] DECLARE n=19587
+20:52:37.659 | Core:1 [1] FOR ×2 (body 3)
+20:52:37.659 | Core:1 [2]     ADD(n, 314, 319)
+20:52:37.659 | Core:1 [3]     DECLARE d=46390
+20:52:37.659 | Core:1 [4]     PRINT -> Hello world from test!
+20:52:38.170 | Core:1 [5]     ADD(n, 314, 319)
+20:52:38.170 | Core:1 [6]     DECLARE d=46390
+20:52:38.170 | Core:1 [7]     PRINT -> Hello world from test!
+20:52:38.171 | Core:1 [8] SUB(d, 126, 217)
+20:52:38.171 | Core:1 [9] SLEEP 4
+20:52:40.224 | Core:1 [10] PRINT -> Hello world from test!
+20:52:40.225 | Core:1 [11] FOR ×3 (body 3)
+20:52:40.731 | Core:3 [12]     ADD(d, 238, 154)
+20:52:40.731 | Core:3 [13]     DECLARE v=46025
+20:52:40.731 | Core:3 [14]     DECLARE f=38942
+20:52:40.731 | Core:3 [15]     ADD(d, 238, 154)
+20:52:40.731 | Core:3 [16]     DECLARE v=46025
+20:52:41.245 | Core:1 [17]     DECLARE f=38942
+20:52:41.245 | Core:1 [18]     ADD(d, 238, 154)
+20:52:41.245 | Core:1 [19]     DECLARE v=46025
+20:52:41.245 | Core:1 [20]     DECLARE f=38942
+20:52:41.245 | Core:1 [21] FOR ×2 (body 3)
+20:52:41.758 | Core:1 [22]     PRINT -> Hello world from test!
+20:52:41.758 | Core:1 [23]     SUB(n, 146, 62)
+20:52:41.758 | Core:1 [24]     PRINT -> Value from: +f: 38942
+20:52:41.758 | Core:1 [25]     PRINT -> Hello world from test!
+20:52:41.758 | Core:1 [26]     SUB(n, 146, 62)
+20:52:42.273 | Core:1 [27]     PRINT -> Value from: +f: 38942
+20:52:42.273 | Core:1 [28] DECLARE d=18785
+20:52:42.273 | Core:1 [29] FOR ×2 (body 3)
+20:52:42.273 | Core:1 [30]     DECLARE l=1955
+20:52:42.273 | Core:1 [31]     DECLARE c=34468
+20:52:42.787 | Core:2 [32]     ADD(c, 428, 315)
+20:52:42.787 | Core:2 [33]     DECLARE l=1955
+20:52:42.787 | Core:2 [34]     DECLARE c=34468
+20:52:42.787 | Core:2 [35]     ADD(c, 428, 315)
+20:52:42.787 | Core:2 [36] SUB(d, 475, 265)
+20:52:43.299 | Core:4 [37] SUB(c, 4, 330)
+20:52:43.300 | Core:4 [38] PRINT -> Hello world from test!
+20:52:43.300 | Core:4 [39] FOR ×2 (body 3)
+20:52:43.300 | Core:4 [40]     SLEEP 1
+20:52:43.815 | Core:1 [41]     SUB(f, 303, 360)
+20:52:43.815 | Core:1 [42]     PRINT -> Hello world from test!
+20:52:43.815 | Core:1 [43]     SLEEP 1
+20:52:44.328 | Core:3 [44]     SUB(f, 303, 360)
+20:52:44.328 | Core:3 [45]     PRINT -> Hello world from test!
+20:52:44.328 | Core:3 [46] SLEEP 1
+20:52:44.841 | Core:3 [47] PRINT -> Value from: +o: 0
+20:52:44.841 | Core:3 [48] ADD(f, 475, 479)
+20:52:44.841 | Core:3 [49] SLEEP 4
+20:52:46.881 | Core:4 [50] FOR ×2 (body 3)
+20:52:46.881 | Core:4 [51]     DECLARE q=62652
+20:52:47.399 | Core:1 [52]     SUB(r, 98, 300)
+20:52:47.399 | Core:1 [53]     DECLARE r=5106
+20:52:47.399 | Core:1 [54]     DECLARE q=62652
+20:52:47.399 | Core:1 [55]     SUB(r, 98, 300)
+20:52:47.399 | Core:1 [56]     DECLARE r=5106
+20:52:47.910 | Core:2 [57] DECLARE p=55661
+20:52:47.910 | Core:2 [58] SLEEP 2
+20:52:48.942 | Core:2 [59] SLEEP 4
+20:52:51.001 | Core:2 [60] FOR ×3 (body 3)
+20:52:51.001 | Core:2 [61]     DECLARE c=44851
+20:52:51.515 | Core:1 [62]     PRINT -> Value from: +v: 46025
+20:52:51.515 | Core:1 [63]     ADD(d, 93, 219)
+20:52:51.515 | Core:1 [64]     DECLARE c=44851
+20:52:51.515 | Core:1 [65]     PRINT -> Value from: +v: 46025
+20:52:51.515 | Core:1 [66]     ADD(d, 93, 219)
+20:52:52.028 | Core:3 [67]     DECLARE c=44851
+20:52:52.028 | Core:3 [68]     PRINT -> Value from: +v: 46025
+20:52:52.028 | Core:3 [69]     ADD(d, 93, 219)
+20:52:52.028 | Core:3 [70] PRINT -> Hello world from test!

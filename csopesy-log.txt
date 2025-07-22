@@ -1,0 +1,115 @@
+CPU utilisation : 100.0%
+Cores used      : 2
+Cores available : 0
+
+Waiting Queue:
+process48	(07/22/2025 01:18:49.796PM)	Core: N/A	0 / 100
+process29	(07/22/2025 01:18:49.213PM)	Core: N/A	0 / 100
+process88	(07/22/2025 01:18:51.086PM)	Core: N/A	0 / 100
+process91	(07/22/2025 01:18:51.174PM)	Core: N/A	0 / 100
+process92	(07/22/2025 01:18:51.206PM)	Core: N/A	0 / 100
+process53	(07/22/2025 01:18:49.955PM)	Core: N/A	0 / 100
+process54	(07/22/2025 01:18:49.987PM)	Core: N/A	0 / 100
+process102	(07/22/2025 01:18:51.525PM)	Core: N/A	0 / 100
+process105	(07/22/2025 01:18:51.618PM)	Core: N/A	0 / 100
+process39	(07/22/2025 01:18:49.514PM)	Core: N/A	0 / 100
+process42	(07/22/2025 01:18:49.606PM)	Core: N/A	0 / 100
+process19	(07/22/2025 01:18:48.895PM)	Core: N/A	0 / 100
+process10	(07/22/2025 01:18:48.634PM)	Core: N/A	0 / 100
+process41	(07/22/2025 01:18:49.575PM)	Core: N/A	0 / 100
+process49	(07/22/2025 01:18:49.827PM)	Core: N/A	0 / 100
+process50	(07/22/2025 01:18:49.859PM)	Core: N/A	0 / 100
+process51	(07/22/2025 01:18:49.892PM)	Core: N/A	0 / 100
+process52	(07/22/2025 01:18:49.923PM)	Core: N/A	0 / 100
+process55	(07/22/2025 01:18:50.011PM)	Core: N/A	0 / 100
+process57	(07/22/2025 01:18:50.080PM)	Core: N/A	0 / 100
+process59	(07/22/2025 01:18:50.143PM)	Core: N/A	0 / 100
+process62	(07/22/2025 01:18:50.238PM)	Core: N/A	0 / 100
+process64	(07/22/2025 01:18:50.302PM)	Core: N/A	0 / 100
+process66	(07/22/2025 01:18:50.365PM)	Core: N/A	0 / 100
+process68	(07/22/2025 01:18:50.435PM)	Core: N/A	0 / 100
+process71	(07/22/2025 01:18:50.528PM)	Core: N/A	0 / 100
+process73	(07/22/2025 01:18:50.592PM)	Core: N/A	0 / 100
+process77	(07/22/2025 01:18:50.726PM)	Core: N/A	0 / 100
+process11	(07/22/2025 01:18:48.659PM)	Core: N/A	0 / 100
+process8	(07/22/2025 01:18:48.573PM)	Core: N/A	0 / 100
+process69	(07/22/2025 01:18:50.464PM)	Core: N/A	0 / 100
+process83	(07/22/2025 01:18:50.922PM)	Core: N/A	0 / 100
+process15	(07/22/2025 01:18:48.784PM)	Core: N/A	0 / 100
+process18	(07/22/2025 01:18:48.863PM)	Core: N/A	0 / 100
+process25	(07/22/2025 01:18:49.086PM)	Core: N/A	0 / 100
+process56	(07/22/2025 01:18:50.041PM)	Core: N/A	0 / 100
+process60	(07/22/2025 01:18:50.174PM)	Core: N/A	0 / 100
+process31	(07/22/2025 01:18:49.270PM)	Core: N/A	0 / 100
+process9	(07/22/2025 01:18:48.606PM)	Core: N/A	0 / 100
+process6	(07/22/2025 01:18:48.519PM)	Core: N/A	0 / 100
+process12	(07/22/2025 01:18:48.689PM)	Core: N/A	0 / 100
+process22	(07/22/2025 01:18:48.991PM)	Core: N/A	0 / 100
+process26	(07/22/2025 01:18:49.118PM)	Core: N/A	0 / 100
+process28	(07/22/2025 01:18:49.181PM)	Core: N/A	0 / 100
+process37	(07/22/2025 01:18:49.451PM)	Core: N/A	0 / 100
+process38	(07/22/2025 01:18:49.483PM)	Core: N/A	0 / 100
+process16	(07/22/2025 01:18:48.808PM)	Core: N/A	0 / 100
+process17	(07/22/2025 01:18:48.831PM)	Core: N/A	0 / 100
+process20	(07/22/2025 01:18:48.927PM)	Core: N/A	0 / 100
+process70	(07/22/2025 01:18:50.496PM)	Core: N/A	0 / 100
+process81	(07/22/2025 01:18:50.859PM)	Core: N/A	0 / 100
+process84	(07/22/2025 01:18:50.953PM)	Core: N/A	0 / 100
+process86	(07/22/2025 01:18:51.024PM)	Core: N/A	0 / 100
+process90	(07/22/2025 01:18:51.147PM)	Core: N/A	0 / 100
+process100	(07/22/2025 01:18:51.457PM)	Core: N/A	7 / 100
+process96	(07/22/2025 01:18:51.334PM)	Core: N/A	0 / 100
+process95	(07/22/2025 01:18:51.302PM)	Core: N/A	17 / 100
+
+Running Queue:
+process46	(07/22/2025 01:18:49.733PM)	Core: 1	15 / 100
+process94	(07/22/2025 01:18:51.269PM)	Core: 2	5 / 100
+
+Finished processes:
+process2	(07/22/2025 01:18:48.418PM)	Finished	Core: 2	100 / 100
+process1	(07/22/2025 01:18:48.395PM)	Finished	Core: 1	100 / 100
+process3	(07/22/2025 01:18:48.440PM)	Finished	Core: 1	100 / 100
+process4	(07/22/2025 01:18:48.473PM)	Finished	Core: 1	103 / 103
+process13	(07/22/2025 01:18:48.721PM)	Finished	Core: 2	110 / 110
+process106	(07/22/2025 01:18:51.646PM)	Finished	Core: 1	100 / 100
+process43	(07/22/2025 01:18:49.638PM)	Finished	Core: 2	100 / 100
+process44	(07/22/2025 01:18:49.669PM)	Finished	Core: 2	100 / 100
+process80	(07/22/2025 01:18:50.827PM)	Finished	Core: 2	162 / 162
+process35	(07/22/2025 01:18:49.403PM)	Finished	Core: 1	127 / 127
+process63	(07/22/2025 01:18:50.270PM)	Finished	Core: 1	151 / 151
+process47	(07/22/2025 01:18:49.766PM)	Finished	Core: 2	100 / 100
+process75	(07/22/2025 01:18:50.662PM)	Finished	Core: 2	100 / 100
+process99	(07/22/2025 01:18:51.424PM)	Finished	Core: 2	100 / 100
+process101	(07/22/2025 01:18:51.485PM)	Finished	Core: 2	100 / 100
+process61	(07/22/2025 01:18:50.206PM)	Finished	Core: 1	100 / 100
+process58	(07/22/2025 01:18:50.111PM)	Finished	Core: 1	105 / 105
+process33	(07/22/2025 01:18:49.340PM)	Finished	Core: 1	125 / 125
+process5	(07/22/2025 01:18:48.494PM)	Finished	Core: 1	100 / 100
+process65	(07/22/2025 01:18:50.333PM)	Finished	Core: 2	129 / 129
+process67	(07/22/2025 01:18:50.392PM)	Finished	Core: 2	134 / 134
+process72	(07/22/2025 01:18:50.562PM)	Finished	Core: 1	100 / 100
+process78	(07/22/2025 01:18:50.755PM)	Finished	Core: 2	124 / 124
+process34	(07/22/2025 01:18:49.372PM)	Finished	Core: 1	104 / 104
+process76	(07/22/2025 01:18:50.694PM)	Finished	Core: 2	100 / 100
+process36	(07/22/2025 01:18:49.427PM)	Finished	Core: 2	100 / 100
+process32	(07/22/2025 01:18:49.310PM)	Finished	Core: 2	100 / 100
+process87	(07/22/2025 01:18:51.054PM)	Finished	Core: 1	113 / 113
+process14	(07/22/2025 01:18:48.752PM)	Finished	Core: 2	137 / 137
+process89	(07/22/2025 01:18:51.118PM)	Finished	Core: 1	104 / 104
+process93	(07/22/2025 01:18:51.238PM)	Finished	Core: 2	109 / 109
+process98	(07/22/2025 01:18:51.393PM)	Finished	Core: 2	109 / 109
+process85	(07/22/2025 01:18:50.991PM)	Finished	Core: 2	104 / 104
+process103	(07/22/2025 01:18:51.556PM)	Finished	Core: 1	123 / 123
+process82	(07/22/2025 01:18:50.891PM)	Finished	Core: 1	100 / 100
+process79	(07/22/2025 01:18:50.795PM)	Finished	Core: 1	100 / 100
+process104	(07/22/2025 01:18:51.589PM)	Finished	Core: 2	100 / 100
+process21	(07/22/2025 01:18:48.960PM)	Finished	Core: 1	148 / 148
+process27	(07/22/2025 01:18:49.149PM)	Finished	Core: 1	102 / 102
+process40	(07/22/2025 01:18:49.546PM)	Finished	Core: 1	102 / 102
+process45	(07/22/2025 01:18:49.701PM)	Finished	Core: 1	142 / 142
+process30	(07/22/2025 01:18:49.239PM)	Finished	Core: 1	103 / 103
+process24	(07/22/2025 01:18:49.053PM)	Finished	Core: 1	107 / 107
+process23	(07/22/2025 01:18:49.017PM)	Finished	Core: 1	102 / 102
+process7	(07/22/2025 01:18:48.544PM)	Finished	Core: 2	162 / 162
+process97	(07/22/2025 01:18:51.360PM)	Finished	Core: 2	100 / 100
+process74	(07/22/2025 01:18:50.624PM)	Finished	Core: 2	100 / 100
