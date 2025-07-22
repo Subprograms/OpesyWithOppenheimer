@@ -287,21 +287,16 @@ void Scheduler::coreFunction(int nCoreId)
 
         {
             std::unique_lock<std::mutex> lk(queueMutex);
-
             if (processQueue.empty())
             {
                 ++idleCpuTicks;
-                cv.wait_for(lk,
-                            std::chrono::milliseconds(config.delaysPerExec),
-                            [&] { return !processQueue.empty() || !running; });
+                cv.wait_for(lk, std::chrono::milliseconds(config.delaysPerExec),
+                            [&]{ return !processQueue.empty() || !running; });
                 if (!running && processQueue.empty()) return;
             }
-
             if (processQueue.empty()) continue;
-
             proc = std::move(processQueue.front());
             processQueue.pop_front();
-
             bool resident = std::any_of(memoryBlocks.begin(), memoryBlocks.end(),
                                         [&](auto& b){ return b.pid == proc.processName; });
             if (!resident && !allocateMemory(proc))
@@ -309,15 +304,14 @@ void Scheduler::coreFunction(int nCoreId)
                 processQueue.push_back(std::move(proc));
                 continue;
             }
-
             proc.assignedCore = nCoreId;
             runningProcesses.push_back(proc);
             ++coresInUse;
         }
 
-        const bool fcfs  = (schedulerType == "fcfs" || schedulerType == "FCFS");
-        const int  slice = fcfs ? std::numeric_limits<int>::max() : std::max(1, quantum);
-        auto& loopStack  = proc.loopStack;
+        const bool fcfs = (schedulerType == "fcfs" || schedulerType == "FCFS");
+        const int slice = fcfs ? std::numeric_limits<int>::max() : std::max(1, quantum);
+        auto& loopStack = proc.loopStack;
 
         for (int used = 0; used < slice && running; )
         {
@@ -347,8 +341,7 @@ void Scheduler::coreFunction(int nCoreId)
                 }
 
                 case OpCode::DECLARE:
-                    if (proc.vars.size() < 32)
-                        proc.vars[ins.arg1] = Stoi16(ins.arg2, ins.arg1);
+                    if (proc.vars.size() < 32) proc.vars[ins.arg1] = Stoi16(ins.arg2, ins.arg1);
                     log(proc, "DECLARE " + ins.arg1 + '=' + ins.arg2, ind);
                     break;
 
@@ -357,7 +350,7 @@ void Scheduler::coreFunction(int nCoreId)
                 {
                     uint16_t v2 = ins.isArg2Var ? proc.vars[ins.arg2] : Stoi16(ins.arg2);
                     uint16_t v3 = ins.isArg3Var ? proc.vars[ins.arg3] : Stoi16(ins.arg3);
-                    uint32_t r  = (ins.op == OpCode::ADD) ? v2 + v3 : (v2 >= v3 ? v2 - v3 : 0);
+                    uint32_t r = (ins.op == OpCode::ADD) ? v2 + v3 : (v2 >= v3 ? v2 - v3 : 0);
                     proc.vars[ins.arg1] = static_cast<uint16_t>(std::min(r, 65535u));
                     log(proc, (ins.op == OpCode::ADD ? "ADD(" : "SUB(") +
                                ins.arg1 + ", " + ins.arg2 + ", " + ins.arg3 + ')', ind);
@@ -381,7 +374,7 @@ void Scheduler::coreFunction(int nCoreId)
                 {
                     if (!ins.body.empty() && ins.repetitions && loopStack.size() < 3)
                     {
-                        int bodySz  = static_cast<int>(ins.body.size());
+                        int bodySz = static_cast<int>(ins.body.size());
                         uint16_t rep = ins.repetitions;
                         int insertAt = proc.currentLine + 1;
                         proc.prog.insert(proc.prog.begin() + insertAt,
@@ -390,30 +383,30 @@ void Scheduler::coreFunction(int nCoreId)
                         loopStack.push_back({ uint16_t(insertAt),
                                               uint16_t(insertAt + bodySz - 1),
                                               uint16_t(rep - 1), ind });
-                        log(proc, "FOR×" + std::to_string(rep) +
-                                   " body=" + std::to_string(bodySz), ind);
+                        log(proc, "FOR×" + std::to_string(rep) + " body=" +
+                                   std::to_string(bodySz), ind);
                     }
                     break;
                 }
 
                 case OpCode::WRITE:
                 {
-                    uint32_t addr;
-                    bool     isVar = ins.isArg2Var;
-                    uint16_t val   = isVar ? proc.vars[ins.arg2]
-                                           : Stoi16(ins.arg2);
-
+                    uint32_t addr; bool isVar = ins.isArg2Var;
+                    uint16_t val = isVar ? proc.vars[ins.arg2] : Stoi16(ins.arg2);
                     if (!Hex32(ins.arg1, addr) || !accessMem(proc, addr, true, val))
                     {
+                        {
+                            std::lock_guard<std::mutex> lk(g_coutMx);
+                            std::cout << "Process " << proc.processName
+                                      << " shut down due to memory access violation error that occurred at "
+                                      << nowStamp() << ", " << ins.arg1 << " invalid.\n";
+                        }
                         proc.isFinished = true;
-                        log(proc, "WRITE VIOLATION " + ins.arg1, ind);
                         used = slice;
                         ++activeCpuTicks;
                         break;
                     }
-                    std::string rhs = isVar
-                                      ? ins.arg2 + '(' + std::to_string(val) + ')'
-                                      : ins.arg2;
+                    std::string rhs = isVar ? ins.arg2 + '(' + std::to_string(val) + ')' : ins.arg2;
                     log(proc, "WRITE " + ins.arg1 + " = " + rhs, ind);
                     break;
                 }
@@ -423,8 +416,13 @@ void Scheduler::coreFunction(int nCoreId)
                     uint32_t addr; uint16_t val = 0;
                     if (!Hex32(ins.arg2, addr) || !accessMem(proc, addr, false, val))
                     {
+                        {
+                            std::lock_guard<std::mutex> lk(g_coutMx);
+                            std::cout << "Process " << proc.processName
+                                      << " shut down due to memory access violation error that occurred at "
+                                      << nowStamp() << ", " << ins.arg2 << " invalid.\n";
+                        }
                         proc.isFinished = true;
-                        log(proc, "READ VIOLATION " + ins.arg2, ind);
                         used = slice;
                         ++activeCpuTicks;
                         break;
@@ -439,14 +437,12 @@ void Scheduler::coreFunction(int nCoreId)
             }
 
             if (proc.isFinished) break;
-
             ++proc.currentLine;
             ++proc.executedLines;
             if (proc.executedLines > proc.totalLine) proc.totalLine = proc.executedLines;
             ++used;
             ++activeCpuTicks;
             if (used % config.quantumCycles == 0) writeMemorySnapshot();
-
             if (!loopStack.empty())
             {
                 auto& top = loopStack.back();
@@ -469,14 +465,12 @@ void Scheduler::coreFunction(int nCoreId)
                                                   [&](auto& p){ return p.processID == proc.processID; }),
                                    runningProcesses.end());
             --coresInUse;
-
             if (!proc.outBuf.empty())
             {
                 std::ofstream f(proc.processName + ".txt", std::ios::app);
                 for (auto& l : proc.outBuf) f << l << '\n';
                 proc.outBuf.clear();
             }
-
             if (finished)
             {
                 deallocateMemory(proc.processName);
