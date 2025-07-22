@@ -398,8 +398,9 @@ void Scheduler::coreFunction(int nCoreId)
                         {
                             std::lock_guard<std::mutex> lk(g_coutMx);
                             std::cout << "Process " << proc.processName
-                                      << " shut down due to memory access violation error that occurred at "
-                                      << nowStamp() << ", " << ins.arg1 << " invalid.\n";
+                                    << " shut down due to memory access violation error that occurred at "
+                                    << nowStamp() << ", " << (ins.op == OpCode::WRITE ? ins.arg1 : ins.arg2)
+                                    << " invalid." << std::endl << std::flush;
                         }
                         proc.isFinished = true;
                         used = slice;
